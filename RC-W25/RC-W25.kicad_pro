@@ -586,6 +586,10 @@
     [
       "9423f10d-7c89-4a48-b233-1b4f9ab13c89",
       "RC_Battery"
+    ],
+    [
+      "36289d84-c6e3-4b09-90a7-bd5cb46c1d1f",
+      "RC_Motor&HallEffect"
     ]
   ],
   "text_variables": {}

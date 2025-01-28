@@ -5,4 +5,42 @@
 	(uuid "9d341322-5b86-4dbd-843e-2131215dbb0d")
 	(paper "A4")
 	(lib_symbols)
+	(text_box "Option 2: Make input voltage (currently 5V) as the input from LiPO, and USB charge the battery"
+		(exclude_from_sim no)
+		(at 125.73 83.82 0)
+		(size 24.13 21.59)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "2d64644a-33bd-46c4-a4c0-e86686b3d127")
+	)
+	(text_box "Optrion 1: Make +5V some variable volatage (Vs or Vsource), where Vs should be 5V or nominal 3.3V for LiPO battary, which requires a method to switch sources"
+		(exclude_from_sim no)
+		(at 125.73 59.69 0)
+		(size 24.13 21.59)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "5eb6ee7e-4e56-4cca-a81f-e2db3b400572")
+	)
 )
