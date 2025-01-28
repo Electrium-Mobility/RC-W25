@@ -1,0 +1,89 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "427b2895-e3a6-4096-b101-5f65a3f7473e")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 90.17 72.39)
+		(size 35.56 30.48)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "01bd870e-4674-4257-9660-564635d632de")
+		(property "Sheetname" "RC_Connections"
+			(at 90.17 71.6784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "RC_Connections.kicad_sch"
+			(at 90.17 103.4546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "RC-W25"
+				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 160.02 72.39)
+		(size 34.29 30.48)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1.0000)
+		)
+		(uuid "9423f10d-7c89-4a48-b233-1b4f9ab13c89")
+		(property "Sheetname" "RC_Battery"
+			(at 160.02 71.6784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "RC_Battery.kicad_sch"
+			(at 160.02 103.4546 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "RC-W25"
+				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
