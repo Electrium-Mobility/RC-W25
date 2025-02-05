@@ -1935,7 +1935,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 81.28) (xy 204.47 85.09)
+			(xy 226.06 69.85) (xy 226.06 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2055,7 +2055,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 81.28) (xy 186.69 87.63)
+			(xy 208.28 69.85) (xy 208.28 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2135,7 +2135,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 92.71) (xy 204.47 90.17)
+			(xy 226.06 81.28) (xy 226.06 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2165,7 +2165,7 @@
 	)
 	(wire
 		(pts
-			(xy 201.93 85.09) (xy 204.47 85.09)
+			(xy 223.52 73.66) (xy 226.06 73.66)
 		)
 		(stroke
 			(width 0)
@@ -2175,7 +2175,7 @@
 	)
 	(wire
 		(pts
-			(xy 186.69 87.63) (xy 191.77 87.63)
+			(xy 208.28 76.2) (xy 213.36 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2215,7 +2215,7 @@
 	)
 	(wire
 		(pts
-			(xy 204.47 90.17) (xy 201.93 90.17)
+			(xy 226.06 78.74) (xy 223.52 78.74)
 		)
 		(stroke
 			(width 0)
@@ -2335,10 +2335,9 @@
 		)
 		(uuid 795a95ce-20d9-46b8-b72a-737f95b20724)
 	)
-	(text_box "Option 2: Make input voltage (currently 5V) as the input from LiPO, and USB charge the battery"
-		(exclude_from_sim no)
-		(at 105.41 125.73 0)
-		(size 24.13 21.59)
+	(rectangle
+		(start 203.2 60.96)
+		(end 232.41 92.71)
 		(stroke
 			(width 0)
 			(type default)
@@ -2346,18 +2345,11 @@
 		(fill
 			(type none)
 		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "2d64644a-33bd-46c4-a4c0-e86686b3d127")
+		(uuid e7bb526e-9063-41c9-adb1-e77dc1ebac59)
 	)
-	(text_box "Optrion 1: Make +5V some variable volatage (Vs or Vsource), where Vs should be 5V or nominal 3.3V for LiPO battary, which requires a method to switch sources"
-		(exclude_from_sim no)
-		(at 105.41 101.6 0)
-		(size 24.13 21.59)
+	(rectangle
+		(start 43.18 46.99)
+		(end 194.31 97.79)
 		(stroke
 			(width 0)
 			(type default)
@@ -2365,18 +2357,12 @@
 		(fill
 			(type none)
 		)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "5eb6ee7e-4e56-4cca-a81f-e2db3b400572")
+		(uuid f4c7a035-4ae0-4bb3-9890-79c442f1109e)
 	)
-	(text_box "BATTERY\n"
+	(text_box "3.7V BATTERY\n"
 		(exclude_from_sim no)
-		(at 140.97 57.15 0)
-		(size 10.16 3.81)
+		(at 140.97 55.88 0)
+		(size 10.16 5.08)
 		(stroke
 			(width 0)
 			(type default)
@@ -2405,6 +2391,34 @@
 			(justify right)
 		)
 		(uuid "52a6a73f-4d62-4b4b-9d34-7fd763d6f697")
+	)
+	(text "Battery Charger and 3.7V Battery"
+		(exclude_from_sim no)
+		(at 193.802 96.52 0)
+		(effects
+			(font
+				(face "KiCad Font")
+				(size 1.524 1.524)
+				(thickness 0.3048)
+				(bold yes)
+			)
+			(justify right)
+		)
+		(uuid "990274b6-f8a6-42c8-9b5d-3698a4e08178")
+	)
+	(text "Power Switch\n"
+		(exclude_from_sim no)
+		(at 232.156 91.694 0)
+		(effects
+			(font
+				(face "KiCad Font")
+				(size 1.524 1.524)
+				(thickness 0.3048)
+				(bold yes)
+			)
+			(justify right)
+		)
+		(uuid "c4592067-7c19-492c-af3a-d8a5f14be345")
 	)
 	(global_label "ADC_BATTERYPERCENT"
 		(shape output)
@@ -3669,7 +3683,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 186.69 81.28 0)
+		(at 208.28 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3677,7 +3691,7 @@
 		(dnp no)
 		(uuid "7864fb8f-ce7d-4b42-a3ea-ec04d9485162")
 		(property "Reference" "#PWR042"
-			(at 186.69 85.09 0)
+			(at 208.28 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3686,7 +3700,7 @@
 			)
 		)
 		(property "Value" "+VBAT"
-			(at 186.69 77.216 0)
+			(at 208.28 65.786 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3694,7 +3708,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 186.69 81.28 0)
+			(at 208.28 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3703,7 +3717,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 186.69 81.28 0)
+			(at 208.28 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3712,7 +3726,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 186.69 81.28 0)
+			(at 208.28 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3938,7 +3952,7 @@
 	)
 	(symbol
 		(lib_id "Switch:SW_DPDT_x2")
-		(at 196.85 87.63 0)
+		(at 218.44 76.2 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3947,7 +3961,7 @@
 		(fields_autoplaced yes)
 		(uuid "9ab67acc-57be-4c36-8907-a6d8a553d80c")
 		(property "Reference" "SW3"
-			(at 196.85 78.74 0)
+			(at 218.44 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3955,7 +3969,7 @@
 			)
 		)
 		(property "Value" "SW_DPDT_x2"
-			(at 196.85 81.28 0)
+			(at 218.44 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3963,7 +3977,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 196.85 87.63 0)
+			(at 218.44 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3972,7 +3986,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 196.85 87.63 0)
+			(at 218.44 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3981,7 +3995,7 @@
 			)
 		)
 		(property "Description" "Switch, dual pole double throw, separate symbols"
-			(at 196.85 87.63 0)
+			(at 218.44 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4087,7 +4101,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 204.47 92.71 0)
+		(at 226.06 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4095,7 +4109,7 @@
 		(dnp no)
 		(uuid "aa0732e3-fd17-4962-8793-10a806fd0171")
 		(property "Reference" "#PWR041"
-			(at 204.47 99.06 0)
+			(at 226.06 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4104,7 +4118,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 204.47 96.52 0)
+			(at 226.06 85.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4112,7 +4126,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 204.47 92.71 0)
+			(at 226.06 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4121,7 +4135,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 204.47 92.71 0)
+			(at 226.06 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4130,7 +4144,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 204.47 92.71 0)
+			(at 226.06 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4759,7 +4773,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 204.47 81.28 0)
+		(at 226.06 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4767,7 +4781,7 @@
 		(dnp no)
 		(uuid "fb16dd16-38cd-4120-9317-54d5b3cf5e10")
 		(property "Reference" "#PWR043"
-			(at 204.47 85.09 0)
+			(at 226.06 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4776,7 +4790,7 @@
 			)
 		)
 		(property "Value" "+VPRE"
-			(at 204.47 77.216 0)
+			(at 226.06 65.786 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4784,7 +4798,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 204.47 81.28 0)
+			(at 226.06 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4793,7 +4807,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 204.47 81.28 0)
+			(at 226.06 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4802,7 +4816,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 204.47 81.28 0)
+			(at 226.06 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
