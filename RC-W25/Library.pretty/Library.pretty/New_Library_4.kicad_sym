@@ -2,12 +2,12 @@
 	(version 20231120)
 	(generator "kicad_symbol_editor")
 	(generator_version "8.0")
-	(symbol "DuraClik_CONN_HEADER_SMD_R/A_2POS_2MM"
+	(symbol "MCP73831"
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "P"
-			(at 0 0 0)
+		(property "Reference" "U"
+			(at -0.762 0.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15,7 +15,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at -1.016 0.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23,7 +23,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 0 0 0)
+			(at -1.016 0.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -32,7 +32,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 0)
+			(at -1.016 0.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41,7 +41,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
+			(at -1.016 0.254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -49,52 +49,22 @@
 				(hide yes)
 			)
 		)
-		(symbol "DuraClik_CONN_HEADER_SMD_R/A_2POS_2MM_0_1"
-			(polyline
-				(pts
-					(xy -1.27 -7.62) (xy 1.27 -7.62) (xy 1.27 -8.89) (xy 0 -10.16) (xy -1.27 -10.16) (xy -1.27 -7.62)
-					(xy -1.27 -10.16)
-				)
+		(symbol "MCP73831_1_1"
+			(rectangle
+				(start -7.62 -1.27)
+				(end 6.35 -16.51)
 				(stroke
 					(width 0)
 					(type default)
 				)
 				(fill
-					(type none)
+					(type background)
 				)
 			)
-			(polyline
-				(pts
-					(xy -1.27 -2.54) (xy 1.27 -2.54) (xy 1.27 -3.81) (xy 0 -5.08) (xy -1.27 -5.08) (xy -1.27 -2.54)
-					(xy -1.27 -5.08)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy -2.54 -5.08) (xy -2.54 -1.27) (xy 1.27 -1.27) (xy 2.54 -1.27) (xy 2.54 -11.43) (xy -2.54 -11.43)
-					(xy -2.54 -7.62) (xy -5.08 -7.62) (xy -5.08 -5.08) (xy -2.54 -5.08)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "DuraClik_CONN_HEADER_SMD_R/A_2POS_2MM_1_1"
 			(pin passive line
-				(at 2.54 -3.81 0)
+				(at -10.16 -15.24 0)
 				(length 2.54)
-				(name "+"
+				(name "STAT"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -110,9 +80,9 @@
 				)
 			)
 			(pin passive line
-				(at 2.54 -8.89 0)
+				(at 8.89 -15.24 180)
 				(length 2.54)
-				(name "-"
+				(name "VSS"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -120,6 +90,60 @@
 					)
 				)
 				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 8.89 -2.54 180)
+				(length 2.54)
+				(name "VBAT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -10.16 -2.54 0)
+				(length 2.54)
+				(name "VDD"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 8.89 -8.89 180)
+				(length 2.54)
+				(name "PROG"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
 					(effects
 						(font
 							(size 1.27 1.27)

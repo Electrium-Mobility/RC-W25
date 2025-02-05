@@ -92,7 +92,7 @@
 		)
 		(symbol "DuraClik_CONN_HEADER_SMD_R/A_2POS_2MM_1_1"
 			(pin passive line
-				(at 2.54 -3.81 0)
+				(at 5.08 -3.81 180)
 				(length 2.54)
 				(name "+"
 					(effects
@@ -110,7 +110,7 @@
 				)
 			)
 			(pin passive line
-				(at 2.54 -8.89 0)
+				(at 5.08 -8.89 180)
 				(length 2.54)
 				(name "-"
 					(effects
