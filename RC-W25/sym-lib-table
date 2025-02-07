@@ -7,4 +7,6 @@
   (lib (name "New_Library_2")(type "KiCad")(uri "${KIPRJMOD}/Library.pretty/Library.pretty/New_Library_2.kicad_sym")(options "")(descr ""))
   (lib (name "New_Library_3")(type "KiCad")(uri "${KIPRJMOD}/Library.pretty/Library.pretty/New_Library_3.kicad_sym")(options "")(descr ""))
   (lib (name "New_Library_4")(type "KiCad")(uri "${KIPRJMOD}/Library.pretty/Library.pretty/New_Library_4.kicad_sym")(options "")(descr ""))
+  (lib (name "New_Library_5")(type "KiCad")(uri "${KIPRJMOD}/Library.pretty/Library.pretty/New_Library_5.kicad_sym")(options "")(descr ""))
+  (lib (name "New_Library_6")(type "KiCad")(uri "${KIPRJMOD}/Library.pretty/Library.pretty/New_Library_6.kicad_sym")(options "")(descr ""))
 )
