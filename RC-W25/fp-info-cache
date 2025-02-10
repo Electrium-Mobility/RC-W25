@@ -1,4 +1,4 @@
-24663360525825614
+24672056497877217
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99434,6 +99434,41 @@ Varistor VF
 0
 2
 2
+footprints
+CONN12_C-31-M-12_HRO
+
+TYPE-C-31-M-12 
+0
+18
+18
+footprints
+SW-SMD_6P-YTSPS-22E58LM
+
+
+0
+6
+6
+footprints
+SW-SMD_L3.9-W3.0-P4.45
+
+
+0
+2
+2
+footprints
+SW-SMD_SPEF210200
+
+
+0
+6
+5
+footprints
+USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal
+USB 2.0 Type C Receptacle, GCT, 16P, top mounted, horizontal, 5A: https://gct.co/files/drawings/usb4105.pdf
+USB C Type-C Receptacle SMD USB 2.0 16P 16C USB4105-15-A USB4105-15-A-060 USB4105-15-A-120 USB4105-GF-A USB4105-GF-A-060 USB4105-GF-A-120
+0
+16
+13
 footprints
 X2SON4_DMR_TEX
 

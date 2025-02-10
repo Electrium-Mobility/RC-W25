@@ -1106,26 +1106,28 @@
 				)
 			)
 		)
-		(symbol "Switch:SW_SPST"
-			(pin_names
-				(offset 0) hide)
+		(symbol "components:YTSPS-22E58LM"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(property "Reference" "SW"
-				(at 0 3.175 0)
+				(at 3.556 2.1209 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(face "Arial")
+						(size 1.6891 1.6891)
 					)
+					(justify left top)
 				)
 			)
-			(property "Value" "SW_SPST"
-				(at 0 -2.54 0)
+			(property "Value" "YTSPS-22E58LM"
+				(at 3.556 -0.1397 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(face "Arial")
+						(size 1.6891 1.6891)
 					)
+					(justify left top)
 				)
 			)
 			(property "Footprint" ""
@@ -1137,7 +1139,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "~"
+			(property "Datasheet" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1146,7 +1148,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Single Pole Single Throw (SPST) switch"
+			(property "Description" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1155,7 +1157,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "switch lever"
+			(property "Manufacturer Part" "YTSPS-22E58LM"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1164,13 +1166,41 @@
 					(hide yes)
 				)
 			)
-			(symbol "SW_SPST_0_0"
-				(circle
-					(center -2.032 0)
-					(radius 0.508)
+			(property "Manufacturer" "YIYUAN(怡远)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier Part" "C2941005"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Supplier" "LCSC"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "YTSPS-22E58LM_0_0"
+				(polyline
+					(pts
+						(xy -2.54 -2.54) (xy -2.794 -3.302)
+					)
 					(stroke
-						(width 0)
-						(type default)
+						(width 0.254)
+						(type solid)
 					)
 					(fill
 						(type none)
@@ -1178,36 +1208,191 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.254) (xy 1.524 1.778)
+						(xy -2.54 -2.54) (xy -2.286 -3.302)
 					)
 					(stroke
-						(width 0)
-						(type default)
+						(width 0.254)
+						(type solid)
 					)
 					(fill
 						(type none)
 					)
 				)
-				(circle
-					(center 2.032 0)
-					(radius 0.508)
+				(polyline
+					(pts
+						(xy -2.54 5.08) (xy -2.794 5.842)
+					)
 					(stroke
-						(width 0)
-						(type default)
+						(width 0.254)
+						(type solid)
 					)
 					(fill
 						(type none)
 					)
 				)
-			)
-			(symbol "SW_SPST_1_1"
+				(polyline
+					(pts
+						(xy -2.54 5.08) (xy -2.286 5.842)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy -0.254 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0.254 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy -0.254 5.842)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 5.08) (xy 0.254 5.842)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.286 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.794 -3.302)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 5.08) (xy 2.286 5.842)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 5.08) (xy 2.794 5.842)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -5.08) (xy 0 -6.35) (xy -2.54 -6.35) (xy -2.54 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type dash)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 7.62) (xy 0 8.89) (xy -2.54 8.89) (xy -2.54 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type dash)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 -5.08) (xy 0 -5.08) (xy 0 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 5.08) (xy 2.54 7.62) (xy 0 7.62) (xy 0 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
-					(at -5.08 0 0)
+					(at 2.54 2.54 90)
 					(length 2.54)
-					(name "A"
+					(name "1"
 						(effects
 							(font
-								(size 1.27 1.27)
+								(size 0.0254 0.0254)
 							)
 						)
 					)
@@ -1220,16 +1405,88 @@
 					)
 				)
 				(pin passive line
-					(at 5.08 0 180)
+					(at 0 2.54 90)
 					(length 2.54)
-					(name "B"
+					(name "2"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "2"
+				)
+				(pin passive line
+					(at -2.54 2.54 90)
+					(length 2.54)
+					(name "3"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 0 270)
+					(length 2.54)
+					(name "4"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 0 270)
+					(length 2.54)
+					(name "5"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 0 270)
+					(length 2.54)
+					(name "6"
+						(effects
+							(font
+								(size 0.0254 0.0254)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1577,6 +1834,12 @@
 		)
 	)
 	(junction
+		(at 115.57 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0a670936-f7f2-4b8d-833d-9a497bab4d2d")
+	)
+	(junction
 		(at 196.85 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1599,12 +1862,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7c498911-7657-4617-9930-dbbf1c864519")
-	)
-	(junction
-		(at 115.57 69.85)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "88b59486-e310-4be3-8d54-94a956d345ae")
 	)
 	(junction
 		(at 72.39 83.82)
@@ -1655,8 +1912,24 @@
 		(uuid "f8ece2b5-2fd1-48ad-936b-fc68d9ca3794")
 	)
 	(no_connect
+		(at 118.11 63.5)
+		(uuid "1ac575fa-05ff-4e9f-a46c-88220d8526a0")
+	)
+	(no_connect
+		(at 118.11 60.96)
+		(uuid "6cf021b5-1aa8-43bf-a615-d2a7b010205d")
+	)
+	(no_connect
+		(at 115.57 60.96)
+		(uuid "770a2f37-5193-4cdf-bb30-0a42a42bb8b8")
+	)
+	(no_connect
 		(at 166.37 121.92)
 		(uuid "ba304dce-97ea-4d73-a669-651a0cc9ed23")
+	)
+	(no_connect
+		(at 118.11 66.04)
+		(uuid "df58ccfb-bda9-4ecc-adf9-52be9fc764a9")
 	)
 	(wire
 		(pts
@@ -1670,16 +1943,6 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 69.85) (xy 115.57 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0e722008-25f0-4708-9372-2d525c6aab78")
-	)
-	(wire
-		(pts
 			(xy 208.28 116.84) (xy 214.63 116.84)
 		)
 		(stroke
@@ -1687,6 +1950,16 @@
 			(type default)
 		)
 		(uuid "1a286ddd-590b-4108-a36e-87c4e36cf81f")
+	)
+	(wire
+		(pts
+			(xy 116.84 59.69) (xy 116.84 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cc48db9-9951-4020-8dd9-4f89296a22b4")
 	)
 	(wire
 		(pts
@@ -1890,6 +2163,16 @@
 	)
 	(wire
 		(pts
+			(xy 105.41 69.85) (xy 115.57 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74bef91b-3ba1-4097-ab31-9ba786c7854f")
+	)
+	(wire
+		(pts
 			(xy 52.07 59.69) (xy 52.07 62.23)
 		)
 		(stroke
@@ -1907,6 +2190,16 @@
 			(type default)
 		)
 		(uuid "78440dba-3d3e-4c89-8fe4-f05242239553")
+	)
+	(wire
+		(pts
+			(xy 116.84 63.5) (xy 115.57 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7eccc494-5904-4730-b5cb-dcb1a65fd75d")
 	)
 	(wire
 		(pts
@@ -1990,6 +2283,16 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 66.04) (xy 115.57 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9c0b0c9a-16b0-4e7a-b1c6-6ae64b69deee")
+	)
+	(wire
+		(pts
 			(xy 128.27 81.28) (xy 128.27 83.82)
 		)
 		(stroke
@@ -1997,16 +2300,6 @@
 			(type default)
 		)
 		(uuid "9d92ca04-0515-4494-964b-077bfd4ad0c8")
-	)
-	(wire
-		(pts
-			(xy 115.57 69.85) (xy 128.27 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a21532c0-46c9-4f8f-aa19-043d67a5c0cb")
 	)
 	(wire
 		(pts
@@ -2070,13 +2363,13 @@
 	)
 	(wire
 		(pts
-			(xy 115.57 66.04) (xy 115.57 69.85)
+			(xy 115.57 69.85) (xy 128.27 69.85)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d3665557-cf06-4933-9f27-95504d34d6ea")
+		(uuid "d1df34e6-df69-43c1-873e-39071503c155")
 	)
 	(wire
 		(pts
@@ -2203,7 +2496,7 @@
 	)
 	(text "{dblquote}on/off switch{dblquote}"
 		(exclude_from_sim no)
-		(at 125.222 56.896 0)
+		(at 129.794 57.404 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3459,6 +3752,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:+5V")
+		(at 116.84 59.69 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "616da2da-7df7-463c-839f-9715d3fc084e")
+		(property "Reference" "#PWR033"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+VBAT"
+			(at 116.84 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 116.84 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 116.84 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+5V\""
+			(at 116.84 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a90faaaa-053d-44d6-8cba-845ce0057fb0")
+		)
+		(instances
+			(project "RC-W25"
+				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
+					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 128.27 91.44 0)
 		(unit 1)
@@ -3824,34 +4182,32 @@
 		)
 	)
 	(symbol
-		(lib_id "Switch:SW_SPST")
-		(at 115.57 60.96 90)
+		(lib_id "components:YTSPS-22E58LM")
+		(at 118.11 63.5 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "caa830e1-4516-44a3-97f9-779cdac02105")
-		(property "Reference" "SW3"
-			(at 116.84 59.944 90)
+		(uuid "c57cbc01-7588-4bfa-9226-c0ebc129d022")
+		(property "Reference" "SW5"
+			(at 126.746 60.452 90)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.6891 1.6891)
 				)
-				(justify right)
 			)
 		)
-		(property "Value" "Toggle Button"
-			(at 116.84 61.722 90)
+		(property "Value" "YTSPS-22E58LM"
+			(at 129.54 62.484 90)
 			(effects
 				(font
 					(size 0.8467 0.8467)
 				)
-				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 115.57 60.96 0)
+		(property "Footprint" "footprints:SW-SMD_6P-YTSPS-22E58LM"
+			(at 118.11 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3859,8 +4215,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 115.57 60.96 0)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121754_YIYUAN-YTSPS-22E58LM_C2941005.pdf"
+			(at 118.11 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3868,8 +4224,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Single Pole Single Throw (SPST) switch"
-			(at 115.57 60.96 0)
+		(property "Description" ""
+			(at 118.11 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3877,8 +4233,44 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" ""
-			(at 115.57 60.96 0)
+		(property "Manufacturer Part" ""
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier Part" ""
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Supplier" ""
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC#" "C2941005"
+			(at 118.11 63.5 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3887,15 +4279,27 @@
 			)
 		)
 		(pin "2"
-			(uuid "9405b1e1-d547-4b05-9085-ac124df1743b")
+			(uuid "0223529b-6021-4e12-a54d-96822f36122f")
 		)
 		(pin "1"
-			(uuid "29127ac3-65e7-4829-b1b6-155fbacd30f3")
+			(uuid "e23108c2-1dbf-4128-ab08-36318f0fd2c8")
+		)
+		(pin "3"
+			(uuid "cd17ddb0-5bbb-4ad9-914d-6687f92aeda8")
+		)
+		(pin "4"
+			(uuid "cfbb63bb-25e0-4476-87bb-683deb26633c")
+		)
+		(pin "5"
+			(uuid "bd7817c9-fa4c-401d-ae51-bf533266c084")
+		)
+		(pin "6"
+			(uuid "b417d20b-665d-4c8f-84f3-f25d32ecc3a3")
 		)
 		(instances
 			(project ""
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
-					(reference "SW3")
+					(reference "SW5")
 					(unit 1)
 				)
 			)
@@ -4104,71 +4508,6 @@
 			(project ""
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
 					(reference "#PWR031")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 115.57 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d60ef3c2-742c-4dbc-970f-61d68530ab2d")
-		(property "Reference" "#PWR033"
-			(at 115.57 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+VBAT"
-			(at 115.57 51.816 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 115.57 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 115.57 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"+5V\""
-			(at 115.57 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ad396eb5-ade3-4042-9e58-03b68e6e3c19")
-		)
-		(instances
-			(project "RC-W25"
-				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
-					(reference "#PWR033")
 					(unit 1)
 				)
 			)
