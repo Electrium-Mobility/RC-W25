@@ -3360,7 +3360,7 @@
 	)
 	(wire
 		(pts
-			(xy 234.95 69.85) (xy 220.98 69.85)
+			(xy 245.11 69.85) (xy 220.98 69.85)
 		)
 		(stroke
 			(width 0)
@@ -4209,7 +4209,7 @@
 		(uuid "fcb6a2fc-1267-477d-9d25-e86fe262111b")
 	)
 	(rectangle
-		(start 139.7 156.21)
+		(start 139.7 161.29)
 		(end 158.75 179.07)
 		(stroke
 			(width 0)
@@ -4360,7 +4360,7 @@
 		(uuid "298ad79c-1752-44eb-8f0a-f5820c245f6f")
 	)
 	(label "FLASH"
-		(at 234.95 69.85 0)
+		(at 245.11 69.85 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4520,30 +4520,8 @@
 			)
 		)
 	)
-	(global_label "GPIO_MODE"
+	(global_label "GPIO_RUMBLE_CNTL"
 		(shape input)
-		(at 223.52 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6263084a-d25e-4e70-aaf4-e9c611977cea")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 237.149 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "GPIO_EN1"
-		(shape output)
 		(at 223.52 67.31 0)
 		(fields_autoplaced yes)
 		(effects
@@ -4552,9 +4530,9 @@
 			)
 			(justify left)
 		)
-		(uuid "7cfa5b52-9689-4ce1-8224-80d0d8678455")
+		(uuid "606dee05-2828-421a-b6dd-72e088cd415d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 235.6371 67.31 0)
+			(at 245.0109 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4577,6 +4555,28 @@
 		(uuid "8033ac99-7a10-41a9-8275-91da23ccb066")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 109.0605 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GPIO_MODE"
+		(shape input)
+		(at 223.52 80.01 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "95764068-f86f-4ad0-b20a-7bc9c0e59aa8")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 237.149 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4652,9 +4652,9 @@
 			)
 		)
 	)
-	(global_label "GPIO_RUMBLE_CNTL"
-		(shape input)
-		(at 223.52 80.01 0)
+	(global_label "GPIO_EN1"
+		(shape output)
+		(at 223.52 82.55 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4662,9 +4662,9 @@
 			)
 			(justify left)
 		)
-		(uuid "fa987777-e7ef-47af-b03d-976ba3fb5e24")
+		(uuid "ec25ea1f-01ce-4822-99c7-ea9c1f3303e1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 245.0109 80.01 0)
+			(at 235.6371 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6432,7 +6432,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "63562527-ee4b-4ca6-8f9a-0cd2b4ee15ee")
-		(property "Reference" "H4"
+		(property "Reference" "H3"
 			(at 144.78 172.7199 0)
 			(effects
 				(font
@@ -6450,7 +6450,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
 			(at 142.24 173.99 0)
 			(effects
 				(font
@@ -6480,7 +6480,7 @@
 		(instances
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
-					(reference "H4")
+					(reference "H3")
 					(unit 1)
 				)
 			)
@@ -6871,70 +6871,6 @@
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
 					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 142.24 158.75 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8586b539-0040-4e5d-8261-5e643ebf8523")
-		(property "Reference" "H1"
-			(at 144.78 157.4799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 144.78 160.0199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2"
-			(at 142.24 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 142.24 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 142.24 158.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project ""
-				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
-					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -8423,7 +8359,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6f6a31a-7235-4259-b66b-23e7e0949db0")
-		(property "Reference" "H2"
+		(property "Reference" "H1"
 			(at 144.78 162.5599 0)
 			(effects
 				(font
@@ -8441,7 +8377,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
 			(at 142.24 163.83 0)
 			(effects
 				(font
@@ -8471,7 +8407,7 @@
 		(instances
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
-					(reference "H2")
+					(reference "H1")
 					(unit 1)
 				)
 			)
@@ -8786,7 +8722,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fbf6cfff-3164-4efd-8178-091c4472911a")
-		(property "Reference" "H3"
+		(property "Reference" "H2"
 			(at 144.78 167.6399 0)
 			(effects
 				(font
@@ -8804,7 +8740,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "MountingHole:MountingHole_2.2mm_M2"
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
 			(at 142.24 168.91 0)
 			(effects
 				(font
@@ -8834,7 +8770,7 @@
 		(instances
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
-					(reference "H3")
+					(reference "H2")
 					(unit 1)
 				)
 			)

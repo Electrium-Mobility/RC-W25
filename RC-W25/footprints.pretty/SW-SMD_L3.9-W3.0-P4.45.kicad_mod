@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "8.0")
 	(layer "F.Cu")
-	(property "Reference" "U?"
+	(property "Reference" "U"
 		(at 0 -2.3175 0)
 		(layer "F.SilkS")
 		(uuid "7ef0d56b-f651-4168-bff8-1f433342ebd1")
@@ -235,5 +235,16 @@
 		(size 1.23 1.36)
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "ff494a1a-8a84-47d4-9d8f-a13ba0355689")
+	)
+	(model "C:/Users/Matthew/Downloads/3dpea.com_TS-1088-AR2016.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 100 100 100)
+		)
+		(rotate
+			(xyz -90 0 0)
+		)
 	)
 )

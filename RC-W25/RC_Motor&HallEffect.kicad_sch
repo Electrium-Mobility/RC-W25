@@ -2226,7 +2226,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Library:CONN02_502352_MOL"
+		(property "Footprint" "footprints:CONN-SMD_2P-P2.00_XUNPU_WAFER-PH2.0-2PWB"
 			(at 76.2 59.69 0)
 			(effects
 				(font
@@ -2235,7 +2235,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411192313_XUNPU-WAFER-PH2-0-2PWB_C3029440.pdf"
 			(at 76.2 59.69 0)
 			(effects
 				(font
@@ -2253,7 +2253,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" ""
+		(property "LCSC#" "C3029440"
 			(at 76.2 59.69 0)
 			(effects
 				(font

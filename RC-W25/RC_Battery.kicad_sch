@@ -2649,7 +2649,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Library:CONN02_502352_MOL"
+		(property "Footprint" "footprints:CONN-SMD_2P-P2.00_XUNPU_WAFER-PH2.0-2PWB"
 			(at 146.05 69.85 0)
 			(effects
 				(font
@@ -2658,7 +2658,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411192313_XUNPU-WAFER-PH2-0-2PWB_C3029440.pdf"
 			(at 146.05 69.85 0)
 			(effects
 				(font
@@ -2676,7 +2676,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" ""
+		(property "LCSC#" "C3029440"
 			(at 146.05 69.85 0)
 			(effects
 				(font
@@ -4190,7 +4190,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c57cbc01-7588-4bfa-9226-c0ebc129d022")
-		(property "Reference" "SW5"
+		(property "Reference" "SW3"
 			(at 126.746 60.452 90)
 			(effects
 				(font
@@ -4299,7 +4299,7 @@
 		(instances
 			(project ""
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
-					(reference "SW5")
+					(reference "SW3")
 					(unit 1)
 				)
 			)
