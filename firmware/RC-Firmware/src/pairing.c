@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <pairing.h>
+
 
 #include "esp_now.h"
 #include "esp_wifi.h"
@@ -11,29 +13,13 @@
 
 #define TAG "ESP-NOW-COMM"
 
-// arbitrary struct for testing
-typedef struct struct_message {
-    char a[32];
-    int b;
-    float c;
-    bool d;
-} struct_message;
-
-// struct to transfer data
-/*
-typedef struct struct_data {
-    float input_signal;      // 0% - 100% throttle from hall sensor
-    float battery_level;     // battery levels from longboard
-    int rpm_reading;         // vesc rpm rating
-} struct_data;
-*/
-
 struct_message my_data;
 
-uint8_t peer_mac[] = {0x24, 0x0A, 0xC4, 0x7A, 0xDE, 0xFA}; // replace with peer mac address (receiver)
+uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
 
 // callback for receiving data
-void on_data_recv(const uint8_t *mac_addr, const uint8_t *incoming_data, int len) {
+void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
+    const uint8_t *mac_addr = recv_info->src_addr;
     memcpy(&my_data, incoming_data, sizeof(my_data));
     
     ESP_LOGI(TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
@@ -55,7 +41,7 @@ void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
              (status == ESP_NOW_SEND_SUCCESS) ? "Success" : "Fail");
 }
 
-void app_main() {
+void pair() {
     // initializing nvs
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
