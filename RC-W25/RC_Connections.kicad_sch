@@ -3439,10 +3439,6 @@
 		(uuid "4feefdcc-7b7e-43bd-9e91-00d7995cd7cb")
 	)
 	(no_connect
-		(at 179.07 69.85)
-		(uuid "74a6e08f-2a6c-4e0a-afa1-434f02f4cdd2")
-	)
-	(no_connect
 		(at 179.07 72.39)
 		(uuid "82c3b78b-d029-4be9-b178-6d56541cc6ed")
 	)
@@ -3618,7 +3614,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 74.93) (xy 179.07 74.93)
+			(xy 146.05 74.93) (xy 179.07 74.93)
 		)
 		(stroke
 			(width 0)
@@ -4518,6 +4514,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 69.85) (xy 179.07 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d40052dc-fde8-4351-8f0e-9025df83d87c")
+	)
+	(wire
+		(pts
 			(xy 66.04 111.76) (xy 66.04 110.49)
 		)
 		(stroke
@@ -4683,7 +4689,7 @@
 		(uuid 821002d7-a4eb-4460-a4da-4cc901f24f88)
 	)
 	(rectangle
-		(start 143.51 27.94)
+		(start 140.97 27.94)
 		(end 224.79 106.68)
 		(stroke
 			(width 0)
@@ -5008,6 +5014,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GPIO_RUMBLE_CNTL"
+		(shape input)
+		(at 168.91 69.85 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9aa8820b-3ed4-40bf-9a51-dedf90b78586")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 147.4191 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -6001,7 +6029,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 172.72 72.39 0)
+		(at 146.05 72.39 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6010,7 +6038,7 @@
 		(dnp no)
 		(uuid "2dc9668c-7626-4b07-99ce-9a84a11b1a93")
 		(property "Reference" "R8"
-			(at 171.45 72.136 0)
+			(at 144.78 72.136 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6019,7 +6047,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 171.196 73.66 0)
+			(at 144.526 73.66 0)
 			(effects
 				(font
 					(size 0.8467 0.8467)
@@ -6028,7 +6056,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 172.72 72.39 0)
+			(at 146.05 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6037,7 +6065,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RT0402BRD0710KL_C190095.pdf"
-			(at 172.72 72.39 0)
+			(at 146.05 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6046,7 +6074,7 @@
 			)
 		)
 		(property "Description" "Resistor, small US symbol"
-			(at 172.72 72.39 0)
+			(at 146.05 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6055,7 +6083,7 @@
 			)
 		)
 		(property "LCSC#" "C190095"
-			(at 172.72 72.39 0)
+			(at 146.05 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7615,7 +7643,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 172.72 69.85 0)
+		(at 146.05 69.85 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7624,7 +7652,7 @@
 		(dnp no)
 		(uuid "9fc08a2b-79e3-4259-a7ee-2daec58eb936")
 		(property "Reference" "#PWR026"
-			(at 172.72 73.66 0)
+			(at 146.05 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7633,7 +7661,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 172.974 66.04 0)
+			(at 146.304 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7641,7 +7669,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 172.72 69.85 0)
+			(at 146.05 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7650,7 +7678,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 172.72 69.85 0)
+			(at 146.05 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7659,7 +7687,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
-			(at 172.72 69.85 0)
+			(at 146.05 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
