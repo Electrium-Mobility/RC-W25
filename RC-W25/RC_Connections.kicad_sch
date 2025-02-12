@@ -3385,12 +3385,6 @@
 		(uuid "b4f6232a-5906-4383-9648-1cbed7beff38")
 	)
 	(junction
-		(at 179.07 54.61)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c808561e-0698-46f1-b14a-6267eebe9213")
-	)
-	(junction
 		(at 62.23 139.7)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3417,6 +3411,10 @@
 	(no_connect
 		(at 209.55 74.93)
 		(uuid "0522d848-ca79-432c-a034-c5989c70e04c")
+	)
+	(no_connect
+		(at 179.07 57.15)
+		(uuid "12e7c84c-fd98-4f89-900c-85c536a5eb06")
 	)
 	(no_connect
 		(at 209.55 72.39)
@@ -3457,6 +3455,10 @@
 	(no_connect
 		(at 209.55 69.85)
 		(uuid "d81cceeb-8161-49d4-a0e3-0352bca12de2")
+	)
+	(no_connect
+		(at 179.07 54.61)
+		(uuid "db684ebc-9f5c-4278-ac6a-7126012733ce")
 	)
 	(no_connect
 		(at 209.55 64.77)
@@ -4004,16 +4006,6 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 54.61) (xy 179.07 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "732d1329-3329-49f9-9f1e-ae5b3bb158f9")
-	)
-	(wire
-		(pts
 			(xy 66.04 115.57) (xy 66.04 114.3)
 		)
 		(stroke
@@ -4354,16 +4346,6 @@
 	)
 	(wire
 		(pts
-			(xy 179.07 52.07) (xy 173.99 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2fde656-8597-4c9f-80cf-4ad8fb312dc6")
-	)
-	(wire
-		(pts
 			(xy 53.34 111.76) (xy 66.04 111.76)
 		)
 		(stroke
@@ -4481,16 +4463,6 @@
 			(type default)
 		)
 		(uuid "c8dd7119-1d75-4038-89f9-f8686edf24ef")
-	)
-	(wire
-		(pts
-			(xy 179.07 54.61) (xy 179.07 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ca867225-8ad5-4cfb-9b3d-34af2ef4f36f")
 	)
 	(wire
 		(pts
@@ -9377,71 +9349,6 @@
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
 					(reference "#PWR012")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 173.99 52.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "fe975808-2b99-4366-9db0-c0bede02d143")
-		(property "Reference" "#PWR050"
-			(at 173.99 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 173.99 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 173.99 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 173.99 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 173.99 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2b527227-3785-4ef2-90ee-2561b132e82c")
-		)
-		(instances
-			(project "RC-W25"
-				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/01bd870e-4674-4257-9660-564635d632de"
-					(reference "#PWR050")
 					(unit 1)
 				)
 			)
