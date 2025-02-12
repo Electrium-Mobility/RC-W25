@@ -855,4 +855,15 @@
 			)
 		)
 	)
+	(model "${KIPRJMOD}/models.3dshapes/button.3dshapes/SW-SMD_6P-L5.8-W5.8-P2.00_TK-6580K-1.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )
