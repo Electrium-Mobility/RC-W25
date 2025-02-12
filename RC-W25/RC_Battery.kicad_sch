@@ -1736,7 +1736,7 @@
 				)
 			)
 		)
-		(symbol "power:GND"
+		(symbol "power:Earth"
 			(power)
 			(pin_numbers hide)
 			(pin_names
@@ -1753,7 +1753,7 @@
 					(hide yes)
 				)
 			)
-			(property "Value" "GND"
+			(property "Value" "Earth"
 				(at 0 -3.81 0)
 				(effects
 					(font
@@ -1770,7 +1770,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1779,7 +1779,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(property "Description" "Power symbol creates a global label with name \"Earth\""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1788,7 +1788,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "global power"
+			(property "ki_keywords" "global ground gnd"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1797,10 +1797,46 @@
 					(hide yes)
 				)
 			)
-			(symbol "GND_0_1"
+			(symbol "Earth_0_1"
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+						(xy -0.635 -1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.127 -2.54) (xy 0.127 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -1.27) (xy 0 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy -1.27 -1.27)
 					)
 					(stroke
 						(width 0)
@@ -1811,7 +1847,7 @@
 					)
 				)
 			)
-			(symbol "GND_1_1"
+			(symbol "Earth_1_1"
 				(pin power_in line
 					(at 0 0 270)
 					(length 0)
@@ -2557,7 +2593,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 52.07 67.31 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2591,7 +2627,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 52.07 67.31 0)
 			(effects
 				(font
@@ -2600,7 +2636,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 52.07 67.31 0)
 			(effects
 				(font
@@ -3001,7 +3037,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 176.53 127 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3020,11 +3056,12 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 176.53 132.08 0)
+			(at 179.07 128.2699 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -3036,7 +3073,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 176.53 127 0)
 			(effects
 				(font
@@ -3045,7 +3082,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 176.53 127 0)
 			(effects
 				(font
@@ -3067,7 +3104,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 223.52 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3086,11 +3123,12 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 223.52 135.89 0)
+			(at 226.06 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -3102,7 +3140,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 223.52 130.81 0)
 			(effects
 				(font
@@ -3111,7 +3149,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 223.52 130.81 0)
 			(effects
 				(font
@@ -3133,7 +3171,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 153.67 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3167,7 +3205,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 153.67 123.19 0)
 			(effects
 				(font
@@ -3176,7 +3214,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 153.67 123.19 0)
 			(effects
 				(font
@@ -3222,7 +3260,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_Abracon_ASPI-4030S"
+		(property "Footprint" "footprints:L_Abracon_ASPI-4030S"
 			(at 205.74 116.84 0)
 			(effects
 				(font
@@ -3817,7 +3855,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 128.27 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3851,7 +3889,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 128.27 91.44 0)
 			(effects
 				(font
@@ -3860,7 +3898,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 128.27 91.44 0)
 			(effects
 				(font
@@ -4055,7 +4093,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "42k"
+		(property "Value" "36.6k"
 			(at 123.698 77.47 0)
 			(effects
 				(font
@@ -4384,7 +4422,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 105.41 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4418,7 +4456,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 105.41 77.47 0)
 			(effects
 				(font
@@ -4427,7 +4465,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 105.41 77.47 0)
 			(effects
 				(font
@@ -4449,7 +4487,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 72.39 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4483,7 +4521,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 72.39 85.09 0)
 			(effects
 				(font
@@ -4492,7 +4530,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 72.39 85.09 0)
 			(effects
 				(font
@@ -4514,7 +4552,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 214.63 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4533,11 +4571,12 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 214.63 135.89 0)
+			(at 217.17 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -4549,7 +4588,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 214.63 130.81 0)
 			(effects
 				(font
@@ -4558,7 +4597,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 214.63 130.81 0)
 			(effects
 				(font
@@ -4658,7 +4697,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 234.95 130.81 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4677,11 +4716,12 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 234.95 135.89 0)
+			(at 237.49 132.0799 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -4693,7 +4733,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 234.95 130.81 0)
 			(effects
 				(font
@@ -4702,7 +4742,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 234.95 130.81 0)
 			(effects
 				(font
@@ -4880,7 +4920,7 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
+		(lib_id "power:Earth")
 		(at 140.97 72.39 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4914,7 +4954,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 140.97 72.39 0)
 			(effects
 				(font
@@ -4923,7 +4963,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
 			(at 140.97 72.39 0)
 			(effects
 				(font

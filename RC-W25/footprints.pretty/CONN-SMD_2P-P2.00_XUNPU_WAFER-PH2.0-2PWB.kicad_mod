@@ -399,4 +399,15 @@
 		(layers "F.Cu" "F.Paste" "F.Mask")
 		(uuid "a8502cc4-c2f7-4b04-b0e3-011691eac60c")
 	)
+	(model "${KIPRJMOD}/models.3dshapes/CONN-SMD_2P-P2.00_XUNPU_WAFER-PH2.0-2PWB.step"
+		(offset
+			(xyz 0 1.5 2.7)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
 )

@@ -6454,7 +6454,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5.7k"
+		(property "Value" "5.1k"
 			(at 62.484 38.608 0)
 			(effects
 				(font
@@ -8302,7 +8302,7 @@
 		(dnp no)
 		(uuid "b162cd57-8cc2-403e-804d-36e3b4f34eae")
 		(property "Reference" "R6"
-			(at 67.31 35.306 0)
+			(at 72.39 35.306 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8310,8 +8310,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5.7k"
-			(at 67.056 36.83 0)
+		(property "Value" "5.1k"
+			(at 72.644 36.83 0)
 			(effects
 				(font
 					(size 0.8467 0.8467)
