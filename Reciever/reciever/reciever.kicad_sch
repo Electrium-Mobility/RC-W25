@@ -5826,6 +5826,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C720477"
+			(at 218.44 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "8036a49b-6627-4a50-a3b8-5b373b656e14")
 		)
@@ -5896,6 +5905,15 @@
 			)
 		)
 		(property "LCSC#" "C316043"
+			(at 82.55 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C316043"
 			(at 82.55 41.91 0)
 			(effects
 				(font
@@ -6177,6 +6195,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C380337"
+			(at 226.06 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "759f7a0f-2113-426a-95b0-aa63f554d6ec")
 		)
@@ -6247,6 +6274,15 @@
 			)
 		)
 		(property "LCSC#" "C53434"
+			(at 81.28 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C53434"
 			(at 81.28 139.7 0)
 			(effects
 				(font
@@ -6351,6 +6387,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C50137"
+			(at 161.29 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "aaeb511c-bcf7-4df3-9b41-df213f572fdb")
 		)
@@ -6427,6 +6472,15 @@
 			)
 		)
 		(property "LCSC#" "C22435938"
+			(at 237.49 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C22435938"
 			(at 237.49 26.67 0)
 			(effects
 				(font
@@ -6570,6 +6624,15 @@
 			)
 		)
 		(property "LCSC#" "C41376455"
+			(at 135.89 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C41376455"
 			(at 135.89 148.59 0)
 			(effects
 				(font
@@ -6786,6 +6849,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C852861"
+			(at 64.77 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "228d1904-d216-4744-ad44-0764d8900801")
 		)
@@ -6921,6 +6993,15 @@
 			)
 		)
 		(property "LCSC#" "C316043"
+			(at 72.39 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C316043"
 			(at 72.39 49.53 0)
 			(effects
 				(font
@@ -7269,6 +7350,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C2652876"
+			(at 254 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "8"
 			(uuid "e9b77bcb-eff6-4725-933b-88192781ee53")
 		)
@@ -7422,6 +7512,15 @@
 			)
 		)
 		(property "LCSC#" "C22435938"
+			(at 208.28 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C22435938"
 			(at 208.28 31.75 0)
 			(effects
 				(font
@@ -7833,6 +7932,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C720477"
+			(at 218.44 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "4ca9093a-ce42-4846-95e6-88e03505c46e")
 		)
@@ -8027,6 +8135,24 @@
 		)
 		(property "Description" "RF Module, ESP32-C6 SoC, Wi-Fi 802.11b/g/n/ax, Bluetooth, BLE, Zigbee, Thread, 32-bit, 3.3V, SMD, onboard antenna"
 			(at 251.46 17.78 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC#" "C5736265"
+			(at 251.46 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C5736265"
+			(at 251.46 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8328,6 +8454,15 @@
 				)
 			)
 		)
+		(property "MPN" "C118233"
+			(at 96.52 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "69fe02df-b1f7-40c4-9555-f58ece39990b")
 		)
@@ -8476,6 +8611,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C3235556"
+			(at 44.45 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "084c109d-aeb8-44a4-a2ff-d641a856df7d")
 		)
@@ -8572,6 +8716,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C190095"
+			(at 208.28 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5502142a-f4bd-4c53-861a-934f35b1799f")
 		)
@@ -8651,6 +8804,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C852861"
+			(at 72.39 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d4985bf1-6fb4-4a9b-9503-d3f97e68f345")
 		)
@@ -8720,6 +8882,15 @@
 			)
 		)
 		(property "LCSC#" "C165948"
+			(at 41.91 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C165948"
 			(at 41.91 38.1 0)
 			(effects
 				(font
@@ -8976,6 +9147,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C316043"
+			(at 82.55 26.67 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "b88e5a5e-b395-4cad-b09b-1d179cd3d27b")
 		)
@@ -9119,6 +9299,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C41376455"
+			(at 128.27 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3e11434e-cae6-4b03-b59a-ccf0741900d9")
 		)
@@ -9189,6 +9378,15 @@
 			)
 		)
 		(property "LCSC#" "C50137"
+			(at 161.29 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C50137"
 			(at 161.29 128.27 0)
 			(effects
 				(font
@@ -9542,6 +9740,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C190095"
+			(at 227.33 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "3ff2cd0a-c5dc-459e-96b9-df418621a4fa")
 		)
@@ -9815,6 +10022,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C338067"
+			(at 109.22 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "c58b5bdc-580b-4845-b969-28e40ab6d059")
 		)
@@ -9885,6 +10101,15 @@
 			)
 		)
 		(property "LCSC#" "C338067"
+			(at 83.82 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C338067"
 			(at 83.82 97.79 0)
 			(effects
 				(font

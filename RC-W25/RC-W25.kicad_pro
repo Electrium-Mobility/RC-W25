@@ -136,7 +136,7 @@
         "min_track_width": 0.2,
         "min_via_annular_width": 0.13,
         "min_via_diameter": 0.7,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -680,9 +680,9 @@
           "show": false
         },
         {
-          "group_by": false,
-          "label": "LCSC#",
-          "name": "LCSC#",
+          "group_by": true,
+          "label": "MPN",
+          "name": "MPN",
           "show": true
         },
         {
@@ -707,6 +707,12 @@
           "group_by": false,
           "label": "Manufacturer",
           "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "LCSC#",
+          "name": "LCSC#",
           "show": false
         }
       ],

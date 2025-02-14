@@ -917,7 +917,7 @@
 				)
 			)
 		)
-		(symbol "Regulator_Switching:AP62300TWU"
+		(symbol "Regulator_Switching:AP62300Z6"
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -927,18 +927,19 @@
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "AP62300TWU"
-				(at 2.54 6.35 0)
+			(property "Value" "AP62300Z6"
+				(at 6.35 -6.35 0)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
 				)
 			)
-			(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
-				(at 0 -22.86 0)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-563"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -955,7 +956,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "3A, 750kHz Buck DC/DC Converter, PFM for light load efficiency, 4.2V-18V input voltage, 0.8V-7V adjustable output voltage, TSOT-23-6"
+			(property "Description" "3A, 1.3MHz Buck DC/DC Converter, adjustable output voltage, SOT-563"
 				(at 0 0 0)
 				(effects
 					(font
@@ -964,7 +965,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_keywords" "3A Buck DC/DC"
+			(property "ki_keywords" "3A 1.3MHz PWM Buck DC/DC"
 				(at 0 0 0)
 				(effects
 					(font
@@ -973,7 +974,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "TSOT?23*"
+			(property "ki_fp_filters" "SOT?563*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -982,7 +983,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "AP62300TWU_0_1"
+			(symbol "AP62300Z6_0_1"
 				(rectangle
 					(start -7.62 5.08)
 					(end 7.62 -5.08)
@@ -995,11 +996,11 @@
 					)
 				)
 			)
-			(symbol "AP62300TWU_1_1"
+			(symbol "AP62300Z6_1_1"
 				(pin power_in line
-					(at 0 -7.62 90)
+					(at -10.16 2.54 0)
 					(length 2.54)
-					(name "GND"
+					(name "VIN"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1033,9 +1034,9 @@
 					)
 				)
 				(pin power_in line
-					(at -10.16 2.54 0)
+					(at 0 -7.62 90)
 					(length 2.54)
-					(name "IN"
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1050,10 +1051,10 @@
 						)
 					)
 				)
-				(pin input line
-					(at 10.16 -2.54 180)
+				(pin passive line
+					(at 10.16 0 180)
 					(length 2.54)
-					(name "FB"
+					(name "BST"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1068,7 +1069,7 @@
 						)
 					)
 				)
-				(pin passive line
+				(pin input line
 					(at -10.16 -2.54 0)
 					(length 2.54)
 					(name "EN"
@@ -1086,10 +1087,10 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 10.16 0 180)
+				(pin input line
+					(at 10.16 -2.54 180)
 					(length 2.54)
-					(name "BST"
+					(name "FB"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2721,6 +2722,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C3029440"
+			(at 146.05 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e55d1d17-3145-4abc-b854-92bb6b4cec4e")
 		)
@@ -2799,6 +2809,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C95839"
+			(at 153.67 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "781167f0-446a-4b9c-8a9d-63b9f6e75bc3")
 		)
@@ -2869,6 +2888,15 @@
 			)
 		)
 		(property "LCSC#" "C852799"
+			(at 63.5 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C852799"
 			(at 63.5 80.01 0)
 			(effects
 				(font
@@ -2994,7 +3022,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121315_CCTC-TCC0805X5R226K6R3FT_C380337.pdf"
+		(property "Datasheet" ""
 			(at 223.52 125.73 0)
 			(effects
 				(font
@@ -3012,7 +3040,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C380337"
+		(property "LCSC#" "C87997"
+			(at 223.52 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C87997"
 			(at 223.52 125.73 0)
 			(effects
 				(font
@@ -3269,7 +3306,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121520_Abracon-LLC-ASPI-4030S-3R3M-T_C2050508.pdf"
+		(property "Datasheet" ""
 			(at 205.74 116.84 0)
 			(effects
 				(font
@@ -3287,7 +3324,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C2050508"
+		(property "LCSC#" "C15269"
+			(at 205.74 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C2050508"
 			(at 205.74 116.84 0)
 			(effects
 				(font
@@ -3347,7 +3393,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121315_CCTC-TCC0805X5R226K6R3FT_C380337.pdf"
+		(property "Datasheet" ""
 			(at 234.95 125.73 0)
 			(effects
 				(font
@@ -3365,7 +3411,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C380337"
+		(property "LCSC#" "C87997"
+			(at 234.95 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C87997"
 			(at 234.95 125.73 0)
 			(effects
 				(font
@@ -3491,7 +3546,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2405231413_HRE-CGA0402X5R475K6R3GT_C22399610.pdf"
+		(property "Datasheet" ""
 			(at 52.07 64.77 0)
 			(effects
 				(font
@@ -3509,7 +3564,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C22399610"
+		(property "LCSC#" "C23733"
+			(at 52.07 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C23733"
 			(at 52.07 64.77 0)
 			(effects
 				(font
@@ -3598,6 +3662,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C635037"
+			(at 85.09 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "3761d228-4503-438c-af00-c7c5157bd3a1")
 		)
@@ -3617,95 +3690,6 @@
 			(project ""
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
 					(reference "U2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Regulator_Switching:AP62300TWU")
-		(at 176.53 119.38 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5f0a8005-a656-4af9-b82f-37e18448ff46")
-		(property "Reference" "U3"
-			(at 176.53 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AP62300TWU"
-			(at 176.53 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
-			(at 176.53 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP62300_AP62301_AP62300T.pdf"
-			(at 176.53 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "3A, 750kHz Buck DC/DC Converter, PFM for light load efficiency, 4.2V-18V input voltage, 0.8V-7V adjustable output voltage, TSOT-23-6"
-			(at 176.53 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC#" "C1883519"
-			(at 176.53 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "658c2a65-40e9-47ae-9a93-6f202c8b31ae")
-		)
-		(pin "6"
-			(uuid "93f14534-85bf-4306-980c-cad45360d617")
-		)
-		(pin "4"
-			(uuid "411709eb-f2a2-48e9-b4c0-cc71b8ee2266")
-		)
-		(pin "1"
-			(uuid "114240b7-c7a9-4281-8774-72645fd24326")
-		)
-		(pin "3"
-			(uuid "a2a92631-3d0d-4f72-9e4f-ca22c8bb9d4d")
-		)
-		(pin "2"
-			(uuid "95c76956-ded0-4ffd-a389-c1f44438f3e8")
-		)
-		(instances
-			(project "RC-W25"
-				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
-					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -3766,6 +3750,15 @@
 			)
 		)
 		(property "LCSC#" "C190095"
+			(at 214.63 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C190095"
 			(at 214.63 128.27 0)
 			(effects
 				(font
@@ -3982,6 +3975,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C2902640"
+			(at 72.39 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d8f871b6-5d38-4194-bf6f-3260fddec45f")
 		)
@@ -4024,7 +4026,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_0402_1005Metric"
+		(property "Footprint" "footprints:D_0402_1005Metric"
 			(at 63.5 71.12 90)
 			(effects
 				(font
@@ -4033,7 +4035,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121632_TUOZHAN-F-0402-00001-P2-0402G1TS2-045T-001_C7496801.pdf"
+		(property "Datasheet" ""
 			(at 63.5 71.12 90)
 			(effects
 				(font
@@ -4051,7 +4053,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C7496801"
+		(property "LCSC#" "C131223"
+			(at 63.5 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C131223"
 			(at 63.5 71.12 0)
 			(effects
 				(font
@@ -4093,8 +4104,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "36.6k"
-			(at 123.698 77.47 0)
+		(property "Value" "300"
+			(at 123.952 77.47 0)
 			(effects
 				(font
 					(size 0.8467 0.8467)
@@ -4111,7 +4122,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121212_Viking-Tech-ARG02BTC4302_C5137149.pdf"
+		(property "Datasheet" ""
 			(at 128.27 76.2 0)
 			(effects
 				(font
@@ -4129,7 +4140,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C5137149"
+		(property "LCSC#" "C852712"
+			(at 128.27 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C852712"
 			(at 128.27 76.2 0)
 			(effects
 				(font
@@ -4316,6 +4336,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "C2941005"
+			(at 118.11 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "0223529b-6021-4e12-a54d-96822f36122f")
 		)
@@ -4361,7 +4390,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.7k"
+		(property "Value" "31.6k"
 			(at 216.408 121.9201 0)
 			(effects
 				(font
@@ -4379,7 +4408,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2410121212_Viking-Tech-ARG02BTC3322_C2681602.pdf"
+		(property "Datasheet" ""
 			(at 214.63 120.65 0)
 			(effects
 				(font
@@ -4397,7 +4426,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C2681602"
+		(property "LCSC#" "C782222"
+			(at 214.63 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C782222"
 			(at 214.63 120.65 0)
 			(effects
 				(font
@@ -4654,7 +4692,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2405231413_HRE-CGA0402X5R475K6R3GT_C22399610.pdf"
+		(property "Datasheet" ""
 			(at 105.41 74.93 0)
 			(effects
 				(font
@@ -4672,7 +4710,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C22399610"
+		(property "LCSC#" "C23733"
+			(at 105.41 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C23733"
 			(at 105.41 74.93 0)
 			(effects
 				(font
@@ -4773,7 +4820,7 @@
 		(dnp no)
 		(uuid "f2899605-af19-4b93-af5c-70f5b9fa139a")
 		(property "Reference" "R12"
-			(at 123.698 85.598 0)
+			(at 123.19 85.598 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4781,8 +4828,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
-			(at 123.698 87.376 0)
+		(property "Value" "1.1k"
+			(at 123.952 87.376 0)
 			(effects
 				(font
 					(size 0.8467 0.8467)
@@ -4799,7 +4846,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RT0402BRD0710KL_C190095.pdf"
+		(property "Datasheet" ""
 			(at 128.27 86.36 0)
 			(effects
 				(font
@@ -4817,7 +4864,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C190095"
+		(property "LCSC#" "C445597"
+			(at 128.27 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C445597"
 			(at 128.27 86.36 0)
 			(effects
 				(font
@@ -4877,7 +4933,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2405231405_HRE-CGA0402X7R104K6R3GT_C22435938.pdf"
+		(property "Datasheet" ""
 			(at 196.85 119.38 0)
 			(effects
 				(font
@@ -4895,7 +4951,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC#" "C22435938"
+		(property "LCSC#" "C1525"
+			(at 196.85 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C1525"
 			(at 196.85 119.38 0)
 			(effects
 				(font
@@ -4979,6 +5044,95 @@
 			(project "RC-W25"
 				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
 					(reference "#PWR035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Regulator_Switching:AP62300Z6")
+		(at 176.53 119.38 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f98bc331-8894-4ce4-8827-fef363f8d473")
+		(property "Reference" "U3"
+			(at 176.53 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "AP62300Z6"
+			(at 176.53 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-563"
+			(at 176.53 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP62300_AP62301_AP62300T.pdf"
+			(at 176.53 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "3A, 1.3MHz Buck DC/DC Converter, adjustable output voltage, SOT-563"
+			(at 176.53 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C5250745"
+			(at 176.53 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5c04f3e5-23cc-4539-8d97-28604878eb55")
+		)
+		(pin "6"
+			(uuid "1e7a75de-db07-43fb-aee0-f68f1cd868d4")
+		)
+		(pin "4"
+			(uuid "830995da-11a1-4004-bbb8-9905639ac2c1")
+		)
+		(pin "5"
+			(uuid "60c2f3a9-e63e-4e2a-a203-723d448d1af4")
+		)
+		(pin "3"
+			(uuid "2ea524e1-b903-43b7-b88a-3d0560428ebb")
+		)
+		(pin "1"
+			(uuid "1ba1fa26-729c-4fff-b3b5-063a364a1f95")
+		)
+		(instances
+			(project ""
+				(path "/427b2895-e3a6-4096-b101-5f65a3f7473e/9423f10d-7c89-4a48-b233-1b4f9ab13c89"
+					(reference "U3")
 					(unit 1)
 				)
 			)

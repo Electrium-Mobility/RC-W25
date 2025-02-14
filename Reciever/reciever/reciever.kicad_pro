@@ -63,21 +63,7 @@
           "width": 0.3
         }
       ],
-      "drc_exclusions": [
-        "clearance|136537500|99262500|9cc8e940-1e6d-42c3-a156-8801f975d5f0|a35ce144-00ff-47ee-b800-0784514ea36a",
-        "clearance|136862500|102062500|d08f6b8e-e8f7-495c-957b-77eb66493ba3|4cdb143c-5458-416a-b103-a0d45de412a3",
-        "clearance|137037500|99262500|a35ce144-00ff-47ee-b800-0784514ea36a|95f5375d-e50d-4169-9d3e-cd08cbb8e0e3",
-        "clearance|137362500|102062500|f095ee36-685e-4cc3-88cf-d849adcb5256|d08f6b8e-e8f7-495c-957b-77eb66493ba3",
-        "clearance|137537500|99262500|95f5375d-e50d-4169-9d3e-cd08cbb8e0e3|0e12aca1-0d1c-4e87-9b34-fd4b96ddc84b",
-        "clearance|137862500|102062500|70ac2fb9-b5d8-46ac-92ef-fe94ad3e831a|f095ee36-685e-4cc3-88cf-d849adcb5256",
-        "hole_clearance|148950000|114345000|7411da4c-fcf0-4264-bccf-958ff087cae6|e9112a78-0cd1-4044-a31f-d9f9e766e5b7",
-        "hole_clearance|148950000|114345000|7b66370f-6d44-4535-ab85-bf30066f72b4|e9112a78-0cd1-4044-a31f-d9f9e766e5b7",
-        "hole_clearance|155050000|114345000|037e8593-1997-4439-bf53-61ada7f6ce40|2067cf41-c7de-484c-a85d-884ad72e9b4d",
-        "hole_clearance|155050000|114345000|c2033850-342f-4ab2-be3e-9ffffe78be33|2067cf41-c7de-484c-a85d-884ad72e9b4d",
-        "lib_footprint_mismatch|130900000|101200000|93d2d335-ba45-41ff-97f3-3b2fc2ca7fce|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|130900000|113850000|3ff58477-4f48-4f13-b882-1f78af626935|00000000-0000-0000-0000-000000000000",
-        "lib_footprint_mismatch|152400000|90325000|f10d8db7-a571-46f7-ae60-3a0aa360f231|00000000-0000-0000-0000-000000000000"
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -150,7 +136,7 @@
         "min_track_width": 0.2,
         "min_via_annular_width": 0.13,
         "min_via_diameter": 0.7,
-        "solder_mask_to_copper_clearance": 0.0,
+        "solder_mask_to_copper_clearance": 0.005,
         "use_height_for_length_calcs": true
       },
       "teardrop_options": [
@@ -577,12 +563,18 @@
           "group_by": false,
           "label": "LCSC#",
           "name": "LCSC#",
-          "show": true
+          "show": false
         },
         {
           "group_by": false,
           "label": "Description",
           "name": "Description",
+          "show": false
+        },
+        {
+          "group_by": true,
+          "label": "MPN",
+          "name": "MPN",
           "show": false
         }
       ],
