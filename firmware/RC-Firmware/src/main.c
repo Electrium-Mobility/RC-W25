@@ -6,8 +6,10 @@
 #include "esp_err.h"
 #include "nvs_flash.h"
 #include "pairing.h"
+#include "speed_control.h"
 
-TaskHandle_t taskHandle;
+TaskHandle_t pairing;
+TaskHandle_t interpretHallReadings;
 
 // void readMacAddress()
 // {
@@ -47,5 +49,6 @@ void app_main()
 
     //     vTaskDelay(pdMS_TO_TICKS(1000)); // 1-second loop delay
     // }
-    xTaskCreate(pair, "pairing", 4096, NULL, 1, &taskHandle);
+    xTaskCreate(pair, "pairing", 4096, NULL, 1, &pairing);
+    xTaskCreate(interpret_hall_readings, "interpret", 2048, NULL, 1, &interpretHallReadings);
 }
