@@ -6,30 +6,25 @@
 #include <string.h>
 
 int get_rumble_control(){
-    gpio_pad_select_gpio(RUMBLE_CNTL);
-    gpio_set_direction(RUMBLE_CNTL, GPIO_MODE_INPUT);
-
     int sensor_value = gpio_get_level(RUMBLE_CNTL);
 
     if (sensor_value == 1) {
-        ESP_LOGI(TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
     } 
     else {
-        ESP_LOGI(TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
     }
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
     return sensor_value;
 }
 
 int get_mode_control(){
-    gpio_pad_select_gpio(MODE_CNTL);
-    gpio_set_direction(MODE_CNTL, GPIO_MODE_INPUT);
     int sensor_value = gpio_get_level(MODE_CNTL);
     if (sensor_value) {
-        ESP_LOGI(TAG, "Mode Control On. Sensor Value: %d", sensor_value);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Mode Control On. Sensor Value: %d", sensor_value);
     } 
     else {
-        ESP_LOGI(TAG, "Mode Control Off. Sensor Value: %d", sensor_value);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Mode Control Off. Sensor Value: %d", sensor_value);
     }
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
     return sensor_value;
@@ -41,7 +36,7 @@ float get_throttle_speed(int mode_control, float speed_percent){
     if (mode_control){
         speed_percent = speed_cap;
     }
-    ESP_LOGI(TAG, "Speed set to: %d", speed_percent);
+    ESP_LOGI(SPEED_CONTROL_TAG, "Speed set to: %d", speed_percent);
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
     return speed_percent;
 }
@@ -57,11 +52,6 @@ double read_adc_avg(adc1_channel_t channel, int num_samples) {
 // We will tune exact values to fit possible ranges once we start integration
 void interpret_hall_readings()
 {
-    adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit (0-4095) B/c 2^12 = 4096
-
-    adc1_config_channel_atten(HALL_EFFECT_A, ADC_ATTEN_DB_12);
-    adc1_config_channel_atten(HALL_EFFECT_B, ADC_ATTEN_DB_12);
-
     double angle = 0;
     char direction[9] = "Neutral";
     double magnitude = 0;
@@ -82,7 +72,7 @@ void interpret_hall_readings()
         double angle_A = (acos(fmax(-1.0, fmin(1.0, normalized_A)))) * 180/M_PI;
         double angle_B = (acos(fmax(-1.0, fmin(1.0, normalized_B)))) * 180/M_PI;
 
-        ESP_LOGI(TAG, "Angle A: %.2f, Angle B: %.2f", angle_A, angle_B);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Angle A: %.2f, Angle B: %.2f", angle_A, angle_B);
 
         //2% error around the middle
         if (((fabs(raw_analog_A - ZERO_POSITION) / ZERO_POSITION) < 0.02) ||
@@ -105,7 +95,7 @@ void interpret_hall_readings()
 
         magnitude = angle/90.00;
 
-        ESP_LOGI(TAG, "Raw Hall A: %.2f Raw Hall B: %.2f Angle: %.2f°\nDirection: %s\n",
+        ESP_LOGI(SPEED_CONTROL_TAG, "Raw Hall A: %.2f Raw Hall B: %.2f Angle: %.2f°\nDirection: %s\n",
                  raw_analog_A, raw_analog_B, angle, direction);
         vTaskDelay(200);
     }

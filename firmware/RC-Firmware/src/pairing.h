@@ -4,8 +4,9 @@
 #include <stdio.h>
 #include <string.h>
 #include "esp_now.h"
+#include "init.h"
 
-#define TAG "ESP-NOW-COMM"
+#define PAIRING_TAG "ESP-NOW-COMM"
 
 // arbitrary struct for testing
 typedef struct struct_message {
@@ -23,6 +24,8 @@ typedef struct struct_data {
     int rpm_reading;         // vesc rpm rating
 } struct_data;
 */
+
+void readMacAddress();
 
 // callback for receiving data
 void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len);
