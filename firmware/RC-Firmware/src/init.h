@@ -5,10 +5,10 @@
 #define MODE_CNTL GPIO_NUM_11
 #define HALL_EFFECT_A ADC1_CHANNEL_0
 #define HALL_EFFECT_B ADC1_CHANNEL_1
-#define THROTTLE_PIN GPIO_NUM_4 
 #define LED_PIN GPIO_NUM_2 // built-in
 
 static const char* INIT_TAG = "Initialization";
+extern double ZERO_POSITION = 200.0;
 
 void init();
 

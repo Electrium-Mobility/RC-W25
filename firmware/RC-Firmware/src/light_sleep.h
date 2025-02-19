@@ -11,8 +11,13 @@
 
 esp_timer_handle_t sleep_timer;  // reference to the timer 
 
+//Called after inactivity timeout
 void go_to_sleep(void* arg);
+
+//Check for activity while awake and inactivity timer is running
 void check_activity();
+
+//Runs in background, combines both functions above
 void light_sleep();
 
 #endif

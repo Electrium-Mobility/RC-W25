@@ -1,5 +1,6 @@
 #include "esp_log.h"
 #include "driver/gpio.h"
+#include "driver/adc.h"
 #include "esp_sleep.h"        
 #include "esp_timer.h"  
 #include "freertos/FreeRTOS.h"
@@ -12,13 +13,30 @@ void go_to_sleep(void* arg) {
 
     esp_timer_delete(sleep_timer); // Delete the timer to prevent leaks
 
-    // Configure wakeup source 
-    esp_sleep_enable_ext0_wakeup(THROTTLE_PIN, 1);
-    esp_light_sleep_start();
+    //Wake up every 500ms to check if ADC input has changed
+    esp_sleep_enable_timer_wakeup(500000);
+    while (1) {
+        esp_light_sleep_start();
+
+        //Throttle is pushed so we wake up and restart the timer
+        if (fabs(adc1_get_raw(HALL_EFFECT_A) - ZERO_POSITION) > 20){ 
+            ESP_LOGI(LIGHT_SLEEP_TAG, "Throttle pushed, waking up");
+
+            //Recreate timer
+            esp_timer_create_args_t timer_config = { 
+                .callback = &go_to_sleep,    // callback function when it expires
+                .name = "SleepTimer"         // Debug name
+            };
+
+            esp_timer_create(&timer_config, &sleep_timer); 
+            esp_timer_start_once(sleep_timer, INACTIVITY_TIMEOUT); // Starts in one shot mode
+            return;
+        }
+    }
 }
 
 void check_activity() {
-    if (gpio_get_level(THROTTLE_PIN) == 1){ 
+    if (fabs(adc1_get_raw(HALL_EFFECT_A) - ZERO_POSITION) > 20){ 
         ESP_LOGI(LIGHT_SLEEP_TAG, "THROTTLE PUSHED");
         
         // Restart timer only if it's still running
