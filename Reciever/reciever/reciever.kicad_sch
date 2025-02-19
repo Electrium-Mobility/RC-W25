@@ -969,151 +969,6 @@
 				)
 			)
 		)
-		(symbol "Device:D_Schottky"
-			(pin_numbers hide)
-			(pin_names
-				(offset 1.016) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D_Schottky"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Schottky diode"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "diode Schottky"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "D_Schottky_0_1"
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_Schottky_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "Device:D_TVS"
 			(pin_numbers hide)
 			(pin_names
@@ -3934,12 +3789,6 @@
 		(uuid "09701306-2e9b-4a90-8723-308c300e7f06")
 	)
 	(junction
-		(at 156.21 133.35)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "49a13b98-96f8-44c8-91d7-db7b21af5aae")
-	)
-	(junction
 		(at 72.39 43.18)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3992,12 +3841,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c5c341be-f8af-4b2f-9142-b4b22ff7fb3a")
-	)
-	(junction
-		(at 156.21 152.4)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ce74e725-e7d1-42f8-a76e-0b5980c2393c")
 	)
 	(junction
 		(at 109.22 90.17)
@@ -4387,16 +4230,6 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 133.35) (xy 156.21 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6ea5873d-9a7b-40cc-9939-8f7d6de47e02")
-	)
-	(wire
-		(pts
 			(xy 83.82 88.9) (xy 83.82 90.17)
 		)
 		(stroke
@@ -4467,7 +4300,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 125.73) (xy 154.94 125.73)
+			(xy 130.81 125.73) (xy 154.94 125.73)
 		)
 		(stroke
 			(width 0)
@@ -4584,16 +4417,6 @@
 			(type default)
 		)
 		(uuid "c29162fa-6f3b-4d26-b812-c1d8a411eff9")
-	)
-	(wire
-		(pts
-			(xy 135.89 152.4) (xy 156.21 152.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c4d9e14d-5963-405b-93dd-3a665f0b27dc")
 	)
 	(wire
 		(pts
@@ -4787,7 +4610,7 @@
 	)
 	(wire
 		(pts
-			(xy 135.89 144.78) (xy 153.67 144.78)
+			(xy 130.81 144.78) (xy 153.67 144.78)
 		)
 		(stroke
 			(width 0)
@@ -5764,6 +5587,93 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_TVS")
+		(at 130.81 148.59 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0f712753-894c-4464-9f76-fb787138530a")
+		(property "Reference" "D4"
+			(at 132.588 147.066 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "15V TVS"
+			(at 132.842 148.844 90)
+			(effects
+				(font
+					(size 0.8467 0.8467)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_0402_1005Metric"
+			(at 130.81 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304171630_BORN-RCLAMP0521P-N_C316043.pdf"
+			(at 130.81 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 130.81 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC#" "C316043"
+			(at 130.81 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C316043"
+			(at 130.81 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "833632d6-0cb4-4fe0-9d49-b0682427ccd1")
+		)
+		(pin "2"
+			(uuid "a409b129-fdbd-48c1-8a46-c76b2b6c49f2")
+		)
+		(instances
+			(project "reciever"
+				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Push")
 		(at 218.44 85.09 0)
 		(unit 1)
@@ -5868,7 +5778,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "6V TVS"
+		(property "Value" "15V TVS"
 			(at 84.582 42.164 90)
 			(effects
 				(font
@@ -6570,93 +6480,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 135.89 148.59 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "36a64ed6-8592-4eac-b6fb-49cc50828230")
-		(property "Reference" "D5"
-			(at 138.176 147.7644 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "D_Schottky"
-			(at 138.176 149.606 90)
-			(effects
-				(font
-					(size 0.8467 0.8467)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
-			(at 135.89 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411011349_PIELENST-1N5819W-L_C41376455.pdf"
-			(at 135.89 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Schottky diode"
-			(at 135.89 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC#" "C41376455"
-			(at 135.89 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "C41376455"
-			(at 135.89 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ae2689d0-fad1-4fbf-bddd-169c92d946e7")
-		)
-		(pin "2"
-			(uuid "08effe57-26ff-4c6e-9026-947d3a140e6b")
-		)
-		(instances
-			(project "reciever"
-				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
-					(reference "D5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 226.06 22.86 0)
 		(unit 1)
@@ -6781,6 +6604,158 @@
 			(project "reciever"
 				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
 					(reference "#PWR012")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:Earth")
+		(at 130.81 152.4 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "43d667bd-41d4-4640-a070-17536b05a9ea")
+		(property "Reference" "#PWR010"
+			(at 130.81 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 156.464 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 130.81 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a65436b-d324-4aa3-8273-a3ebe1a5549d")
+		)
+		(instances
+			(project "reciever"
+				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
+					(reference "#PWR010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_TVS")
+		(at 130.81 129.54 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4e5fc6db-8dbe-4c4a-9b94-807fe3dfe696")
+		(property "Reference" "D5"
+			(at 132.588 128.016 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "15V TVS"
+			(at 132.842 129.794 90)
+			(effects
+				(font
+					(size 0.8467 0.8467)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_0402_1005Metric"
+			(at 130.81 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304171630_BORN-RCLAMP0521P-N_C316043.pdf"
+			(at 130.81 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Bidirectional transient-voltage-suppression diode"
+			(at 130.81 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC#" "C316043"
+			(at 130.81 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "C316043"
+			(at 130.81 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f62ff75f-47e1-4e27-8e17-edc586566056")
+		)
+		(pin "2"
+			(uuid "6c61eb89-1c59-48f3-8241-d91d12868bdf")
+		)
+		(instances
+			(project "reciever"
+				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -6956,7 +6931,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "6V TVS"
+		(property "Value" "15V TVS"
 			(at 74.422 50.292 90)
 			(effects
 				(font
@@ -8654,6 +8629,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:Earth")
+		(at 130.81 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a5ea5f35-facb-491b-8267-76462c1fb013")
+		(property "Reference" "#PWR01"
+			(at 130.81 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 130.81 137.414 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 130.81 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 130.81 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"Earth\""
+			(at 130.81 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b630337-35e5-411a-add0-fa6dd61f607c")
+		)
+		(instances
+			(project "reciever"
+				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
+					(reference "#PWR01")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 208.28 24.13 0)
 		(unit 1)
@@ -9102,7 +9142,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "6V TVS"
+		(property "Value" "15V TVS"
 			(at 84.582 27.686 90)
 			(effects
 				(font
@@ -9231,93 +9271,6 @@
 			(project "reciever"
 				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
 					(reference "#PWR037")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 128.27 129.54 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c6933c74-5d89-4a81-8253-a11f221d0eb2")
-		(property "Reference" "D4"
-			(at 130.556 128.7144 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "D_Schottky"
-			(at 130.556 130.556 90)
-			(effects
-				(font
-					(size 0.8467 0.8467)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2411011349_PIELENST-1N5819W-L_C41376455.pdf"
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Schottky diode"
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC#" "C41376455"
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "C41376455"
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3e11434e-cae6-4b03-b59a-ccf0741900d9")
-		)
-		(pin "2"
-			(uuid "6d2c45d4-32f4-4577-ba5c-990e83744733")
-		)
-		(instances
-			(project "reciever"
-				(path "/1584f1fa-97b6-4eb4-8f07-ba43f01ff670"
-					(reference "D4")
 					(unit 1)
 				)
 			)
