@@ -5,6 +5,7 @@
 #include "driver/adc.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
+#include "esp_now.h"
 #include "esp_err.h"
 #include "nvs_flash.h"
 
@@ -26,11 +27,11 @@ void initADC() {
 
 void initGPIO() {
     ESP_LOGI(INIT_TAG, "Initializing Haptic GPIO");
-    gpio_pad_select_gpio(HAPTIC_CNTL);
+    esp_rom_gpio_pad_select_gpio(HAPTIC_CNTL);
     gpio_set_direction(HAPTIC_CNTL, GPIO_MODE_INPUT);
 
     ESP_LOGI(INIT_TAG, "Initializing Safe Mode GPIO");
-    gpio_pad_select_gpio(SAFE_MODE);
+    esp_rom_gpio_pad_select_gpio(SAFE_MODE);
     gpio_set_direction(SAFE_MODE, GPIO_MODE_INPUT);
 
     ESP_LOGI(INIT_TAG, "Initializing onboard LED");

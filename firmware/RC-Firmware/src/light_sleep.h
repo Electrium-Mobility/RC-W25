@@ -9,8 +9,6 @@
 
 #define INACTIVITY_TIMEOUT 180000000  // 3 min
 
-esp_timer_handle_t sleep_timer;  // reference to the timer 
-
 //Called after inactivity timeout
 void go_to_sleep(void* arg);
 

@@ -7,6 +7,9 @@
 #include "freertos/task.h"
 #include "light_sleep.h"
 #include "init.h"
+#include <math.h>
+
+esp_timer_handle_t sleep_timer;  // reference to the timer 
 
 void go_to_sleep(void* arg) {
     ESP_LOGI(LIGHT_SLEEP_TAG, "Entering light sleep");

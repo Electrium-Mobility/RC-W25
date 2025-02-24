@@ -2,6 +2,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "speed_control.h"
+#include "esp_log.h"
+#include "driver/gpio.h"
 #include <math.h>
 #include <string.h>
 
@@ -38,7 +40,7 @@ float get_throttle_speed(int mode_control, float speed_percent){
     if (mode_control){
         speed_percent = speed_cap;
     }
-    ESP_LOGI(SPEED_CONTROL_TAG, "Speed set to: %d", speed_percent);
+    ESP_LOGI(SPEED_CONTROL_TAG, "Speed set to: %.2f", speed_percent);
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
     return speed_percent;
 }

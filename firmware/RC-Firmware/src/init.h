@@ -7,9 +7,9 @@
 #define HAPTIC_CNTL ADC1_CHANNEL_6
 #define LED_PIN GPIO_NUM_2 // built-in
 
-#define ZERO_POSITION = 200.0; //Raw ADC value for zero position
+#define ZERO_POSITION 200.0 //Raw ADC value for zero position
 
-static const char* INIT_TAG = "Initialization";
+#define INIT_TAG "Initialization"
 
 extern double throttle;
 extern bool safeMode;
