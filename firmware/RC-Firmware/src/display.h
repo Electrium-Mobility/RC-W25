@@ -1,9 +1,9 @@
 #ifndef DISPLAY_H
 #define DISPLAY_H
 
-#define DISPLAY_WIDTH 128
-#define DISPLAY_HEIGHT 64
+extern SSD1306_t dev;
 
 void display_to_screen();
+void fetch_remote_battery();
 
 #endif

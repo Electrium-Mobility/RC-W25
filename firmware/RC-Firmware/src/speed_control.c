@@ -56,9 +56,6 @@ double read_adc_avg(adc1_channel_t channel, int num_samples) {
 // We will tune exact values to fit possible ranges once we start integration
 void interpret_hall_readings()
 {
-    adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit (0-4095) B/c 2^12 = 4096
-    adc1_config_channel_atten(HALL_EFFECT, ADC_ATTEN_DB_12); //3.3V range
-
     double angle = 0; //Angle between magnet and zero position
     char direction[9] = "Neutral";
 

@@ -9,6 +9,9 @@
 
 #define ZERO_POSITION 200.0 //Raw ADC value for zero position
 
+#define DISPLAY_WIDTH 128
+#define DISPLAY_HEIGHT 64
+
 #define INIT_TAG "Initialization"
 
 extern double throttle;
@@ -21,5 +24,6 @@ void init();
 void initADC();
 void initGPIO();
 void initEspNow();
+void initDisplay();
 
 #endif

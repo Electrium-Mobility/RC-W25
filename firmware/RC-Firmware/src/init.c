@@ -8,13 +8,17 @@
 #include "esp_now.h"
 #include "esp_err.h"
 #include "nvs_flash.h"
+#include "ssd1306.h"
 
 #include "init.h"
+
+SSD1306_t dev;
 
 void init() {
     initADC();
     initGPIO();
     initEspNow();
+    initDisplay();
 }
 
 void initADC() {
@@ -63,4 +67,9 @@ void initEspNow() {
         ESP_LOGE(INIT_TAG, "Error initializing ESP-NOW");
         return;
     }
+}
+
+void initDisplay() {
+    i2c_master_init(&dev, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO, CONFIG_RESET_GPIO);
+    ssd1306_init(&dev, DISPLAY_WIDTH, DISPLAY_HEIGHT);
 }
