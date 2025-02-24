@@ -1,15 +1,21 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "speed_control.h"
 
-void app_main() {
-    while (1) {
-        int rumble_control_value = get_rumble_control();
-        int mode_control_value = get_mode_control();
-        float hall_effect_value = get_hall_effect();
-        float speed = get_throttle_speed(mode_control_value, hall_effect_value);
-        
-        vTaskDelay(pdMS_TO_TICKS(1000)); // 1-second loop delay
-    }
+#include "init.h"
+#include "pairing.h"
+#include "speed_control.h"
+#include "light_sleep.h"
+
+TaskHandle_t initialization;
+TaskHandle_t pairing;
+TaskHandle_t interpretHallReadings;
+TaskHandle_t lightSleep;
+
+void app_main()
+{
+    xTaskCreate(init, "initialization", 2048, NULL, 1, &initialization);
+    xTaskCreate(pair, "pairing", 4096, NULL, 1, &pairing);
+    xTaskCreate(interpret_hall_readings, "interpret", 2048, NULL, 1, &interpretHallReadings);
+    xTaskCreate(light_sleep, "light_sleep", 2048, NULL, 1, &lightSleep);
 }
