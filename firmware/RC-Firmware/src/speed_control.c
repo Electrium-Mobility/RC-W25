@@ -5,6 +5,9 @@
 #include <math.h>
 #include <string.h>
 
+bool safeMode = false;
+double throttle = 0;
+
 int get_rumble_control(){
     int sensor_value = gpio_get_level(HAPTIC_CNTL);
 
@@ -18,17 +21,16 @@ int get_rumble_control(){
     return sensor_value;
 }
 
-int get_safe_mode(){
-    int sensor_value = gpio_get_level(SAFE_MODE);
-    if (sensor_value) {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Mode Control On. Sensor Value: %d", sensor_value);
+void get_safe_mode(){
+    safeMode = gpio_get_level(SAFE_MODE);
+
+    if (safeMode) {
+        ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode On. Sensor Value: %d", safeMode);
     } 
     else {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Mode Control Off. Sensor Value: %d", sensor_value);
+        ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode Off. Sensor Value: %d", safeMode);
     }
-    vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
-    return sensor_value;
-    
+    vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay    
 }
 
 float get_throttle_speed(int mode_control, float speed_percent){
@@ -57,7 +59,6 @@ void interpret_hall_readings()
 
     double angle = 0; //Angle between magnet and zero position
     char direction[9] = "Neutral";
-    double magnitude = 0;
 
     while (1) {
         //Individual readings vary wildly so we take an average
@@ -80,7 +81,7 @@ void interpret_hall_readings()
         //This will give us 90 degrees for zero position, 0 degrees at max throttle
         angle = 90 - acos((fabs(raw_voltage - ZERO_POSITION_VOLTAGE))/ZERO_POSITION_VOLTAGE) * 180/M_PI;
         
-        magnitude = angle/90;
+        throttle = angle/90.0;
 
         vTaskDelay(200);
     }

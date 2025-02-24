@@ -8,22 +8,12 @@
 
 #define PAIRING_TAG "ESP-NOW-COMM"
 
-// arbitrary struct for testing
-typedef struct struct_message {
-    char a[32];
-    int b;
-    float c;
-    bool d;
-} struct_message;
-
-// struct to transfer data
-/*
+//Data to be sent both ways over ESP-NOW
 typedef struct struct_data {
-    float input_signal;      // 0% - 100% throttle from hall sensor
-    float battery_level;     // battery levels from longboard
-    int rpm_reading;         // vesc rpm rating
+    double throttle;      // 0% - 100% throttle from hall sensor
+    int boardBatteryLevel;     // battery levels from longboard
+    int boardRpm;         // vesc rpm rating
 } struct_data;
-*/
 
 void readMacAddress();
 

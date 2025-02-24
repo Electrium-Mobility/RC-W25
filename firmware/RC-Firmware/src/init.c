@@ -11,13 +11,20 @@
 #include "init.h"
 
 void init() {
-    //Initialize all ADC pins
+    initADC();
+    initGPIO();
+    initEspNow();
+}
+
+void initADC() {
     ESP_LOGI(INIT_TAG, "Configuring ADC pin");
     adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit (0-4095) B/c 2^12 = 4096
 
     adc1_config_channel_atten(HALL_EFFECT, ADC_ATTEN_DB_12);
+    adc1_config_channel_atten(BATTERY_PERCENT, ADC_ATTEN_DB_12);
+}
 
-    //Initialize all GPIO pins
+void initGPIO() {
     ESP_LOGI(INIT_TAG, "Initializing Haptic GPIO");
     gpio_pad_select_gpio(HAPTIC_CNTL);
     gpio_set_direction(HAPTIC_CNTL, GPIO_MODE_INPUT);
@@ -29,9 +36,10 @@ void init() {
     ESP_LOGI(INIT_TAG, "Initializing onboard LED");
     gpio_reset_pin(LED_PIN); 
     gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);  
-    gpio_set_level(LED_PIN, 1);  
+    gpio_set_level(LED_PIN, 1); 
+}
 
-    //Initialize ESP-NOW
+void initEspNow() {
     // initializing nvs
     ESP_LOGI(INIT_TAG, "Initializing ESP-NOW");
     esp_err_t ret = nvs_flash_init();

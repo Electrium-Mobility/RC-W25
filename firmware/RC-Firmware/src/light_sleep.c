@@ -6,6 +6,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "light_sleep.h"
+#include "init.h"
 
 void go_to_sleep(void* arg) {
     ESP_LOGI(LIGHT_SLEEP_TAG, "Entering light sleep");
@@ -19,7 +20,7 @@ void go_to_sleep(void* arg) {
         esp_light_sleep_start();
 
         //Throttle is pushed so we wake up and restart the timer
-        if (fabs(adc1_get_raw(HALL_EFFECT_A) - ZERO_POSITION) > 20){ 
+        if (fabs(adc1_get_raw(HALL_EFFECT) - ZERO_POSITION) > 20){ 
             ESP_LOGI(LIGHT_SLEEP_TAG, "Throttle pushed, waking up");
 
             //Recreate timer
@@ -36,7 +37,7 @@ void go_to_sleep(void* arg) {
 }
 
 void check_activity() {
-    if (fabs(adc1_get_raw(HALL_EFFECT_A) - ZERO_POSITION) > 20){ 
+    if (fabs(adc1_get_raw(HALL_EFFECT) - ZERO_POSITION) > 20){ 
         ESP_LOGI(LIGHT_SLEEP_TAG, "THROTTLE PUSHED");
         
         // Restart timer only if it's still running

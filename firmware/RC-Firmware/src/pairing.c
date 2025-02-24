@@ -9,8 +9,11 @@
 #include "esp_event.h"
 
 #include "nvs_flash.h"
+#include "init.h"
 
-struct_message my_data;
+struct_data data;
+int boardRpm;
+int boardBatteryLevel;
 
 uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
 
@@ -33,17 +36,19 @@ void readMacAddress() {
 // callback for receiving data
 void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
     const uint8_t *mac_addr = recv_info->src_addr;
-    memcpy(&my_data, incoming_data, sizeof(my_data));
+    memcpy(&data, incoming_data, sizeof(data));
+
+    boardBatteryLevel = data.boardBatteryLevel;
+    boardRpm = data.boardRpm;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5]);
 
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
-    ESP_LOGI(PAIRING_TAG, "A: %s", my_data.a);
-    ESP_LOGI(PAIRING_TAG, "B: %d", my_data.b);
-    ESP_LOGI(PAIRING_TAG, "C: %.2f", my_data.c);
-    ESP_LOGI(PAIRING_TAG, "D: %s", my_data.d ? "true" : "false");
+    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
+    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
+    ESP_LOGI(PAIRING_TAG, "Board rpm: %d", data.boardRpm);
 }
 
 // callback for sending data
@@ -71,14 +76,13 @@ void pair() {
     }
 
     // prepare and transmit data
-    strcpy(my_data.a, "THIS IS A CHAR");
-    my_data.b = 10;
-    my_data.c = 1.2;
-    my_data.d = false;
+    data.throttle = (safeMode ? throttle * 0.5 : throttle);
+    data.boardBatteryLevel = boardBatteryLevel;
+    data.boardRpm = boardRpm;
 
     // callback upon successful transmission
     while (1) {
-        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&my_data, sizeof(my_data));
+        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&data, sizeof(data));
         if (result == ESP_OK) {
             ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {
