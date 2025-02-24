@@ -15,17 +15,16 @@ void init() {
     ESP_LOGI(INIT_TAG, "Configuring ADC pin");
     adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit (0-4095) B/c 2^12 = 4096
 
-    adc1_config_channel_atten(HALL_EFFECT_A, ADC_ATTEN_DB_12);
-    adc1_config_channel_atten(HALL_EFFECT_B, ADC_ATTEN_DB_12);
+    adc1_config_channel_atten(HALL_EFFECT, ADC_ATTEN_DB_12);
 
     //Initialize all GPIO pins
     ESP_LOGI(INIT_TAG, "Initializing Haptic GPIO");
-    gpio_pad_select_gpio(RUMBLE_CNTL);
-    gpio_set_direction(RUMBLE_CNTL, GPIO_MODE_INPUT);
+    gpio_pad_select_gpio(HAPTIC_CNTL);
+    gpio_set_direction(HAPTIC_CNTL, GPIO_MODE_INPUT);
 
     ESP_LOGI(INIT_TAG, "Initializing Safe Mode GPIO");
-    gpio_pad_select_gpio(MODE_CNTL);
-    gpio_set_direction(MODE_CNTL, GPIO_MODE_INPUT);
+    gpio_pad_select_gpio(SAFE_MODE);
+    gpio_set_direction(SAFE_MODE, GPIO_MODE_INPUT);
 
     ESP_LOGI(INIT_TAG, "Initializing onboard LED");
     gpio_reset_pin(LED_PIN); 

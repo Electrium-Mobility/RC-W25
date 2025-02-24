@@ -1,10 +1,10 @@
 #ifndef INIT_H
 #define INIT_H
 
-#define RUMBLE_CNTL GPIO_NUM_12 //Arbitrary GPIO 
-#define MODE_CNTL GPIO_NUM_11
-#define HALL_EFFECT_A ADC1_CHANNEL_0
-#define HALL_EFFECT_B ADC1_CHANNEL_1
+#define HALL_EFFECT ADC1_CHANNEL_2
+#define BATTERY_PERCENT ADC1_CHANNEL_3
+#define SAFE_MODE ADC1_CHANNEL_4
+#define HAPTIC_CNTL ADC1_CHANNEL_6
 #define LED_PIN GPIO_NUM_2 // built-in
 
 static const char* INIT_TAG = "Initialization";
