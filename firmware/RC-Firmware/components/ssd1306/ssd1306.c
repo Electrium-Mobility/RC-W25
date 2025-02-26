@@ -95,13 +95,12 @@ void ssd1306_display_image(SSD1306_t * dev, int page, int seg, uint8_t * images,
 	memcpy(&dev->_page[page]._segs[seg], images, width);
 }
 
-void ssd1306_display_text(SSD1306_t * dev, int page, char * text, int text_len, bool invert)
+void ssd1306_display_text(SSD1306_t * dev, int page, int seg, char * text, int text_len, bool invert)
 {
 	if (page >= dev->_pages) return;
 	int _text_len = text_len;
 	if (_text_len > 16) _text_len = 16;
 
-	int seg = 0;
 	uint8_t image[8];
 	for (int i = 0; i < _text_len; i++) {
 		memcpy(image, font8x8_basic_tr[(uint8_t)text[i]], 8);
@@ -258,7 +257,7 @@ void ssd1306_clear_screen(SSD1306_t * dev, bool invert)
 	char space[16];
 	memset(space, 0x00, sizeof(space));
 	for (int page = 0; page < dev->_pages; page++) {
-		ssd1306_display_text(dev, page, space, sizeof(space), invert);
+		ssd1306_display_text(dev, page, 0, space, sizeof(space), invert);
 	}
 }
 
@@ -266,7 +265,7 @@ void ssd1306_clear_line(SSD1306_t * dev, int page, bool invert)
 {
 	char space[16];
 	memset(space, 0x00, sizeof(space));
-	ssd1306_display_text(dev, page, space, sizeof(space), invert);
+	ssd1306_display_text(dev, page, 0, space, sizeof(space), invert);
 }
 
 void ssd1306_contrast(SSD1306_t * dev, int contrast)
@@ -322,7 +321,7 @@ void ssd1306_scroll_text(SSD1306_t * dev, char * text, int text_len, bool invert
 	int _text_len = text_len;
 	if (_text_len > 16) _text_len = 16;
 	
-	ssd1306_display_text(dev, srcIndex, text, text_len, invert);
+	ssd1306_display_text(dev, srcIndex, 0, text, text_len, invert);
 }
 
 void ssd1306_scroll_clear(SSD1306_t * dev)
@@ -662,6 +661,18 @@ void _ssd1306_line(SSD1306_t * dev, int x1, int y1, int x2, int y2,  bool invert
 			}
 		}
 	}
+}
+
+
+// Draw rectangle
+void _ssd1306_rectangle(SSD1306_t *dev, int startX, int startY, int width, int height, bool invert) {
+    for (int x = startX; x < startX + width; ++x) {
+        for (int y = startY; y < startY + height; ++y) {
+            _ssd1306_pixel(dev, x, y, invert);
+        }
+    }
+
+    ssd1306_show_buffer(dev);
 }
 
 // Draw circle

@@ -127,7 +127,7 @@ void ssd1306_get_buffer(SSD1306_t * dev, uint8_t * buffer);
 void ssd1306_set_page(SSD1306_t * dev, int page, uint8_t * buffer);
 void ssd1306_get_page(SSD1306_t * dev, int page, uint8_t * buffer);
 void ssd1306_display_image(SSD1306_t * dev, int page, int seg, uint8_t * images, int width);
-void ssd1306_display_text(SSD1306_t * dev, int page, char * text, int text_len, bool invert);
+void ssd1306_display_text(SSD1306_t * dev, int page, int seg, char * text, int text_len, bool invert);
 void ssd1306_display_text_box1(SSD1306_t * dev, int page, int seg, char * text, int box_width, int text_len, bool invert, int delay);
 void ssd1306_display_text_box2(SSD1306_t * dev, int page, int seg, char * text, int box_width, int text_len, bool invert, int delay);
 void ssd1306_display_text_x3(SSD1306_t * dev, int page, char * text, int text_len, bool invert);
@@ -143,6 +143,7 @@ void _ssd1306_bitmaps(SSD1306_t * dev, int xpos, int ypos, uint8_t * bitmap, int
 void ssd1306_bitmaps(SSD1306_t * dev, int xpos, int ypos, uint8_t * bitmap, int width, int height, bool invert);
 void _ssd1306_pixel(SSD1306_t * dev, int xpos, int ypos, bool invert);
 void _ssd1306_line(SSD1306_t * dev, int x1, int y1, int x2, int y2,  bool invert);
+void _ssd1306_rectangle(SSD1306_t *dev, int startX, int startY, int width, int height, bool invert);
 void _ssd1306_circle(SSD1306_t * dev, int x0, int y0, int r, bool invert);
 void _ssd1306_cursor(SSD1306_t * dev, int x0, int y0, int r, bool invert);
 void ssd1306_invert(uint8_t *buf, size_t blen);
