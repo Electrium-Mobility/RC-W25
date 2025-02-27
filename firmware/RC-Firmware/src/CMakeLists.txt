@@ -2,5 +2,6 @@
 # without default 'CMakeLists.txt' file.
 
 FILE(GLOB_RECURSE app_sources ${CMAKE_SOURCE_DIR}/src/*.*)
-
+set(EXTRA_COMPONENT_DIRS ../components/ssd1306)
 idf_component_register(SRCS ${app_sources})
+
