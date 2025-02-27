@@ -2,18 +2,21 @@
 #include "ssd1306.h"
 #include <driver/i2c.h>
 #include <driver/adc.h>
+#include "esp_log.h"
 #include "display.h"
 #include "init.h"
 #include <string.h>
-#include "electriumLogo.h"
 #include "batteryOutline.h"
 
-int remoteBatteryLevel = 0;
-int boardBatteryLevel = 0;
 char remoteBatteryBuffer[26];
 char boardBatteryBuffer[26];
 
 void display_to_screen() {
+	//Wait as long as necessary for initialization to complete
+	ESP_LOGI(DISPLAY_TAG, "Waiting for initialization");
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+    ESP_LOGI(DISPLAY_TAG, "Initialization complete");
+
     snprintf(remoteBatteryBuffer, 26*sizeof(char), "%d%%", remoteBatteryLevel);
     ssd1306_clear_screen(&dev, false);
     display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);

@@ -9,6 +9,7 @@
 #include "esp_err.h"
 #include "nvs_flash.h"
 #include "ssd1306.h"
+#include "electriumLogo.h"
 
 #include "init.h"
 
@@ -70,6 +71,26 @@ void initEspNow() {
 }
 
 void initDisplay() {
-    i2c_master_init(&dev, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO, CONFIG_RESET_GPIO);
+    i2c_master_init(&dev, DISPLAY_SDA, DISPLAY_SCL, DISPLAY_RESET);
     ssd1306_init(&dev, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    ssd1306_clear_screen(&dev, false);
+    ssd1306_bitmaps(&dev, 0,0, electriumLogoBitmap, 128, 64, false);
+
+    // explicitly "push" that buffer to the display
+    ssd1306_show_buffer(&dev);
+
+    // Display for 4 seconds with single delay
+    ESP_LOGI(INIT_TAG, "Displaying Electrium logo");
+    vTaskDelay(pdMS_TO_TICKS(4000));
+
+    ssd1306_clear_screen(&dev, false);
+    ssd1306_show_buffer(&dev);
+    ESP_LOGI(INIT_TAG, "Display cleared");
+
+    //Signal to display function that initialization is done
+    if (displayToScreen != NULL) {
+        xTaskNotifyGive(displayToScreen);
+    }
+
+    vTaskDelete(NULL);
 }
