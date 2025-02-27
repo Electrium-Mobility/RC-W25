@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <pairing.h>
 
 #include "esp_now.h"
 #include "esp_wifi.h"
@@ -8,76 +9,57 @@
 #include "esp_event.h"
 
 #include "nvs_flash.h"
+#include "init.h"
 
-#define TAG "ESP-NOW-COMM"
+struct_data data;
+int boardRpm;
+int boardBatteryLevel;
 
-// arbitrary struct for testing
-typedef struct struct_message {
-    char a[32];
-    int b;
-    float c;
-    bool d;
-} struct_message;
+uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
 
-// struct to transfer data
-/*
-typedef struct struct_data {
-    float input_signal;      // 0% - 100% throttle from hall sensor
-    float battery_level;     // battery levels from longboard
-    int rpm_reading;         // vesc rpm rating
-} struct_data;
-*/
-
-struct_message my_data;
-
-uint8_t peer_mac[] = {0x24, 0x0A, 0xC4, 0x7A, 0xDE, 0xFA}; // replace with peer mac address (receiver)
+void readMacAddress() {
+    uint8_t baseMac[6];
+    esp_err_t ret = esp_wifi_get_mac(WIFI_IF_STA, baseMac);
+    if (ret == ESP_OK)
+    {
+        printf("%02x:%02x:%02x:%02x:%02x:%02x\n",
+               baseMac[0], baseMac[1], baseMac[2],
+               baseMac[3], baseMac[4], baseMac[5]);
+    }
+    else
+    {
+        ESP_LOGI(PAIRING_TAG, "Failed to read MAC address");
+    }
+    vTaskDelete(NULL);
+}
 
 // callback for receiving data
-void on_data_recv(const uint8_t *mac_addr, const uint8_t *incoming_data, int len) {
-    memcpy(&my_data, incoming_data, sizeof(my_data));
+void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
+    const uint8_t *mac_addr = recv_info->src_addr;
+    memcpy(&data, incoming_data, sizeof(data));
+
+    boardBatteryLevel = data.boardBatteryLevel;
+    boardRpm = data.boardRpm;
     
-    ESP_LOGI(TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
+    ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5]);
 
-    ESP_LOGI(TAG, "Bytes received: %d", len);
-    ESP_LOGI(TAG, "A: %s", my_data.a);
-    ESP_LOGI(TAG, "B: %d", my_data.b);
-    ESP_LOGI(TAG, "C: %.2f", my_data.c);
-    ESP_LOGI(TAG, "D: %s", my_data.d ? "true" : "false");
+    ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
+    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
+    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
+    ESP_LOGI(PAIRING_TAG, "Board rpm: %d", data.boardRpm);
 }
 
 // callback for sending data
 void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-    ESP_LOGI(TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
+    ESP_LOGI(PAIRING_TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5],
              (status == ESP_NOW_SEND_SUCCESS) ? "Success" : "Fail");
 }
 
-void app_main() {
-    // initializing nvs
-    esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        ret = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK(ret);
-
-    // wi-fi initialization in station mode
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-    ESP_ERROR_CHECK(esp_wifi_start());
-
-    // esp-now initialization
-    if (esp_now_init() != ESP_OK) {
-        ESP_LOGE(TAG, "Error initializing ESP-NOW");
-        return;
-    }
-
+void pair() {
     // register callbacks
     esp_now_register_send_cb(on_data_sent);
     esp_now_register_recv_cb(on_data_recv);
@@ -89,23 +71,22 @@ void app_main() {
     peer_info.encrypt = false;
 
     if (esp_now_add_peer(&peer_info) != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to add peer");
+        ESP_LOGE(PAIRING_TAG, "Failed to add peer");
         return;
     }
 
     // prepare and transmit data
-    strcpy(my_data.a, "THIS IS A CHAR");
-    my_data.b = 10;
-    my_data.c = 1.2;
-    my_data.d = false;
+    data.throttle = (safeMode ? throttle * 0.5 : throttle);
+    data.boardBatteryLevel = boardBatteryLevel;
+    data.boardRpm = boardRpm;
 
     // callback upon successful transmission
     while (1) {
-        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&my_data, sizeof(my_data));
+        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&data, sizeof(data));
         if (result == ESP_OK) {
-            ESP_LOGI(TAG, "Data sent successfully");
+            ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {
-            ESP_LOGE(TAG, "Error sending data");
+            ESP_LOGE(PAIRING_TAG, "Error sending data");
         }
         vTaskDelay(2000 / portTICK_PERIOD_MS);
     }

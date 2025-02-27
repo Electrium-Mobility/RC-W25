@@ -1,18 +1,19 @@
 #ifndef SPEED_CONTROL_H
 #define SPEED_CONTROL_H
 
-#include "driver/gpio.h"
 #include "driver/adc.h"
-#include "esp_log.h"
+#include "init.h"
 
-#define RUMBLE_CNTL GPIO_NUM_12 //Arbitrary GPIO 
-#define MODE_CNTL GPIO_NUM_13 //Arbitrary GPIO
-#define HALL_EFFECT ADC1_CHANNEL_0 //Arbitrary GPIO (ESP32 has ADC on GPI0)
+//Raw ADC readings for both sensors in the middle position
+//Will tune this during integration they should be the same
+#define SPEED_CONTROL_TAG "Speed Control"
+#define ZERO_POSITION_VOLTAGE 1.65 //Taken from datasheet (VCC/2)
 
-static const char *TAG = "MY_MODULE"; //ESPI_LOG Tag 
 int get_rumble_control();
-int get_mode_control();
-float get_hall_effect();
+void get_safe_mode();
 float get_throttle_speed(int mode_control, float speed_percent);
+
+double read_adc_avg(adc1_channel_t channel, int num_samples);
+void interpret_hall_readings();
 
 #endif
