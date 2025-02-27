@@ -4,12 +4,11 @@
 #define HALL_EFFECT ADC1_CHANNEL_2
 #define BATTERY_PERCENT ADC1_CHANNEL_3
 #define SAFE_MODE ADC1_CHANNEL_4
-#define HAPTIC_CNTL ADC1_CHANNEL_6
+#define HAPTIC_CNTL ADC1_CHANNEL_1
 #define LED_PIN GPIO_NUM_2 // built-in
 
-//These display pins are not 100% confirmed yet they're just placeholders
-#define DISPLAY_SDA 8
-#define DISPLAY_SCL 9
+#define DISPLAY_SDA GPIO_NUM_6
+#define DISPLAY_SCL GPIO_NUM_7
 #define DISPLAY_RESET -1  // Use -1 if no reset pin is connected
 
 #define ZERO_POSITION 200.0 //Raw ADC value for zero position

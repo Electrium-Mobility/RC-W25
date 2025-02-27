@@ -2,6 +2,8 @@
 #include <string.h>
 #include <pairing.h>
 
+#include "semaphore.h"
+
 #include "esp_now.h"
 #include "esp_wifi.h"
 #include "esp_system.h"
@@ -60,6 +62,11 @@ void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 }
 
 void pair() {
+    if (pairingMutex == NULL || xSemaphoreTake(pairingMutex, 1000) != pdTRUE) {
+        ESP_LOGE(PAIRING_TAG, "Pairing failed to take mutex");
+        return;
+    }
+
     // register callbacks
     esp_now_register_send_cb(on_data_sent);
     esp_now_register_recv_cb(on_data_recv);
@@ -72,8 +79,11 @@ void pair() {
 
     if (esp_now_add_peer(&peer_info) != ESP_OK) {
         ESP_LOGE(PAIRING_TAG, "Failed to add peer");
+        xSemaphoreGive(pairingMutex);
         return;
     }
+
+    xSemaphoreGive(pairingMutex);
 
     // prepare and transmit data
     data.throttle = (safeMode ? throttle * 0.5 : throttle);

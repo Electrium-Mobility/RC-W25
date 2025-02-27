@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "semaphore.h"
 #include "driver/gpio.h"
 #include "driver/adc.h"
 #include "esp_log.h"
@@ -14,6 +15,7 @@
 #include "init.h"
 
 SSD1306_t dev;
+SemaphoreHandle_t pairingMutex;
 
 void init() {
     initADC();
@@ -46,6 +48,14 @@ void initGPIO() {
 }
 
 void initEspNow() {
+    pairingMutex = xSemaphoreCreateMutex();
+    if (pairingMutex == NULL) {
+        ESP_LOGE(INIT_TAG, "Failed to create mutex");
+    }
+    if (xSemaphoreTake(pairingMutex, portMAX_DELAY) != pdTRUE) {
+        ESP_LOGE(INIT_TAG, "Failed to take mutex");
+    }
+
     // initializing nvs
     ESP_LOGI(INIT_TAG, "Initializing ESP-NOW");
     esp_err_t ret = nvs_flash_init();
@@ -68,6 +78,9 @@ void initEspNow() {
         ESP_LOGE(INIT_TAG, "Error initializing ESP-NOW");
         return;
     }
+
+    xSemaphoreGive(pairingMutex);
+    vTaskDelete(NULL);
 }
 
 void initDisplay() {

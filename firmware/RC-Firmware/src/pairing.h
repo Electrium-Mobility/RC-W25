@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <string.h>
 #include "esp_now.h"
+#include "semaphore.h"
 #include "init.h"
 
 #define PAIRING_TAG "ESP-NOW-COMM"
+
+extern SemaphoreHandle_t pairingMutex = NULL;
 
 //Data to be sent both ways over ESP-NOW
 typedef struct struct_data {
