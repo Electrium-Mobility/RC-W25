@@ -11,6 +11,10 @@
 char remoteBatteryBuffer[26];
 char boardBatteryBuffer[26];
 
+char speedBuffer[26];
+char kmBuffer[4] = "km/";
+char hBuffer[2] = "h";
+
 void display_to_screen() {
 	//Wait as long as necessary for initialization to complete
 	ESP_LOGI(DISPLAY_TAG, "Waiting for initialization");
@@ -21,6 +25,7 @@ void display_to_screen() {
     ssd1306_clear_screen(&dev, false);
     display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
     display_battery(&dev, 80, boardBatteryLevel, boardBatteryBuffer, false);
+	display_speed(&dev, 25, boardRpm, false); //rpm is a placeholder
 }
 
 void fetch_remote_battery() {
@@ -29,8 +34,31 @@ void fetch_remote_battery() {
 }
 
 void display_battery(SSD1306_t *dev, int seg, int battery, char *textBuffer, bool invert) {
-    snprintf(textBuffer, 26 * sizeof(char), "%d%%", battery);
-    ssd1306_bitmaps(dev, seg, 0, batteryStencil, 16, 8, false);
+	//Pad with spaces to ensure the value is in a fixed position
+    if (battery == 100) {
+        snprintf(textBuffer, 26 * sizeof(char), "%d%%", battery);
+    }
+    else if (battery >= 10) {
+        snprintf(textBuffer, 26 * sizeof(char), "%d%% ", battery);
+    }
+    else {
+        snprintf(textBuffer, 26 * sizeof(char), "%d%%  ", battery);
+    }
+    ssd1306_bitmaps(dev, seg, 0, batteryOutline, 16, 8, false);
     ssd1306_display_text(dev, 0, seg + 20, textBuffer, strlen(textBuffer), false);
     _ssd1306_rectangle(dev, seg + 1, 1, (int)(13 * ((float)battery / 100.0)), 6, false);
+}
+
+void display_speed(SSD1306_t *dev, int seg, int speed, bool invert)
+{
+	//Pad with spaces to ensure fixed position
+    if (speed >= 10) {
+        snprintf(speedBuffer, 26 * sizeof(char), "%d", speed);
+    }
+    else if (speed < 10) {
+        snprintf(speedBuffer, 26 * sizeof(char), " %d", speed);
+    }
+    ssd1306_display_text_x3(dev, 3, seg, speedBuffer, strlen(speedBuffer), false);
+    ssd1306_display_text(dev, 3, seg + 50, kmBuffer, strlen(kmBuffer), false);
+    ssd1306_display_text(dev, 4, seg + 50, hBuffer, strlen(hBuffer), false);
 }

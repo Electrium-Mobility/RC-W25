@@ -200,13 +200,11 @@ void ssd1306_display_text_box2(SSD1306_t * dev, int page, int seg, char * text, 
 
 // by Coert Vonk
 void 
-ssd1306_display_text_x3(SSD1306_t * dev, int page, char * text, int text_len, bool invert)
+ssd1306_display_text_x3(SSD1306_t * dev, int page, int seg, char * text, int text_len, bool invert)
 {
 	if (page >= dev->_pages) return;
 	int _text_len = text_len;
 	if (_text_len > 5) _text_len = 5;
-
-	int seg = 0;
 
 	for (int nn = 0; nn < _text_len; nn++) {
 

@@ -13,9 +13,13 @@ extern int remoteBatteryLevel;
 //Handle what to display during normal operation
 void display_to_screen();
 
+//Fetch ADC value
 void fetch_remote_battery();
 
 //Displays battery icon and text
 void display_battery(SSD1306_t *dev, int seg, int battery, char *textBuffer, bool invert);
+
+//Display speed
+void display_speed(SSD1306_t *dev, int seg, int speed, bool invert);
 
 #endif
