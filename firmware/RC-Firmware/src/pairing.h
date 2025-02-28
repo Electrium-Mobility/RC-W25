@@ -9,7 +9,7 @@
 
 #define PAIRING_TAG "ESP-NOW-COMM"
 
-extern SemaphoreHandle_t pairingMutex = NULL;
+extern SemaphoreHandle_t pairingMutex;
 
 //Data to be sent both ways over ESP-NOW
 typedef struct struct_data {

@@ -15,6 +15,8 @@ char speedBuffer[26];
 char kmBuffer[4] = "km/";
 char hBuffer[2] = "h";
 
+int remoteBatteryLevel = 0;
+
 void display_to_screen() {
 	//Wait as long as necessary for initialization to complete
 	ESP_LOGI(DISPLAY_TAG, "Waiting for initialization");
