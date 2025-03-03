@@ -86,7 +86,6 @@ void initEspNow() {
 void initDisplay() {
     i2c_master_init(&dev, DISPLAY_SDA, DISPLAY_SCL, DISPLAY_RESET);
     ssd1306_init(&dev, DISPLAY_WIDTH, DISPLAY_HEIGHT);
-    ssd1306_clear_screen(&dev, false);
     ssd1306_bitmaps(&dev, 0,0, electriumLogoBitmap, 128, 64, false);
 
     // explicitly "push" that buffer to the display
@@ -94,7 +93,7 @@ void initDisplay() {
 
     // Display for 4 seconds with single delay
     ESP_LOGI(INIT_TAG, "Displaying Electrium logo");
-    vTaskDelay(pdMS_TO_TICKS(4000));
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
     ssd1306_clear_screen(&dev, false);
     ssd1306_show_buffer(&dev);

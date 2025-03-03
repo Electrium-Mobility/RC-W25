@@ -16,6 +16,7 @@
 struct_data data;
 int boardRpm;
 int boardBatteryLevel;
+bool boardOn = false;
 
 uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
 
@@ -55,6 +56,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
 
 // callback for sending data
 void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+    boardOn = (status == ESP_NOW_SEND_SUCCESS);
     ESP_LOGI(PAIRING_TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5],

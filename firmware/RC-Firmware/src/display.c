@@ -15,6 +15,10 @@ char speedBuffer[26];
 char kmBuffer[4] = "km/";
 char hBuffer[2] = "h";
 
+char warningBuffer[13] = "Board is off";
+char instructionBuffer[15] = "Please turn on";
+char boardOffBuffer[10] = "      ";
+
 int remoteBatteryLevel = 0;
 
 void display_to_screen() {
@@ -23,11 +27,24 @@ void display_to_screen() {
     ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     ESP_LOGI(DISPLAY_TAG, "Initialization complete");
 
-    snprintf(remoteBatteryBuffer, 26*sizeof(char), "%d%%", remoteBatteryLevel);
-    ssd1306_clear_screen(&dev, false);
     display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
-    display_battery(&dev, 80, boardBatteryLevel, boardBatteryBuffer, false);
-	display_speed(&dev, 25, boardRpm, false); //rpm is a placeholder
+
+    //Display board battery level, speed, and clear warning messages
+    if (boardOn) {
+        display_battery(&dev, 75, boardBatteryLevel, boardBatteryBuffer, false);
+        ssd1306_clear_line(&dev, 3, false);
+        ssd1306_clear_line(&dev, 4, false);
+        display_speed(&dev, 25, throttle, false); //Throttle is a placeholder
+    }
+    //Clear speed, board battery level, display warning
+    else {
+        ssd1306_display_text(&dev, 0, 75, boardOffBuffer, strlen(boardOffBuffer), false);
+        ssd1306_clear_line(&dev, 3, false);
+        ssd1306_clear_line(&dev, 4, false);
+        ssd1306_clear_line(&dev, 5, false);
+        ssd1306_display_text(&dev, 3, 15, warningBuffer, strlen(warningBuffer), false);
+        ssd1306_display_text(&dev, 4, 8, instructionBuffer, strlen(instructionBuffer), false);
+    }
 }
 
 void fetch_remote_battery() {

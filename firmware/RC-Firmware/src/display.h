@@ -9,6 +9,7 @@ extern SSD1306_t dev;
 extern TaskHandle_t displayToScreen;
 extern int boardBatteryLevel;
 extern int remoteBatteryLevel;
+extern bool boardOn;
 
 //Handle what to display during normal operation
 void display_to_screen();
