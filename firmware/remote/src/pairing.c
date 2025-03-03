@@ -14,7 +14,7 @@
 #include "init.h"
 
 struct_data data;
-int boardRpm;
+int boardSpeed;
 int boardBatteryLevel;
 bool boardOn = false;
 
@@ -42,7 +42,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
     memcpy(&data, incoming_data, sizeof(data));
 
     boardBatteryLevel = data.boardBatteryLevel;
-    boardRpm = data.boardRpm;
+    boardSpeed = data.boardSpeed;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
@@ -51,7 +51,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
     ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
     ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
-    ESP_LOGI(PAIRING_TAG, "Board rpm: %d", data.boardRpm);
+    ESP_LOGI(PAIRING_TAG, "Board speed: %d", data.boardSpeed);
 }
 
 // callback for sending data
@@ -90,7 +90,7 @@ void pair() {
     // prepare and transmit data
     data.throttle = (safeMode ? throttle * 0.5 : throttle);
     data.boardBatteryLevel = boardBatteryLevel;
-    data.boardRpm = boardRpm;
+    data.boardSpeed = boardSpeed;
 
     // callback upon successful transmission
     while (1) {

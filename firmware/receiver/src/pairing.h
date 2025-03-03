@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "freertos/FreeRTOS.h"
 #include "esp_now.h"
 #include "semaphore.h"
 #include "init.h"
@@ -15,7 +16,7 @@ extern SemaphoreHandle_t pairingMutex;
 typedef struct struct_data {
     double throttle;      // 0% - 100% throttle from hall sensor
     int boardBatteryLevel;     // battery levels from longboard
-    int boardRpm;         // vesc rpm rating
+    int boardSpeed;         // Speed
 } struct_data;
 
 void readMacAddress();
