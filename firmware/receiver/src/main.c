@@ -1,5 +1,14 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "FreeRTOSConfig.h"
+
 #include "init.h"
 #include "pairing.h"
 #include "vesc_comm.h"
+#include "VescUart.h"
 
-void app_main() {}
+TaskHandle_t fetchVescValues;
+
+void app_main() {
+    xTaskCreate(getVescValues, "Update VESC values", 4096, &data, 1, &fetchVescValues);
+}
