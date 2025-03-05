@@ -10,5 +10,5 @@
 TaskHandle_t fetchVescValues;
 
 void app_main() {
-    xTaskCreate(getVescValues, "Update VESC values", 4096, &data, 1, &fetchVescValues);
+    xTaskCreate(fetchVesc, "Update VESC values", 4096, NULL, 1, &fetchVescValues);
 }

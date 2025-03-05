@@ -5,7 +5,6 @@
 #include "driver/uart.h"
 #include "driver/gpio.h"
 #include "driver/adc.h"
-#include "soc/gpio_sig_map.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_now.h"
@@ -17,10 +16,11 @@
 #include "init.h"
 
 SemaphoreHandle_t pairingMutex;
-dataPackage *data;
+dataPackage *vescData;
 
 void init() {
     initEspNow();
+    initVescUart();
 }
 
 void initEspNow() {
@@ -64,11 +64,8 @@ void initVescUart() {
     gpio_reset_pin(GPIO_NUM_0);  //IO0
     gpio_reset_pin(GPIO_NUM_1);  //IO1
 
-    //Configure IO0 as UART1 TX
-    gpio_matrix_out(GPIO_NUM_0, U1TXD_OUT_IDX, true, false);
-    
-    //Configure IO1 as UART1 RX
-    gpio_matrix_in(GPIO_NUM_1, U1RXD_IN_IDX, false);
+    //Map IO0, IO1 to TX, RX of UART1
+    uart_set_pin(UART_NUM, GPIO_NUM_0, GPIO_NUM_1, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 
     //Initialize UART
     uart_config_t uart_config = {
@@ -76,11 +73,11 @@ void initVescUart() {
 		.data_bits = UART_DATA_8_BITS,
 		.parity = UART_PARITY_DISABLE,
 		.stop_bits = UART_STOP_BITS_1,
-		.flow_ctrl = UART_HW_FLOWCTRL_CTS_RTS,
+		.flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
 		.rx_flow_ctrl_thresh = 122,
 	};
 
 	ESP_ERROR_CHECK(uart_param_config(UART_NUM, &uart_config));
 	ESP_ERROR_CHECK(uart_set_pin(UART_NUM, 0, 1, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
-	ESP_ERROR_CHECK(uart_driver_install(UART_NUM, 0, 0, 0, NULL, 0));
+	ESP_ERROR_CHECK(uart_driver_install(UART_NUM, 256, 256, 0, NULL, 0));
 }

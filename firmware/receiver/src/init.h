@@ -14,7 +14,7 @@
 extern double throttle;
 extern int boardSpeed;
 extern int boardBatteryLevel;
-extern dataPackage* data;
+extern dataPackage* vescData;
 
 void init();
 void initEspNow();

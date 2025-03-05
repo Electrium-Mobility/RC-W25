@@ -16,12 +16,18 @@ nunchuckPackage nunchuck;
 FWversionPackage fw_version;
 
 uint32_t serialAvailable(uart_port_t uart_num) {
-    size_t availableBytes = 0;
-    uart_get_buffered_data_len(uart_num, &availableBytes);
+	size_t availableBytes = 0;
+	if (uart_is_driver_installed(uart_num)) {
+		uart_get_buffered_data_len(uart_num, &availableBytes);
+		printf("Buffered length: %d\n", availableBytes);
+	} else {
+		printf("UART driver is not installed!");
+	}
     return (uint32_t) availableBytes;
 }
 
 int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
+	printf("Receiving");
 
 	// Messages <= 255 starts with "2", 2nd byte is length
 	// Messages > 255 starts with "3" 2nd and 3rd byte is length combined with 1st >>8 and then &0xFF
@@ -38,7 +44,10 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 
 		while (serialAvailable(UART_NUM) > 0) {
 			uint8_t byte;
-			messageReceived[counter++] = uart_read_bytes(UART_NUM, &byte, 1, pdMS_TO_TICKS(10));
+			int bytes_read = uart_read_bytes(UART_NUM, &byte, 1, pdMS_TO_TICKS(10));
+			if (bytes_read == 1) {
+				messageReceived[counter++] = byte;
+			}
 
 			if (counter == 2) {
 
@@ -51,11 +60,11 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 
 					case 3:
 						// ToDo: Add Message Handling > 255 (starting with 3)
-						ESP_LOGI(VESC_UART_TAG, "Message is larger than 256 bytes - not supported");
+						printf("Message is larger than 256 bytes - not supported");
 					break;
 
 					default:
-						ESP_LOGI(VESC_UART_TAG, "Invalid start bit");
+						printf("Invalid start bit");
 					break;
 				}
 			}
@@ -66,14 +75,15 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 
 			if (counter == endMessage && messageReceived[endMessage - 1] == 3) {
 				messageReceived[endMessage] = 0;
-				ESP_LOGI(VESC_UART_TAG, "End of message reached");
+				printf("End of message reached");
 				messageRead = true;
 				break; // Exit if end of message is reached, even if there is still more data in the buffer.
 			}
 		}
 	}
+
 	if(messageRead == false) {
-		ESP_LOGI(VESC_UART_TAG, "Timeout");
+		printf("Timeout");
 	}
 	
 	bool unpacked = false;
@@ -88,6 +98,7 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 	}
 	else {
 		// No Message Read
+		printf("No message read");
 		return 0;
 	}
 }
@@ -103,18 +114,23 @@ bool unpackPayload(uint8_t * message, int32_t lenMes, uint8_t * payload) {
 	crcMessage &= 0xFF00;
 	crcMessage += message[lenMes - 2];
 
-	ESP_LOGI(VESC_UART_TAG, "SRC received: %hu", crcMessage);
+	printf("SRC received: %hu", crcMessage);
 
 	// Extract payload:
 	memcpy(payload, &message[2], message[1]);
 
 	crcPayload = crc16(payload, message[1]);
 
-	ESP_LOGI(VESC_UART_TAG, "SRC calc: %hu", crcPayload);
+	printf("SRC calc: %hu", crcPayload);
+	
+	// Debug log bytes in hex format
+    printf("Message header: %02x %02x", message[0], message[1]);
+    printf("Payload first few bytes: %02x %02x %02x %02x", 
+             payload[0], payload[1], payload[2], payload[3]);
 	
 	if (crcPayload == crcMessage) {
-		ESP_LOGI(VESC_UART_TAG, "Received: %s", message);
-		ESP_LOGI(VESC_UART_TAG, "Payload: %s", payload);
+		printf("Received: %s", message);
+		printf("Payload: %s", payload);
 
 		return true;
 	}else{
@@ -149,10 +165,13 @@ int32_t packSendPayload(dataPackage *data, uint8_t * payload, int32_t lenPay) {
 	messageSend[count++] = 3;
 	// messageSend[count] = NULL;
 	
-	ESP_LOGI(VESC_UART_TAG, "Package to send: %s", messageSend);
+	printf("Package to send: %s", messageSend);
 
 	// Sending package
-	uart_write_bytes(UART_NUM, &messageSend, count);
+	int result = uart_write_bytes(UART_NUM, &messageSend, count);
+	if (result < 0) {
+    	ESP_LOGE(VESC_UART_TAG, "Failed to write to UART, error: %d", result);
+	}
 	// Returns number of send bytes
 	return count;
 }
@@ -233,13 +252,13 @@ bool getFWversionCAN(dataPackage *data, uint8_t canId){
 	return false;
 }
 
-bool getVescValues(void *pvParameters) {
-	return getVescValuesCAN((dataPackage*)pvParameters, 0);
+bool getVescValues(dataPackage* data) {
+	return getVescValuesCAN(data, 0);
 }
 
 bool getVescValuesCAN(dataPackage *data, uint8_t canId) {
 
-	ESP_LOGI(VESC_UART_TAG, "Command: COMM_GET_VALUES %c", canId);
+	printf("Command: COMM_GET_VALUES %c", canId);
 
 	int32_t index = 0;
 	int32_t payloadSize = (canId == 0 ? 1 : 3);

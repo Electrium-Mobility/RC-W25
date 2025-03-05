@@ -13,7 +13,7 @@
 #include "nvs_flash.h"
 #include "init.h"
 
-struct_data data;
+struct_data transmissionData;
 double throttle;
 
 uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
@@ -37,18 +37,18 @@ void readMacAddress() {
 // callback for receiving data
 void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
     const uint8_t *mac_addr = recv_info->src_addr;
-    memcpy(&data, incoming_data, sizeof(data));
+    memcpy(&transmissionData, incoming_data, sizeof(transmissionData));
 
-    throttle = data.throttle;
+    throttle = transmissionData.throttle;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5]);
 
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
-    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
-    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
-    ESP_LOGI(PAIRING_TAG, "Board speed: %d", data.boardSpeed);
+    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (transmissionData.throttle * 100.0));
+    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", transmissionData.boardBatteryLevel);
+    ESP_LOGI(PAIRING_TAG, "Board speed: %d", transmissionData.boardSpeed);
 }
 
 // callback for sending data
@@ -84,13 +84,13 @@ void pair() {
     xSemaphoreGive(pairingMutex);
 
     // prepare and transmit data
-    data.throttle = throttle;
-    data.boardBatteryLevel = boardBatteryLevel;
-    data.boardSpeed = boardSpeed;
+    transmissionData.throttle = throttle;
+    transmissionData.boardBatteryLevel = boardBatteryLevel;
+    transmissionData.boardSpeed = boardSpeed;
 
     // callback upon successful transmission
     while (1) {
-        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&data, sizeof(data));
+        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&transmissionData, sizeof(transmissionData));
         if (result == ESP_OK) {
             ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {
