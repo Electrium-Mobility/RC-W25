@@ -13,6 +13,7 @@
 
 extern double throttle;
 extern int boardSpeed;
+extern char direction[9];
 extern int boardBatteryLevel;
 extern dataPackage* vescData;
 

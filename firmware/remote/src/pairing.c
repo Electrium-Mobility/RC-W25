@@ -52,6 +52,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
     ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
     ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
     ESP_LOGI(PAIRING_TAG, "Board speed: %d", data.boardSpeed);
+    ESP_LOGI(PAIRING_TAG, "Direction: %s", data.direction);
 }
 
 // callback for sending data
@@ -91,6 +92,7 @@ void pair() {
     data.throttle = (safeMode ? throttle * 0.5 : throttle);
     data.boardBatteryLevel = boardBatteryLevel;
     data.boardSpeed = boardSpeed;
+    strcpy(data.direction, direction);
 
     // callback upon successful transmission
     while (1) {

@@ -23,6 +23,7 @@
 
 extern double throttle;
 extern bool safeMode;
+extern char direction[9];
 extern int boardSpeed;
 extern int remoteBatteryLevel;
 extern int boardBatteryLevel;

@@ -9,6 +9,7 @@
 
 bool safeMode = false;
 double throttle = 0;
+char direction[9] = "Neutral";
 
 int get_rumble_control(){
     int sensor_value = gpio_get_level(HAPTIC_CNTL);
@@ -57,7 +58,6 @@ double read_adc_avg(adc1_channel_t channel, int num_samples) {
 void interpret_hall_readings()
 {
     double angle = 0; //Angle between magnet and zero position
-    char direction[9] = "Neutral";
 
     while (1) {
         //Individual readings vary wildly so we take an average
