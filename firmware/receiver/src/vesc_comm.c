@@ -2,6 +2,7 @@
 #include "vesc_comm.h"
 #include "VescUart.h"
 #include "math.h"
+#include <string.h>
 
 int boardSpeed;
 int boardBatteryLevel;
@@ -25,7 +26,12 @@ void read_battery_percent() {
 //Take the max rpm, multiply it by the throttle, and send it over
 //MAX_SPEED and WHEEL_DIAMETER are defined in init.h but you can use them here
 void apply_throttle() {
-
+    maxRpm = (MAX_SPEED * 1000) / (M_PI * WHEEL_DIAMETER * 60);
+    double scaledRpm = throttle * maxRpm;
+    if (strcmp(direction, "Backward") == 0) {
+        scaledRpm *= -1;
+    }
+    setRPM(vescData, scaledRpm);
 }
 
 //Here is where you modify boardSpeed using the formula from the doc
