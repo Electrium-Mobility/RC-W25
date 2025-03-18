@@ -6,8 +6,14 @@
 #include "driver/gpio.h"
 #include <math.h>
 #include <string.h>
+#include "esp_timer.h"
 
+bool prevButtonState = false;
 bool safeMode = false;
+int debounceDelay = 1000;
+int prevTime = 0;
+int currentTime = 0;
+debounceTimer = 0;
 double throttle = 0;
 char direction[9] = "Neutral";
 
@@ -27,13 +33,24 @@ int get_rumble_control(){
 void get_safe_mode(){
     safeMode = gpio_get_level(SAFE_MODE);
 
-    if (safeMode) {
+    if (safeMode != prevButtonState) {
+        debounceTimer = 0;
+    }
+    else {
+        currentTime = esp_timer_get_time();
+        debounceTimer += currentTime - prevTime;
+    }
+    prevTime = currentTime;
+    if (safeMode && (debounceTimer > debounceDelay)) {
         ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode On. Sensor Value: %d", safeMode);
     } 
-    else {
+    else if (debounceTimer > debounceDelay) {
         ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode Off. Sensor Value: %d", safeMode);
     }
+
+    prevButtonState = safeMode;
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay    
+
 }
 
 float get_throttle_speed(int mode_control, float speed_percent){
