@@ -13,22 +13,9 @@ bool safeMode = false;
 int debounceDelay = 1000;
 int prevTime = 0;
 int currentTime = 0;
-debounceTimer = 0;
+int debounceTimer = 0;
 double throttle = 0;
 char direction[9] = "Neutral";
-
-int get_rumble_control(){
-    int sensor_value = gpio_get_level(HAPTIC_CNTL);
-
-    if (sensor_value == 1) {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
-    } 
-    else {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Rumble Control On. Sensor Value: %d", sensor_value);
-    }
-    vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
-    return sensor_value;
-}
 
 void get_safe_mode(){
     safeMode = gpio_get_level(SAFE_MODE);
@@ -51,16 +38,6 @@ void get_safe_mode(){
     prevButtonState = safeMode;
     vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay    
 
-}
-
-float get_throttle_speed(int mode_control, float speed_percent){
-    float speed_cap = 10.0;
-    if (mode_control){
-        speed_percent = speed_cap;
-    }
-    ESP_LOGI(SPEED_CONTROL_TAG, "Speed set to: %.2f", speed_percent);
-    vTaskDelay(pdMS_TO_TICKS(10)); //Arbitary 0.01 sec delay
-    return speed_percent;
 }
 
 double read_adc_avg(adc1_channel_t channel, int num_samples) {
