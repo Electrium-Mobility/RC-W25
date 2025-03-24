@@ -15,6 +15,14 @@ void go_to_sleep(void* arg) {
     ESP_LOGI(LIGHT_SLEEP_TAG, "Entering light sleep");
     gpio_set_level(LED_PIN, 0); 
 
+    //2 haptic pulses of 0.5s
+    gpio_set_level(HAPTIC_CNTL, 1);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    gpio_set_level(HAPTIC_CNTL, 0);
+    gpio_set_level(HAPTIC_CNTL, 1);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    gpio_set_level(HAPTIC_CNTL, 0);
+
     esp_timer_delete(sleep_timer); // Delete the timer to prevent leaks
 
     //Wake up every 500ms to check if ADC input has changed

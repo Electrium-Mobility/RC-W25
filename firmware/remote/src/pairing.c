@@ -9,6 +9,7 @@
 #include "esp_system.h"
 #include "esp_log.h"
 #include "esp_event.h"
+#include "driver/gpio.h"
 
 #include "nvs_flash.h"
 #include "init.h"
@@ -57,6 +58,25 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
 
 // callback for sending data
 void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+    //Connection is established
+    if (!boardOn && status == ESP_NOW_SEND_SUCCESS) {
+        //Turn on haptic for 0.1 seconds
+        gpio_set_level(HAPTIC_CNTL, 1);
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(HAPTIC_CNTL, 0);
+    }
+    //Connection is broken
+    if (boardOn && status != ESP_NOW_SEND_SUCCESS) {
+        //2 haptic pulses of 0.1s
+        gpio_set_level(HAPTIC_CNTL, 1);
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(HAPTIC_CNTL, 0);
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(HAPTIC_CNTL, 1);
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(HAPTIC_CNTL, 0);
+    }
+
     boardOn = (status == ESP_NOW_SEND_SUCCESS);
     ESP_LOGI(PAIRING_TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
              mac_addr[0], mac_addr[1], mac_addr[2],

@@ -45,6 +45,11 @@ void initGPIO() {
     gpio_reset_pin(LED_PIN); 
     gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);  
     gpio_set_level(LED_PIN, 1); 
+
+    //Turn on haptic for 0.5s
+    gpio_set_level(HAPTIC_CNTL, 1);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    gpio_set_level(HAPTIC_CNTL, 0);
 }
 
 void initEspNow() {
