@@ -28,11 +28,15 @@ void initADC() {
     ESP_LOGI(INIT_TAG, "Configuring ADC pin");
     adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit (0-4095) B/c 2^12 = 4096
 
-    adc1_config_channel_atten(HALL_EFFECT, ADC_ATTEN_DB_12);
+    adc1_config_channel_atten(THROTTLE_CNTL, ADC_ATTEN_DB_12);
     adc1_config_channel_atten(BATTERY_PERCENT, ADC_ATTEN_DB_12);
 }
 
 void initGPIO() {
+    ESP_LOGI(INIT_TAG, "Initializing On/Off GPIO");
+    esp_rom_gpio_pad_select_gpio(ON_OFF);
+    gpio_set_direction(ON_OFF, GPIO_MODE_INPUT);
+
     ESP_LOGI(INIT_TAG, "Initializing Haptic GPIO");
     esp_rom_gpio_pad_select_gpio(HAPTIC_CNTL);
     gpio_set_direction(HAPTIC_CNTL, GPIO_MODE_INPUT);
@@ -41,10 +45,39 @@ void initGPIO() {
     esp_rom_gpio_pad_select_gpio(SAFE_MODE);
     gpio_set_direction(SAFE_MODE, GPIO_MODE_INPUT);
 
+    ESP_LOGI(INIT_TAG, "Initializing Charging status pins");
+    //STAT1
+    esp_rom_gpio_pad_select_gpio(CHARGE_STAT1);
+    gpio_set_direction(CHARGE_STAT1, GPIO_MODE_INPUT);
+
+    //STAT2
+    esp_rom_gpio_pad_select_gpio(CHARGE_STAT2);
+    gpio_set_direction(CHARGE_STAT2, GPIO_MODE_INPUT);
+
+    //EN
+    esp_rom_gpio_pad_select_gpio(CHARGE_EN);
+    gpio_set_direction(CHARGE_EN, GPIO_MODE_INPUT);
+
     ESP_LOGI(INIT_TAG, "Initializing onboard LED");
     gpio_reset_pin(LED_PIN); 
     gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);  
     gpio_set_level(LED_PIN, 1); 
+
+    ESP_LOGI(INIT_TAG, "Initializing Charging LEDs");
+    //Red
+    gpio_reset_pin(CHARGE_RED_LED); 
+    gpio_set_direction(CHARGE_RED_LED, GPIO_MODE_OUTPUT);  
+    gpio_set_level(CHARGE_RED_LED, 1); 
+
+    //Orange
+    gpio_reset_pin(CHARGE_ORANGE_LED); 
+    gpio_set_direction(CHARGE_ORANGE_LED, GPIO_MODE_OUTPUT);  
+    gpio_set_level(CHARGE_ORANGE_LED, 1); 
+
+    //Green
+    gpio_reset_pin(CHARGE_GREEN_LED); 
+    gpio_set_direction(CHARGE_GREEN_LED, GPIO_MODE_OUTPUT);  
+    gpio_set_level(CHARGE_GREEN_LED, 1); 
 
     //Turn on haptic for 0.5s
     gpio_set_level(HAPTIC_CNTL, 1);

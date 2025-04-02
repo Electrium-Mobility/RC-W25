@@ -55,7 +55,7 @@ void interpret_hall_readings()
 
     while (1) {
         //Individual readings vary wildly so we take an average
-        double raw_analog = read_adc_avg(HALL_EFFECT, 10);
+        double raw_analog = read_adc_avg(THROTTLE_CNTL, 10);
         double raw_voltage = (raw_analog/4095.0) * 3.3;
 
         //5% tolerance around the zero point in either direction
