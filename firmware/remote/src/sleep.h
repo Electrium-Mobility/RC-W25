@@ -5,7 +5,7 @@
 #include "esp_timer.h"  
 #include "init.h"
 
-#define LIGHT_SLEEP_TAG "Light Sleep"
+#define SLEEP_TAG "Light Sleep"
 
 #define INACTIVITY_TIMEOUT 180000000  // 3 min
 
@@ -17,5 +17,8 @@ void check_activity();
 
 //Runs in background, combines both functions above
 void light_sleep();
+
+//Handles on/off button
+void deep_sleep_check();
 
 #endif

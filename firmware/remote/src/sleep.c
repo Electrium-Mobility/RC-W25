@@ -5,14 +5,14 @@
 #include "esp_timer.h"  
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-#include "light_sleep.h"
+#include "sleep.h"
 #include "init.h"
 #include <math.h>
 
 esp_timer_handle_t sleep_timer;  // reference to the timer 
 
 void go_to_sleep(void* arg) {
-    ESP_LOGI(LIGHT_SLEEP_TAG, "Entering light sleep");
+    ESP_LOGI(SLEEP_TAG, "Entering light sleep");
     gpio_set_level(LED_PIN, 0); 
 
     //2 haptic pulses of 0.5s
@@ -32,7 +32,7 @@ void go_to_sleep(void* arg) {
 
         //Throttle is pushed so we wake up and restart the timer
         if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 20){ 
-            ESP_LOGI(LIGHT_SLEEP_TAG, "Throttle pushed, waking up");
+            ESP_LOGI(SLEEP_TAG, "Throttle pushed, waking up");
 
             //Recreate timer
             esp_timer_create_args_t timer_config = { 
@@ -49,7 +49,7 @@ void go_to_sleep(void* arg) {
 
 void check_activity() {
     if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 20){ 
-        ESP_LOGI(LIGHT_SLEEP_TAG, "THROTTLE PUSHED");
+        ESP_LOGI(SLEEP_TAG, "THROTTLE PUSHED");
         
         // Restart timer only if it's still running
         esp_timer_stop(sleep_timer);
@@ -58,7 +58,7 @@ void check_activity() {
 }
 
 void light_sleep() {
-    ESP_LOGI(LIGHT_SLEEP_TAG, "System started");
+    ESP_LOGI(SLEEP_TAG, "System started");
     // Configuiring Struct of Timer
     esp_timer_create_args_t timer_config = { 
         .callback = &go_to_sleep,    // callback function when it expires
@@ -71,5 +71,19 @@ void light_sleep() {
     while(1) {
         check_activity();  // Check button every 100ms
         vTaskDelay(100 / portTICK_PERIOD_MS); 
+    }
+}
+
+void deep_sleep_check() {
+    int on = gpio_get_level(ON_OFF);
+    if (!on) {
+        ESP_LOGI(SLEEP_TAG, "Going into deep sleep");
+        //Haptic pulse for 1s
+        gpio_set_level(HAPTIC_CNTL, 1);
+        vTaskDelay(pdMS_TO_TICKS(1000));
+        gpio_set_level(HAPTIC_CNTL, 0);
+
+        esp_sleep_enable_ext1_wakeup((1ULL << ON_OFF), ESP_EXT1_WAKEUP_ANY_HIGH);
+        esp_deep_sleep_start();
     }
 }

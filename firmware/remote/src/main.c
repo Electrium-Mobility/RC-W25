@@ -5,7 +5,7 @@
 #include "init.h"
 #include "pairing.h"
 #include "speed_control.h"
-#include "light_sleep.h"
+#include "sleep.h"
 #include "display.h"
 
 TaskHandle_t initialization;
