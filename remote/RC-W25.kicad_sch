@@ -21,7 +21,7 @@
 			(color 255 255 194 1.0000)
 		)
 		(uuid "01bd870e-4674-4257-9660-564635d632de")
-		(property "Sheetname" "RC_Connections"
+		(property "Sheetname" "Connections"
 			(at 90.17 61.5184 0)
 			(effects
 				(font
@@ -63,7 +63,7 @@
 			(color 255 255 194 1.0000)
 		)
 		(uuid "36289d84-c6e3-4b09-90a7-bd5cb46c1d1f")
-		(property "Sheetname" "RC_Motor&HallEffect"
+		(property "Sheetname" "Peripherals"
 			(at 124.46 107.2384 0)
 			(effects
 				(font
@@ -105,7 +105,7 @@
 			(color 255 255 194 1.0000)
 		)
 		(uuid "9423f10d-7c89-4a48-b233-1b4f9ab13c89")
-		(property "Sheetname" "RC_Battery"
+		(property "Sheetname" "Power"
 			(at 160.02 61.5184 0)
 			(effects
 				(font

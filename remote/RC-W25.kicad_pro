@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.25,
+          "height": 0.5,
+          "width": 0.5
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -63,7 +63,60 @@
           "width": 0.3
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        [
+          "annular_width|122100000|118200000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "annular_width|122100000|119200000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "clearance|122100000|117950000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|80938a04-b71f-43ed-8de1-0a012dd1d8a6",
+          ""
+        ],
+        [
+          "clearance|122100000|119450000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|80938a04-b71f-43ed-8de1-0a012dd1d8a6",
+          ""
+        ],
+        [
+          "drill_out_of_range|122100000|118200000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "drill_out_of_range|122100000|119200000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "hole_clearance|117500000|133125000|6a8c2046-206e-4a9a-8c23-4581743b6eb1|01cdee8a-c4c6-4b61-82a1-5cc2e4311f4d",
+          ""
+        ],
+        [
+          "hole_clearance|117500000|133125000|6a8c2046-206e-4a9a-8c23-4581743b6eb1|469e9d64-55d6-44ab-9695-1656f7405ec1",
+          ""
+        ],
+        [
+          "hole_clearance|123600000|133125000|27917727-f03f-4996-b6e3-ff190de8fd86|dd10a31c-05aa-4337-a3ff-80ce569d21b2",
+          ""
+        ],
+        [
+          "hole_clearance|123600000|133125000|27917727-f03f-4996-b6e3-ff190de8fd86|e5d0a6e7-5135-4740-80fb-c93b4c4fbd62",
+          ""
+        ],
+        [
+          "lib_footprint_mismatch|95425000|113062500|c53fe65a-b9fd-4e16-83a9-ad56e245593d|00000000-0000-0000-0000-000000000000",
+          ""
+        ],
+        [
+          "silk_edge_clearance|100000000|106312500|0fb1b92f-aba2-4e9d-a62f-771a3559313d|107be9ed-e58e-4c89-8c1e-70c8957bc2e5",
+          ""
+        ],
+        [
+          "silk_edge_clearance|100000000|119812500|0fb1b92f-aba2-4e9d-a62f-771a3559313d|de80a873-da42-470d-a8db-dc0153b662fa",
+          ""
+        ]
+      ],
       "meta": {
         "version": 2
       },
@@ -128,7 +181,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.2,
+        "min_clearance": 0.1,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.0,
         "min_groove_width": 0.0,
@@ -152,7 +205,7 @@
           "td_onpthpad": true,
           "td_onroundshapesonly": false,
           "td_onsmdpad": true,
-          "td_ontrackend": false,
+          "td_ontrackend": true,
           "td_onvia": true
         }
       ],
@@ -560,6 +613,20 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "clearance": 0.1,
+        "diff_pair_gap": 0.1,
+        "diff_pair_width": 0.1,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "SIC",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.2,
+        "via_diameter": 0.6,
+        "via_drill": 0.3
       }
     ],
     "meta": {
@@ -577,7 +644,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "RC-W25.glb",
+      "step": "../../../../Downloads/RC-W25.step",
       "svg": "",
       "vrml": ""
     },
@@ -757,15 +824,15 @@
     ],
     [
       "01bd870e-4674-4257-9660-564635d632de",
-      "RC_Connections"
+      "Connections"
     ],
     [
       "9423f10d-7c89-4a48-b233-1b4f9ab13c89",
-      "RC_Battery"
+      "Power"
     ],
     [
       "36289d84-c6e3-4b09-90a7-bd5cb46c1d1f",
-      "RC_Motor&HallEffect"
+      "Peripherals"
     ]
   ],
   "text_variables": {}

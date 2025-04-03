@@ -1,4 +1,4 @@
-24759956910628657
+24768714092007696
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -99547,6 +99547,13 @@ Varistor VF
 2
 2
 footprints
+Box Tactile Button Switch
+
+
+0
+2
+2
+footprints
 CONN-SMD_2P-P2.00_XUNPU_WAFER-PH2.0-2PWB
 
 
@@ -99561,6 +99568,13 @@ diode
 2
 2
 footprints
+FPC 0.7mm 30P
+
+
+0
+30
+30
+footprints
 FPC-30P-0.5mm
 
 
@@ -99568,9 +99582,23 @@ FPC-30P-0.5mm
 32
 31
 footprints
+Joystick Potentiometer Pads
+
+
+0
+3
+3
+footprints
 L_Abracon_ASPI-4030S
 smd shielded power inductor 4x4x3mm, Abracon ASPI-4030S, https://abracon.com/Magnetics/power/ASPI-4030S.pdf
 inductor abracon smd shielded
+0
+2
+2
+footprints
+Motor Pads
+
+
 0
 2
 2
@@ -99589,12 +99617,19 @@ SW-SMD_L3.9-W3.0-P4.45
 2
 2
 footprints
-Untitled
+TPS63020_VSON(14)
 
 
 0
+38
+15
+footprints
+WSON-10 BQ25185
+8-Lead Plastic WSON, 2x2mm Body, 0.5mm Pitch, WSON-8, http://www.ti.com/lit/ds/symlink/lm27761.pdf
+WSON 8 1EP ThermalVias
 0
-0
+16
+12
 footprints
 X2SON4_DMR_TEX
 
