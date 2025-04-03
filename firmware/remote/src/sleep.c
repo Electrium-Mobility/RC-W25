@@ -31,7 +31,7 @@ void go_to_sleep(void* arg) {
         esp_light_sleep_start();
 
         //Throttle is pushed so we wake up and restart the timer
-        if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 20){ 
+        if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 100){ 
             ESP_LOGI(SLEEP_TAG, "Throttle pushed, waking up");
 
             //Recreate timer

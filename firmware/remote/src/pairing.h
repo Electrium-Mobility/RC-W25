@@ -13,7 +13,7 @@ extern SemaphoreHandle_t pairingMutex;
 
 //Data to be sent both ways over ESP-NOW
 typedef struct struct_data {
-    double throttle;      // 0% - 100% throttle from hall sensor
+    double throttle;      // 0% - 100% throttle from potentiometer
     int boardBatteryLevel;     // battery levels from longboard
     int boardSpeed;         // Speed of longboard
     char direction[9]; // Direction

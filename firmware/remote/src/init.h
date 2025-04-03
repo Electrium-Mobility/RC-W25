@@ -19,7 +19,7 @@
 #define DISPLAY_SCL GPIO_NUM_7
 #define DISPLAY_RESET -1  // Use -1 if no reset pin is connected
 
-#define ZERO_POSITION 200.0 //Raw ADC value for zero position
+#define ZERO_POSITION 2048 //Raw ADC value for zero position
 
 #define DISPLAY_WIDTH 128
 #define DISPLAY_HEIGHT 64
