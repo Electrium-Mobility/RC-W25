@@ -5,7 +5,7 @@
 #include "esp_timer.h"  
 #include "init.h"
 
-#define SLEEP_TAG "Light Sleep"
+#define SLEEP_TAG "Sleep"
 
 #define INACTIVITY_TIMEOUT 180000000  // 3 min
 
@@ -18,7 +18,10 @@ void check_activity();
 //Runs in background, combines both functions above
 void light_sleep();
 
+//Timer callback to turn haptic on for one second
+void IRAM_ATTR haptic_for_one_second();
+
 //Handles on/off button
-void deep_sleep_check();
+void IRAM_ATTR deep_sleep();
 
 #endif

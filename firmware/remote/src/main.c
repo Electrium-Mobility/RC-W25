@@ -22,4 +22,7 @@ void app_main()
     xTaskCreate(read_throttle_value, "interpret", 2048, NULL, 1, &interpretThrottleReadings);
     xTaskCreate(light_sleep, "light_sleep", 2048, NULL, 1, &lightSleep);
     xTaskCreate(display_to_screen, "Display", 4096, NULL, 1, &displayToScreen);
+
+    gpio_install_isr_service(0);
+    gpio_isr_handler_add(ON_OFF, deep_sleep, NULL);
 }

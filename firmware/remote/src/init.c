@@ -36,6 +36,7 @@ void initGPIO() {
     ESP_LOGI(INIT_TAG, "Initializing On/Off GPIO");
     esp_rom_gpio_pad_select_gpio(ON_OFF);
     gpio_set_direction(ON_OFF, GPIO_MODE_INPUT);
+    gpio_set_intr_type(ON_OFF, GPIO_INTR_POSEDGE); //Interrupt on rising edge
 
     ESP_LOGI(INIT_TAG, "Initializing Haptic GPIO");
     esp_rom_gpio_pad_select_gpio(HAPTIC_CNTL);
