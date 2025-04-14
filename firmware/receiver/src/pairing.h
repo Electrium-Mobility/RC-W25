@@ -11,6 +11,8 @@
 #define PAIRING_TAG "ESP-NOW-COMM"
 
 extern SemaphoreHandle_t pairingMutex;
+extern int boardSpeed;
+extern int boardBatteryLevel;
 
 //Data to be sent both ways over ESP-NOW
 typedef struct struct_data {

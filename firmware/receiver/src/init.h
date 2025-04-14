@@ -11,12 +11,6 @@
 
 #define UART_NUM UART_NUM_1
 
-extern double throttle;
-extern int boardSpeed;
-extern char direction[9];
-extern int boardBatteryLevel;
-extern dataPackage* vescData;
-
 void init();
 void initEspNow();
 void initVescUart();
