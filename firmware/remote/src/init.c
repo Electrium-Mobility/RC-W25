@@ -4,6 +4,7 @@
 #include "semaphore.h"
 #include "driver/gpio.h"
 #include "driver/adc.h"
+#include "driver/gpio_filter.h"
 #include "esp_log.h"
 #include "esp_wifi.h"
 #include "esp_now.h"
@@ -45,6 +46,21 @@ void initGPIO() {
     ESP_LOGI(INIT_TAG, "Initializing Safe Mode GPIO");
     esp_rom_gpio_pad_select_gpio(SAFE_MODE);
     gpio_set_direction(SAFE_MODE, GPIO_MODE_INPUT);
+
+    //Debounce config
+    gpio_flex_glitch_filter_config_t safe_mode_filter_config = {
+        .gpio_num = SAFE_MODE,
+        .window_width_ns = 5000000, //5ms
+        .window_thres_ns = 5000000 //5ms
+    };
+
+    gpio_glitch_filter_handle_t safe_mode_filter_handle;
+    esp_err_t err = gpio_new_flex_glitch_filter(&safe_mode_filter_config, &safe_mode_filter_handle);
+    if (err != ESP_OK) {
+        ESP_LOGI(INIT_TAG, "Error initializing glitch filter for safe mode: %s", esp_err_to_name(err));
+        return;
+    }
+    gpio_glitch_filter_enable(safe_mode_filter_handle);
 
     ESP_LOGI(INIT_TAG, "Initializing Charging status pins");
     //STAT1
