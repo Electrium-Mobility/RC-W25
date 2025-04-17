@@ -12,20 +12,9 @@ bool safeMode = false;
 double throttle = 0;
 char direction[9] = "Neutral";
 
-void get_safe_mode()
+void IRAM_ATTR safe_mode_isr_handler()
 {
-    safeMode = gpio_get_level(SAFE_MODE);
-
-    if (safeMode)
-    {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode On. Sensor Value: %d", safeMode);
-    }
-    else 
-    {
-        ESP_LOGI(SPEED_CONTROL_TAG, "Safe Mode Off. Sensor Value: %d", safeMode);
-    }
-
-    vTaskDelay(pdMS_TO_TICKS(10)); // Arbitary 0.01 sec delay
+    safeMode = !safeMode;
 }
 
 double read_adc_avg(adc1_channel_t channel, int num_samples)

@@ -27,5 +27,6 @@ void app_main()
     xTaskCreate(setLED, "Charging LED", 2048, NULL, 1, &chargingLed);
 
     gpio_install_isr_service(0);
-    gpio_isr_handler_add(ON_OFF, deep_sleep, NULL);
+    gpio_isr_handler_add(ON_OFF, deep_sleep_isr_handler, NULL);
+    gpio_isr_handler_add(SAFE_MODE, safe_mode_isr_handler, NULL);
 }

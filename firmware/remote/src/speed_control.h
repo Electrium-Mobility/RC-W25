@@ -7,7 +7,7 @@
 #define SPEED_CONTROL_TAG "Speed Control"
 #define ZERO_POSITION_VOLTAGE 1.65
 
-void get_safe_mode();
+void IRAM_ATTR safe_mode_isr_handler();
 
 double read_adc_avg(adc1_channel_t channel, int num_samples);
 void read_throttle_value();

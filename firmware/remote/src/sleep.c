@@ -94,7 +94,7 @@ void IRAM_ATTR haptic_for_one_second() {
     timer_pause(TIMER_GROUP_0, TIMER_0);
 }
 
-void IRAM_ATTR deep_sleep() {
+void IRAM_ATTR deep_sleep_isr_handler() {
     ESP_LOGI(SLEEP_TAG, "Going into deep sleep");
     //Haptic pulse for 1s
     gpio_set_level(HAPTIC_CNTL, 1);

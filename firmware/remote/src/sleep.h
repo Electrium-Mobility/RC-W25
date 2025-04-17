@@ -22,6 +22,6 @@ void light_sleep();
 void IRAM_ATTR haptic_for_one_second();
 
 //Handles on/off button
-void IRAM_ATTR deep_sleep();
+void IRAM_ATTR deep_sleep_isr_handler();
 
 #endif
