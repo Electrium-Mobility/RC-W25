@@ -5,7 +5,7 @@
 
 #define NUM_POINTS 41
 
-extern dataPackage *vescData;
+extern dataPackage vescData;
 extern char direction[9];
 extern double throttle;
 

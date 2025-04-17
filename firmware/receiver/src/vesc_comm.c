@@ -30,46 +30,67 @@ float voltage_lookup_table[NUM_POINTS] = {41.5, 40.2, 39.5, 39.3, 39.1, 39.0, 38
 void fetch_vesc() {
     while (1) {
         vTaskDelay(100 / portTICK_PERIOD_MS);
-        getVescValues(vescData);
+        getVescValues(&vescData);
     }
 }
 
-void read_battery_percent(){
-    //read voltage from dataPackage struct
-    float raw_voltage = vescData->inpVoltage;
+void read_battery_percent()
+{
+    while (1) {
+    // read voltage from dataPackage struct
+    float raw_voltage = vescData.inpVoltage;
+    ESP_LOGI(VESC_COMM_TAG, "%.2f", raw_voltage);
 
-    //map raw value to percentage
-    if (raw_voltage >= voltage_lookup_table[0]) {
+    // map raw value to percentage
+    if (raw_voltage >= voltage_lookup_table[0])
+    {
         boardBatteryLevel = 100.0;
     }
-    if (raw_voltage <= voltage_lookup_table[NUM_POINTS - 1]) {
+    if (raw_voltage <= voltage_lookup_table[NUM_POINTS - 1])
+    {
         boardBatteryLevel = 0.0;
     }
 
-    for (int i = 0; i < NUM_POINTS - 1; i++) {
-        if (raw_voltage >= voltage_lookup_table[i + 1]) {
+    for (int i = 0; i < NUM_POINTS - 1; i++)
+    {
+        if (raw_voltage >= voltage_lookup_table[i + 1])
+        {
             // apply linear interpolation formula
             float v2 = voltage_lookup_table[i], v1 = voltage_lookup_table[i + 1];
             float soc2 = soc_lookup_table[i], soc1 = soc_lookup_table[i + 1];
             boardBatteryLevel = soc1 + ((raw_voltage - v1) * (soc2 - soc1) / (v2 - v1));
+            break;
         }
     }
+    ESP_LOGI(VESC_COMM_TAG, "%d", boardBatteryLevel);
+    vTaskDelay(pdMS_TO_TICKS(10000));
+}
 }
 
-void apply_throttle() {
+void apply_throttle()
+{
     maxRpm = (MAX_SPEED * 1000) / (M_PI * WHEEL_DIAMETER * 60);
-    double scaledRpm = throttle * maxRpm;
-    if (strcmp(direction, "Backward") == 0) {
-        scaledRpm *= -1;
+    while (1)
+    {
+        double scaledRpm = throttle * maxRpm * 7.0;
+        if (strcmp(direction, "Backward") == 0)
+        {
+            scaledRpm *= -1;
+        }
+        setRPM(&vescData, scaledRpm);
     }
-    setRPM(vescData, scaledRpm);
 }
 
-void determine_speed() {
-    double board_rpm = vescData->rpm;
-    double speed = board_rpm*M_PI*WHEEL_DIAMETER*60/1000;
-    if (speed > MAX_SPEED) {
+void determine_speed()
+{
+    while (1) {
+    double board_rpm = vescData.rpm;
+    double speed = board_rpm * M_PI * WHEEL_DIAMETER * 60 / 1000;
+    if (speed > MAX_SPEED)
+    {
         speed = MAX_SPEED;
     }
     boardSpeed = speed;
+    vTaskDelay(pdMS_TO_TICKS(100));
+}
 }

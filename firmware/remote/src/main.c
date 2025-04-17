@@ -7,12 +7,14 @@
 #include "speed_control.h"
 #include "sleep.h"
 #include "display.h"
+#include "charging.h"
 
 TaskHandle_t initialization;
 TaskHandle_t pairing;
 TaskHandle_t interpretThrottleReadings;
 TaskHandle_t lightSleep;
 TaskHandle_t displayToScreen;
+TaskHandle_t chargingLed;
 
 void app_main()
 {

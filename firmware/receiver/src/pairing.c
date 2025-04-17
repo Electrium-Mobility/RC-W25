@@ -86,14 +86,14 @@ void pair() {
 
     xSemaphoreGive(pairingMutex);
 
-    // prepare and transmit data
-    transmissionData.throttle = throttle;
-    transmissionData.boardBatteryLevel = boardBatteryLevel;
-    transmissionData.boardSpeed = boardSpeed;
-    strcpy(transmissionData.direction, direction);
-
     // callback upon successful transmission
     while (1) {
+            // prepare and transmit data
+        transmissionData.throttle = throttle;
+        transmissionData.boardBatteryLevel = boardBatteryLevel;
+        transmissionData.boardSpeed = boardSpeed;
+        strcpy(transmissionData.direction, direction);
+        
         esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&transmissionData, sizeof(transmissionData));
         if (result == ESP_OK) {
             ESP_LOGI(PAIRING_TAG, "Data sent successfully");

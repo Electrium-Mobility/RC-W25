@@ -21,46 +21,57 @@ char boardOffBuffer[10] = "      ";
 
 int remoteBatteryLevel = 0;
 
-void display_to_screen() {
-	//Wait as long as necessary for initialization to complete
-	ESP_LOGI(DISPLAY_TAG, "Waiting for initialization");
+void display_to_screen()
+{
+    // Wait as long as necessary for initialization to complete
+    ESP_LOGI(DISPLAY_TAG, "Waiting for initialization");
     ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     ESP_LOGI(DISPLAY_TAG, "Initialization complete");
 
-    display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
+    while (1)
+    {
+        display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
 
-    //Display board battery level, speed, and clear warning messages
-    if (boardOn) {
-        display_battery(&dev, 75, boardBatteryLevel, boardBatteryBuffer, false);
-        ssd1306_clear_line(&dev, 3, false);
-        ssd1306_clear_line(&dev, 4, false);
-        display_speed(&dev, 25, throttle, false); //Throttle is a placeholder
-    }
-    //Clear speed, board battery level, display warning
-    else {
-        ssd1306_display_text(&dev, 0, 75, boardOffBuffer, strlen(boardOffBuffer), false);
-        ssd1306_clear_line(&dev, 3, false);
-        ssd1306_clear_line(&dev, 4, false);
-        ssd1306_clear_line(&dev, 5, false);
-        ssd1306_display_text(&dev, 3, 15, warningBuffer, strlen(warningBuffer), false);
-        ssd1306_display_text(&dev, 4, 8, instructionBuffer, strlen(instructionBuffer), false);
+        // Display board battery level, speed, and clear warning messages
+        if (boardOn)
+        {
+            display_battery(&dev, 75, boardBatteryLevel, boardBatteryBuffer, false);
+            ssd1306_clear_line(&dev, 3, false);
+            ssd1306_clear_line(&dev, 4, false);
+            display_speed(&dev, 25, boardSpeed, false);
+        }
+        // Clear speed, board battery level, display warning
+        else
+        {
+            ssd1306_display_text(&dev, 0, 75, boardOffBuffer, strlen(boardOffBuffer), false);
+            ssd1306_clear_line(&dev, 3, false);
+            ssd1306_clear_line(&dev, 4, false);
+            ssd1306_clear_line(&dev, 5, false);
+            ssd1306_display_text(&dev, 3, 15, warningBuffer, strlen(warningBuffer), false);
+            ssd1306_display_text(&dev, 4, 8, instructionBuffer, strlen(instructionBuffer), false);
+        }
     }
 }
 
-void fetch_remote_battery() {
+void fetch_remote_battery()
+{
     int raw_reading = adc1_get_raw(BATTERY_PERCENT);
-    remoteBatteryLevel = (double)raw_reading/4095.0 * 100;
+    remoteBatteryLevel = (double)raw_reading / 4095.0 * 100;
 }
 
-void display_battery(SSD1306_t *dev, int seg, int battery, char *textBuffer, bool invert) {
-	//Pad with spaces to ensure the value is in a fixed position
-    if (battery == 100) {
+void display_battery(SSD1306_t *dev, int seg, int battery, char *textBuffer, bool invert)
+{
+    // Pad with spaces to ensure the value is in a fixed position
+    if (battery == 100)
+    {
         snprintf(textBuffer, 26 * sizeof(char), "%d%%", battery);
     }
-    else if (battery >= 10) {
+    else if (battery >= 10)
+    {
         snprintf(textBuffer, 26 * sizeof(char), "%d%% ", battery);
     }
-    else {
+    else
+    {
         snprintf(textBuffer, 26 * sizeof(char), "%d%%  ", battery);
     }
     ssd1306_bitmaps(dev, seg, 0, batteryOutline, 16, 8, false);
@@ -70,11 +81,13 @@ void display_battery(SSD1306_t *dev, int seg, int battery, char *textBuffer, boo
 
 void display_speed(SSD1306_t *dev, int seg, int speed, bool invert)
 {
-	//Pad with spaces to ensure fixed position
-    if (speed >= 10) {
+    // Pad with spaces to ensure fixed position
+    if (speed >= 10)
+    {
         snprintf(speedBuffer, 26 * sizeof(char), "%d", speed);
     }
-    else if (speed < 10) {
+    else if (speed < 10)
+    {
         snprintf(speedBuffer, 26 * sizeof(char), " %d", speed);
     }
     ssd1306_display_text_x3(dev, 3, seg, speedBuffer, strlen(speedBuffer), false);

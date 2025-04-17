@@ -19,15 +19,15 @@ uint32_t serialAvailable(uart_port_t uart_num) {
 	size_t availableBytes = 0;
 	if (uart_is_driver_installed(uart_num)) {
 		uart_get_buffered_data_len(uart_num, &availableBytes);
-		printf("Buffered length: %d\n", availableBytes);
+		//printf("Buffered length: %d\n", availableBytes);
 	} else {
-		printf("UART driver is not installed!");
+		//printf("UART driver is not installed!");
 	}
     return (uint32_t) availableBytes;
 }
 
 int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
-	printf("Receiving");
+	//printf("Receiving");
 
 	// Messages <= 255 starts with "2", 2nd byte is length
 	// Messages > 255 starts with "3" 2nd and 3rd byte is length combined with 1st >>8 and then &0xFF
@@ -60,11 +60,11 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 
 					case 3:
 						// ToDo: Add Message Handling > 255 (starting with 3)
-						printf("Message is larger than 256 bytes - not supported");
+						//printf("Message is larger than 256 bytes - not supported");
 					break;
 
 					default:
-						printf("Invalid start bit");
+						//printf("Invalid start bit");
 					break;
 				}
 			}
@@ -75,7 +75,7 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 
 			if (counter == endMessage && messageReceived[endMessage - 1] == 3) {
 				messageReceived[endMessage] = 0;
-				printf("End of message reached");
+				//printf("End of message reached");
 				messageRead = true;
 				break; // Exit if end of message is reached, even if there is still more data in the buffer.
 			}
@@ -83,7 +83,7 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 	}
 
 	if(messageRead == false) {
-		printf("Timeout");
+		//printf("Timeout");
 	}
 	
 	bool unpacked = false;
@@ -98,7 +98,7 @@ int32_t receiveUartMessage(dataPackage *data, uint8_t * payloadReceived) {
 	}
 	else {
 		// No Message Read
-		printf("No message read");
+		//printf("No message read");
 		return 0;
 	}
 }
@@ -114,23 +114,23 @@ bool unpackPayload(uint8_t * message, int32_t lenMes, uint8_t * payload) {
 	crcMessage &= 0xFF00;
 	crcMessage += message[lenMes - 2];
 
-	printf("SRC received: %hu", crcMessage);
+	//printf("SRC received: %hu", crcMessage);
 
 	// Extract payload:
 	memcpy(payload, &message[2], message[1]);
 
 	crcPayload = crc16(payload, message[1]);
 
-	printf("SRC calc: %hu", crcPayload);
+	//printf("SRC calc: %hu", crcPayload);
 	
 	// Debug log bytes in hex format
-    printf("Message header: %02x %02x", message[0], message[1]);
-    printf("Payload first few bytes: %02x %02x %02x %02x", 
-             payload[0], payload[1], payload[2], payload[3]);
+    //printf("Message header: %02x %02x", message[0], message[1]);
+    //printf("Payload first few bytes: %02x %02x %02x %02x", 
+            //  payload[0], payload[1], payload[2], payload[3]);
 	
 	if (crcPayload == crcMessage) {
-		printf("Received: %s", message);
-		printf("Payload: %s", payload);
+		//printf("Received: %s", message);
+		//printf("Payload: %s", payload);
 
 		return true;
 	}else{
@@ -165,7 +165,7 @@ int32_t packSendPayload(dataPackage *data, uint8_t * payload, int32_t lenPay) {
 	messageSend[count++] = 3;
 	// messageSend[count] = NULL;
 	
-	printf("Package to send: %s", messageSend);
+	//printf("Package to send: %s", messageSend);
 
 	// Sending package
 	int result = uart_write_bytes(UART_NUM, &messageSend, count);
@@ -258,7 +258,7 @@ bool getVescValues(dataPackage* data) {
 
 bool getVescValuesCAN(dataPackage *data, uint8_t canId) {
 
-	printf("Command: COMM_GET_VALUES %c", canId);
+	//printf("Command: COMM_GET_VALUES %c", canId);
 
 	int32_t index = 0;
 	int32_t payloadSize = (canId == 0 ? 1 : 3);

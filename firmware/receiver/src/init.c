@@ -16,7 +16,7 @@
 #include "init.h"
 
 SemaphoreHandle_t pairingMutex;
-dataPackage *vescData;
+dataPackage vescData;
 
 void init() {
     initEspNow();
