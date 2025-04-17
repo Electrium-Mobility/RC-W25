@@ -122,6 +122,6 @@ void pair() {
         } else {
             ESP_LOGE(PAIRING_TAG, "Error sending data");
         }
-        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }

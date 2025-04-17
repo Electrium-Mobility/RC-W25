@@ -84,13 +84,13 @@ void apply_throttle()
 void determine_speed()
 {
     while (1) {
-    double board_rpm = vescData.rpm;
+    double board_rpm = vescData.rpm / 7.0;
     double speed = board_rpm * M_PI * WHEEL_DIAMETER * 60 / 1000;
     if (speed > MAX_SPEED)
     {
         speed = MAX_SPEED;
     }
-    boardSpeed = speed;
+    boardSpeed = (int)speed;
     vTaskDelay(pdMS_TO_TICKS(100));
 }
 }
