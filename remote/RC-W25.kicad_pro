@@ -65,30 +65,6 @@
       ],
       "drc_exclusions": [
         [
-          "annular_width|122100000|118200000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "annular_width|122100000|119200000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "clearance|122100000|117950000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|80938a04-b71f-43ed-8de1-0a012dd1d8a6",
-          ""
-        ],
-        [
-          "clearance|122100000|119450000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|80938a04-b71f-43ed-8de1-0a012dd1d8a6",
-          ""
-        ],
-        [
-          "drill_out_of_range|122100000|118200000|aeecf9e4-96cf-4a1a-a674-e5f0379e10bc|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "drill_out_of_range|122100000|119200000|278fa1d1-6ca7-40f7-9ed4-3a985d9bf487|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
           "hole_clearance|117500000|133125000|6a8c2046-206e-4a9a-8c23-4581743b6eb1|01cdee8a-c4c6-4b61-82a1-5cc2e4311f4d",
           ""
         ],
@@ -105,16 +81,16 @@
           ""
         ],
         [
-          "lib_footprint_mismatch|95425000|113062500|c53fe65a-b9fd-4e16-83a9-ad56e245593d|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
           "silk_edge_clearance|100000000|106312500|0fb1b92f-aba2-4e9d-a62f-771a3559313d|107be9ed-e58e-4c89-8c1e-70c8957bc2e5",
           ""
         ],
         [
           "silk_edge_clearance|100000000|119812500|0fb1b92f-aba2-4e9d-a62f-771a3559313d|de80a873-da42-470d-a8db-dc0153b662fa",
           ""
+        ],
+        [
+          "silk_over_copper|101535495|120427455|a1fe8a9c-ee27-4ce3-8bd2-8803e274cd00|00000000-0000-0000-0000-000000000000",
+          "ESP MODULE"
         ]
       ],
       "meta": {
@@ -131,8 +107,8 @@
         "diff_pair_gap_out_of_range": "error",
         "diff_pair_uncoupled_length_too_long": "error",
         "drill_out_of_range": "error",
-        "duplicate_footprints": "error",
-        "extra_footprint": "error",
+        "duplicate_footprints": "ignore",
+        "extra_footprint": "ignore",
         "footprint": "error",
         "footprint_filters_mismatch": "ignore",
         "footprint_symbol_mismatch": "error",
@@ -147,12 +123,12 @@
         "items_not_allowed": "error",
         "length_out_of_range": "error",
         "lib_footprint_issues": "error",
-        "lib_footprint_mismatch": "error",
+        "lib_footprint_mismatch": "ignore",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
         "mirrored_text_on_front_layer": "warning",
         "missing_courtyard": "error",
-        "missing_footprint": "error",
+        "missing_footprint": "ignore",
         "net_conflict": "error",
         "nonmirrored_text_on_back_layer": "warning",
         "npth_inside_courtyard": "error",
@@ -186,7 +162,7 @@
         "min_copper_edge_clearance": 0.0,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
-        "min_hole_to_hole": 0.254,
+        "min_hole_to_hole": 0.2,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
@@ -598,8 +574,8 @@
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.2,
-        "diff_pair_gap": 0.25,
+        "clearance": 0.1,
+        "diff_pair_gap": 0.2,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
         "line_style": 0,
@@ -644,7 +620,7 @@
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
-      "step": "../../../../Downloads/RC-W25.step",
+      "step": "../../../../Downloads/RC-W25.glb",
       "svg": "",
       "vrml": ""
     },
