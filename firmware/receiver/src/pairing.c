@@ -88,7 +88,7 @@ void pair() {
 
     // callback upon successful transmission
     while (1) {
-            // prepare and transmit data
+        // prepare and transmit data
         transmissionData.throttle = throttle;
         transmissionData.boardBatteryLevel = boardBatteryLevel;
         transmissionData.boardSpeed = boardSpeed;

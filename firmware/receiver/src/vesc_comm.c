@@ -77,7 +77,9 @@ void apply_throttle()
         {
             scaledRpm *= -1;
         }
-        setRPM(&vescData, scaledRpm);
+        if (throttle > 0) {
+            setRPM(&vescData, scaledRpm);
+        }
     }
 }
 
