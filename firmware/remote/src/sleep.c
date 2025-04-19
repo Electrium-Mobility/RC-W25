@@ -3,6 +3,7 @@
 #include "driver/adc.h"
 #include "esp_sleep.h"        
 #include "esp_timer.h"  
+#include "esp_wifi.h"
 #include "driver/timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -43,13 +44,19 @@ void go_to_sleep(void* arg) {
 
             esp_timer_create(&timer_config, &light_sleep_timer); 
             esp_timer_start_once(light_sleep_timer, INACTIVITY_TIMEOUT); // Starts in one shot mode
-            return;
+            
+        //Reset wifi connection
+        esp_wifi_stop();
+        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+        ESP_ERROR_CHECK(esp_wifi_start());
+        vTaskDelay(pdMS_TO_TICKS(100));
+        return;
         }
     }
 }
 
 void check_activity() {
-    if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 20){ 
+    if (fabs(adc1_get_raw(THROTTLE_CNTL) - ZERO_POSITION) > 100){ 
         ESP_LOGI(SLEEP_TAG, "THROTTLE PUSHED");
         
         // Restart timer only if it's still running

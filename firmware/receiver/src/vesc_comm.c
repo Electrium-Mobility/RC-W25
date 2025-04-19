@@ -3,10 +3,13 @@
 #include "VescUart.h"
 #include "math.h"
 #include <string.h>
+#include "esp_log.h"
 
 int boardSpeed;
 int boardBatteryLevel;
 int maxRpm;
+double board_rpm;
+double prevRpm;
 
 /* Voltage-SOC graph mappings 
  * 
@@ -77,7 +80,12 @@ void apply_throttle()
         {
             scaledRpm *= -1;
         }
-        if (throttle > 0) {
+        //Brake gently
+        if (fabs(scaledRpm) < MIN_ERPM && prevRpm > 0) {
+            setBrakeCurrent(&vescData, 1.0);
+        }
+        //Apply desired rpm, we can't set it to 0 since it will jerk
+        else if (fabs(scaledRpm) >= MIN_ERPM) {
             setRPM(&vescData, scaledRpm);
         }
     }
@@ -86,13 +94,14 @@ void apply_throttle()
 void determine_speed()
 {
     while (1) {
-    double board_rpm = vescData.rpm / 7.0;
-    double speed = board_rpm * M_PI * WHEEL_DIAMETER * 60 / 1000;
-    if (speed > MAX_SPEED)
-    {
-        speed = MAX_SPEED;
-    }
-    boardSpeed = (int)speed;
-    vTaskDelay(pdMS_TO_TICKS(100));
+        board_rpm = vescData.rpm / 7.0;
+        double speed = board_rpm * M_PI * WHEEL_DIAMETER * 60 / 1000;
+        ESP_LOGI(VESC_COMM_TAG, "Board RPM: %.2f, Board Speed: %.2f", board_rpm, speed);
+    
+        boardSpeed = (speed > 0) ? (int)fabs(speed) : 0;
+    
+        ESP_LOGI(VESC_COMM_TAG, "boardSpeed: %d", boardSpeed);
+        prevRpm = board_rpm;
+        vTaskDelay(pdMS_TO_TICKS(100));
 }
 }

@@ -4,6 +4,7 @@
 #define VESC_COMM_TAG "VESC-COMM"
 
 #define NUM_POINTS 41
+#define MIN_ERPM 900
 
 extern dataPackage vescData;
 extern char direction[9];
