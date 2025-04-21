@@ -14,7 +14,8 @@
 #include "nvs_flash.h"
 #include "init.h"
 
-struct_data data;
+remote_data remoteData;
+board_data boardData;
 int boardSpeed;
 int boardBatteryLevel;
 bool boardOn = false;
@@ -40,20 +41,18 @@ void readMacAddress() {
 // callback for receiving data
 void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
     const uint8_t *mac_addr = recv_info->src_addr;
-    memcpy(&data, incoming_data, sizeof(data));
+    memcpy(&boardData, incoming_data, sizeof(boardData));
 
-    boardBatteryLevel = data.boardBatteryLevel;
-    boardSpeed = data.boardSpeed;
+    boardBatteryLevel = boardData.boardBatteryLevel;
+    boardSpeed = boardData.boardSpeed;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5]);
 
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
-    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (data.throttle * 100.0));
-    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", data.boardBatteryLevel);
-    ESP_LOGI(PAIRING_TAG, "Board speed: %d", data.boardSpeed);
-    ESP_LOGI(PAIRING_TAG, "Direction: %s", data.direction);
+    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", boardData.boardBatteryLevel);
+    ESP_LOGI(PAIRING_TAG, "Board speed: %d", boardData.boardSpeed);
 }
 
 // callback for sending data
@@ -111,12 +110,10 @@ void pair() {
     // callback upon successful transmission
     while (1) {
         // prepare and transmit data
-        data.throttle = (safeMode ? throttle * 0.5 : throttle);
-        data.boardBatteryLevel = boardBatteryLevel;
-        data.boardSpeed = boardSpeed;
-        data.direction = direction;
-
-        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&data, sizeof(data));
+        remoteData.throttle = (safeMode ? throttle * 0.5 : throttle);
+        remoteData.direction = direction;
+        
+        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&remoteData, sizeof(remoteData));
         if (result == ESP_OK) {
             ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {

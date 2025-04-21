@@ -98,7 +98,7 @@ void determine_speed()
         double speed = board_rpm * M_PI * WHEEL_DIAMETER * 60 / 1000;
         ESP_LOGI(VESC_COMM_TAG, "Board RPM: %.2f, Board Speed: %.2f", board_rpm, speed);
     
-        boardSpeed = (speed > 0) ? (int)fabs(speed) : 0;
+        boardSpeed = (int)fabs(speed);
     
         ESP_LOGI(VESC_COMM_TAG, "boardSpeed: %d", boardSpeed);
         prevRpm = board_rpm;

@@ -13,7 +13,8 @@
 #include "nvs_flash.h"
 #include "init.h"
 
-struct_data transmissionData;
+remote_data remoteData;
+board_data boardData;
 double throttle;
 short direction;
 
@@ -38,20 +39,18 @@ void readMacAddress() {
 // callback for receiving data
 void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_data, int len) {
     const uint8_t *mac_addr = recv_info->src_addr;
-    memcpy(&transmissionData, incoming_data, sizeof(transmissionData));
+    memcpy(&remoteData, incoming_data, sizeof(remoteData));
 
-    throttle = transmissionData.throttle;
-    direction = transmissionData.direction;
+    throttle = remoteData.throttle;
+    direction = remoteData.direction;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
              mac_addr[3], mac_addr[4], mac_addr[5]);
 
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
-    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (transmissionData.throttle * 100.0));
-    ESP_LOGI(PAIRING_TAG, "Board battery level: %d%%", transmissionData.boardBatteryLevel);
-    ESP_LOGI(PAIRING_TAG, "Board speed: %d", transmissionData.boardSpeed);
-    ESP_LOGI(PAIRING_TAG, "Direction: %s", transmissionData.direction);
+    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (remoteData.throttle * 100.0));
+    ESP_LOGI(PAIRING_TAG, "Direction: %s", remoteData.direction);
 }
 
 // callback for sending data
@@ -89,12 +88,10 @@ void pair() {
     // callback upon successful transmission
     while (1) {
         // prepare and transmit data
-        transmissionData.throttle = throttle;
-        transmissionData.boardBatteryLevel = boardBatteryLevel;
-        transmissionData.boardSpeed = boardSpeed;
-        transmissionData.direction = direction;
+        boardData.boardBatteryLevel = boardBatteryLevel;
+        boardData.boardSpeed = boardSpeed;
         
-        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&transmissionData, sizeof(transmissionData));
+        esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&boardData, sizeof(boardData));
         if (result == ESP_OK) {
             ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {
