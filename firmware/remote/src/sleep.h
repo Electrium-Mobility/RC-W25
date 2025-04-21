@@ -4,6 +4,7 @@
 #include "esp_log.h"    
 #include "esp_timer.h"  
 #include "init.h"
+#include "ssd1306.h"
 
 #define SLEEP_TAG "Sleep"
 
@@ -11,6 +12,7 @@
 
 extern int prevBoardBatteryLevel;
 extern SemaphoreHandle_t deepSleepSemaphore;
+extern SSD1306_t dev;
 
 //Called after inactivity timeout
 void go_to_sleep(void* arg);

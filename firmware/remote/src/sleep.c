@@ -10,6 +10,7 @@
 #include "sleep.h"
 #include "init.h"
 #include <math.h>
+#include "ssd1306.h"
 
 esp_timer_handle_t light_sleep_timer;  // reference to the timer 
 static volatile bool triggerDeepSleep = false;
@@ -101,6 +102,7 @@ void deep_sleep() {
                 esp_sleep_enable_ext1_wakeup((1ULL << ON_OFF), ESP_EXT1_WAKEUP_ANY_HIGH);
                 gpio_set_level(LED_PIN, 0);
                 vTaskDelay(pdMS_TO_TICKS(10));
+                ssd1306_clear_screen(&dev, false);
                 triggerDeepSleep = false;
                 esp_deep_sleep_start();
             }
