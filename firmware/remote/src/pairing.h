@@ -16,7 +16,7 @@ typedef struct struct_data {
     double throttle;      // 0% - 100% throttle from potentiometer
     int boardBatteryLevel;     // battery levels from longboard
     int boardSpeed;         // Speed of longboard
-    char direction[9]; // Direction
+    short direction; // Direction
 } struct_data;
 
 void readMacAddress();

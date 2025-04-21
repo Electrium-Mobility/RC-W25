@@ -10,7 +10,7 @@
 volatile bool safeMode = false;
 
 double throttle = 0;
-char direction[9] = "Neutral";
+short direction = 1;
 
 void IRAM_ATTR safe_mode_isr_handler()
 {
@@ -37,7 +37,6 @@ void read_throttle_value()
     if (fabs((raw_voltage - ZERO_POSITION_VOLTAGE) / ZERO_POSITION_VOLTAGE) < 0.05)
     {
         throttle = 0;
-        strcpy(direction, "Neutral");
     }
     else
     {
@@ -45,11 +44,11 @@ void read_throttle_value()
         throttle = (fabs(raw_voltage - ZERO_POSITION_VOLTAGE)/ZERO_POSITION_VOLTAGE);
         if (raw_voltage > ZERO_POSITION_VOLTAGE)
         {
-            strcpy(direction, "Forward");
+            direction = 1;
         }
         if (raw_voltage < ZERO_POSITION_VOLTAGE)
         {
-            strcpy(direction, "Backward");
+            direction = -1;
         }
     }
 }

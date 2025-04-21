@@ -76,12 +76,12 @@ void apply_throttle()
     while (1)
     {
         double scaledRpm = throttle * maxRpm * 7.0;
-        if (strcmp(direction, "Backward") == 0)
+        if (direction == -1)
         {
-            scaledRpm *= -1;
+            scaledRpm *= -0.4;
         }
         //Brake gently
-        if (fabs(scaledRpm) < MIN_ERPM && prevRpm > 0) {
+        if (fabs(scaledRpm) < MIN_ERPM && fabs(prevRpm) > 0) {
             setBrakeCurrent(&vescData, 1.0);
         }
         //Apply desired rpm, we can't set it to 0 since it will jerk

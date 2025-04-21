@@ -7,7 +7,7 @@
 #define MIN_ERPM 900
 
 extern dataPackage vescData;
-extern char direction[9];
+extern short direction;
 extern double throttle;
 
 void read_battery_percent();

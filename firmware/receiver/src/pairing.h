@@ -19,7 +19,7 @@ typedef struct struct_data {
     double throttle;      // 0% - 100% throttle from hall sensor
     int boardBatteryLevel;     // battery levels from longboard
     int boardSpeed;         // Speed
-    char direction[9]; // Direction
+    short direction; // Direction
 } struct_data;
 
 void readMacAddress();

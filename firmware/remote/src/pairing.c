@@ -114,7 +114,7 @@ void pair() {
         data.throttle = (safeMode ? throttle * 0.5 : throttle);
         data.boardBatteryLevel = boardBatteryLevel;
         data.boardSpeed = boardSpeed;
-        strcpy(data.direction, direction);
+        data.direction = direction;
 
         esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&data, sizeof(data));
         if (result == ESP_OK) {

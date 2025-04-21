@@ -15,7 +15,7 @@
 
 struct_data transmissionData;
 double throttle;
-char direction[9];
+short direction;
 
 uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
 
@@ -41,7 +41,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
     memcpy(&transmissionData, incoming_data, sizeof(transmissionData));
 
     throttle = transmissionData.throttle;
-    strcpy(direction, transmissionData.direction);
+    direction = transmissionData.direction;
     
     ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
              mac_addr[0], mac_addr[1], mac_addr[2],
@@ -92,7 +92,7 @@ void pair() {
         transmissionData.throttle = throttle;
         transmissionData.boardBatteryLevel = boardBatteryLevel;
         transmissionData.boardSpeed = boardSpeed;
-        strcpy(transmissionData.direction, direction);
+        transmissionData.direction = direction;
         
         esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&transmissionData, sizeof(transmissionData));
         if (result == ESP_OK) {
