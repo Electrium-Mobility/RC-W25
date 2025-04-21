@@ -9,6 +9,8 @@
 
 #define INACTIVITY_TIMEOUT 180000000  // 3 min
 
+extern int prevBoardBatteryLevel;
+
 //Called after inactivity timeout
 void go_to_sleep(void* arg);
 

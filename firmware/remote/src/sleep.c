@@ -12,6 +12,7 @@
 #include <math.h>
 
 esp_timer_handle_t light_sleep_timer;  // reference to the timer 
+bool inLightSleep = false;
 
 void go_to_sleep(void* arg) {
     ESP_LOGI(SLEEP_TAG, "Entering light sleep");
@@ -30,6 +31,7 @@ void go_to_sleep(void* arg) {
     //Wake up every 500ms to check if ADC input has changed
     esp_sleep_enable_timer_wakeup(500000);
     while (1) {
+        inLightSleep = true;
         esp_light_sleep_start();
 
         //Throttle is pushed so we wake up and restart the timer
@@ -45,12 +47,16 @@ void go_to_sleep(void* arg) {
             esp_timer_create(&timer_config, &light_sleep_timer); 
             esp_timer_start_once(light_sleep_timer, INACTIVITY_TIMEOUT); // Starts in one shot mode
             
-        //Reset wifi connection
-        esp_wifi_stop();
-        ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-        ESP_ERROR_CHECK(esp_wifi_start());
-        vTaskDelay(pdMS_TO_TICKS(100));
-        return;
+            //Reset wifi connection
+            esp_wifi_stop();
+            ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+            ESP_ERROR_CHECK(esp_wifi_start());
+
+            inLightSleep = false;
+            //Do this so the board battery displays
+            prevBoardBatteryLevel = -1;
+            vTaskDelay(pdMS_TO_TICKS(50));
+            return;
         }
     }
 }

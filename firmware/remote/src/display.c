@@ -20,6 +20,9 @@ char instructionBuffer[15] = "Please turn on";
 char boardOffBuffer[10] = "      ";
 
 int remoteBatteryLevel = 0;
+int prevRemoteBatteryLevel = -1;
+int prevBoardBatteryLevel = -1;
+int prevBoardSpeed = -1;
 
 void display_to_screen()
 {
@@ -30,18 +33,29 @@ void display_to_screen()
 
     while (1)
     {
-        display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
-
+        //Don't rerender unless the battery level changes
+        if (prevRemoteBatteryLevel != remoteBatteryLevel) {
+            display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);
+            prevRemoteBatteryLevel = remoteBatteryLevel;
+        }
         // Display board battery level, speed, and clear warning messages
         if (boardOn)
         {
-            display_battery(&dev, 75, boardBatteryLevel, boardBatteryBuffer, false);
-            ssd1306_clear_line(&dev, 3, false);
-            ssd1306_clear_line(&dev, 4, false);
-            display_speed(&dev, 25, boardSpeed, false);
+            //Don't rerender unless the battery level changes
+            if (prevBoardBatteryLevel != boardBatteryLevel) {
+                display_battery(&dev, 75, boardBatteryLevel, boardBatteryBuffer, false);
+                prevBoardBatteryLevel = boardBatteryLevel;
+            }
+            //Don't rerender speed unless it changes
+            if (prevBoardSpeed != boardSpeed || prevBoardSpeed == -1) {
+                ssd1306_clear_line(&dev, 3, false);
+                ssd1306_clear_line(&dev, 4, false);
+                display_speed(&dev, 25, boardSpeed, false);
+                prevBoardSpeed = boardSpeed;
+            }
         }
         // Clear speed, board battery level, display warning
-        else
+        else if (!inLightSleep)
         {
             ssd1306_display_text(&dev, 0, 75, boardOffBuffer, strlen(boardOffBuffer), false);
             ssd1306_clear_line(&dev, 3, false);
@@ -50,6 +64,7 @@ void display_to_screen()
             ssd1306_display_text(&dev, 3, 15, warningBuffer, strlen(warningBuffer), false);
             ssd1306_display_text(&dev, 4, 8, instructionBuffer, strlen(instructionBuffer), false);
         }
+        vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 

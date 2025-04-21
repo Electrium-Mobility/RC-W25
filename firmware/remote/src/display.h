@@ -10,6 +10,7 @@ extern TaskHandle_t displayToScreen;
 extern int boardBatteryLevel;
 extern int remoteBatteryLevel;
 extern bool boardOn;
+extern bool inLightSleep;
 
 //Handle what to display during normal operation
 void display_to_screen();
