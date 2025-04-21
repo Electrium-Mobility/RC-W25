@@ -33,6 +33,13 @@ void display_to_screen()
 
     while (1)
     {
+        if (safeMode) {
+            ssd1306_display_text(&dev, 7, 0, "SAFE", strlen("SAFE"), false);
+            ESP_LOGI(DISPLAY_TAG, "Safe mode: %d", safeMode);
+        }
+        else {
+            ssd1306_clear_line(&dev, 7, false);
+        }
         //Don't rerender unless the battery level changes
         if (prevRemoteBatteryLevel != remoteBatteryLevel) {
             display_battery(&dev, 0, remoteBatteryLevel, remoteBatteryBuffer, false);

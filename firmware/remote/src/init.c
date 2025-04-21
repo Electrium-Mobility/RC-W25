@@ -46,7 +46,7 @@ void initGPIO() {
     ESP_LOGI(INIT_TAG, "Initializing Safe Mode GPIO");
     esp_rom_gpio_pad_select_gpio(SAFE_MODE);
     gpio_set_direction(SAFE_MODE, GPIO_MODE_INPUT);
-    gpio_set_intr_type(SAFE_MODE, GPIO_INTR_POSEDGE);
+    gpio_set_intr_type(SAFE_MODE, GPIO_INTR_POSEDGE); //Interrupt on rising edge
 
     //Debounce config
     gpio_flex_glitch_filter_config_t safe_mode_filter_config = {

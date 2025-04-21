@@ -12,6 +12,7 @@
 #include <math.h>
 
 esp_timer_handle_t light_sleep_timer;  // reference to the timer 
+static volatile bool triggerDeepSleep = false;
 bool inLightSleep = false;
 
 void go_to_sleep(void* arg) {
@@ -88,6 +89,25 @@ void light_sleep() {
     }
 }
 
+void deep_sleep() {
+    while (1) {
+        if (xSemaphoreTake(deepSleepSemaphore, portMAX_DELAY) == pdTRUE) {
+            ESP_LOGI(SLEEP_TAG, "Obtained semaphore");
+            if (triggerDeepSleep) {
+                ESP_LOGI(SLEEP_TAG, "About to enter deep sleep");
+                while (gpio_get_level(ON_OFF) == 1) {
+                    vTaskDelay(pdMS_TO_TICKS(5));
+                }
+                esp_sleep_enable_ext1_wakeup((1ULL << ON_OFF), ESP_EXT1_WAKEUP_ANY_HIGH);
+                gpio_set_level(LED_PIN, 0);
+                vTaskDelay(pdMS_TO_TICKS(10));
+                triggerDeepSleep = false;
+                esp_deep_sleep_start();
+            }
+        }
+    }
+}
+
 void setup_timer() {
     timer_config_t config = {
         .divider = 80,
@@ -114,6 +134,15 @@ void IRAM_ATTR deep_sleep_isr_handler() {
     timer_set_counter_value(TIMER_GROUP_0, TIMER_0, 0);
     timer_start(TIMER_GROUP_0, TIMER_0);
 
-    esp_sleep_enable_ext1_wakeup((1ULL << ON_OFF), ESP_EXT1_WAKEUP_ANY_HIGH);
-    esp_deep_sleep_start();
+    //Set flag
+    triggerDeepSleep = true;
+
+    //Signal to sleep task 
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    if (deepSleepSemaphore != NULL) {
+        xSemaphoreGiveFromISR(deepSleepSemaphore, &xHigherPriorityTaskWoken);
+        if (xHigherPriorityTaskWoken) {
+            portYIELD_FROM_ISR();
+        }
+    }
 }

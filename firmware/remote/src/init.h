@@ -30,7 +30,7 @@
 #define INIT_TAG "Initialization"
 
 extern double throttle;
-extern bool safeMode;
+extern volatile bool safeMode;
 extern char direction[9];
 extern int boardSpeed;
 extern int remoteBatteryLevel;

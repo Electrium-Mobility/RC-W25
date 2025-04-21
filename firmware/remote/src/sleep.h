@@ -10,6 +10,7 @@
 #define INACTIVITY_TIMEOUT 180000000  // 3 min
 
 extern int prevBoardBatteryLevel;
+extern SemaphoreHandle_t deepSleepSemaphore;
 
 //Called after inactivity timeout
 void go_to_sleep(void* arg);
@@ -19,6 +20,8 @@ void check_activity();
 
 //Runs in background, combines both functions above
 void light_sleep();
+
+void deep_sleep();
 
 //Timer callback to turn haptic on for one second
 void IRAM_ATTR haptic_for_one_second();

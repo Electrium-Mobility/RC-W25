@@ -7,7 +7,7 @@
 #include <math.h>
 #include <string.h>
 
-bool safeMode = false;
+volatile bool safeMode = false;
 
 double throttle = 0;
 char direction[9] = "Neutral";
