@@ -83,10 +83,12 @@ void apply_throttle()
         //Brake gently
         if (fabs(scaledRpm) < MIN_ERPM && fabs(prevRpm) > 0) {
             setBrakeCurrent(&vescData, 1.0);
+            setBrakeCurrentCAN(&vescData, 1.0, 101);
         }
         //Apply desired rpm, we can't set it to 0 since it will jerk
         else if (fabs(scaledRpm) >= MIN_ERPM) {
             setRPM(&vescData, scaledRpm);
+            setRPMCAN(&vescData, scaledRpm * -1, 101);
         }
     }
 }

@@ -11,6 +11,7 @@
 #include "init.h"
 #include <math.h>
 #include "ssd1306.h"
+#include "electriumLogo.h"
 
 esp_timer_handle_t light_sleep_timer;  // reference to the timer 
 static volatile bool triggerDeepSleep = false;
@@ -100,9 +101,18 @@ void deep_sleep() {
                     vTaskDelay(pdMS_TO_TICKS(5));
                 }
                 esp_sleep_enable_ext1_wakeup((1ULL << ON_OFF), ESP_EXT1_WAKEUP_ANY_HIGH);
-                gpio_set_level(LED_PIN, 0);
                 vTaskDelay(pdMS_TO_TICKS(10));
+                ssd1306_bitmaps(&dev, 0,0, electriumLogoBitmap, 128, 64, false);
+
+                // explicitly "push" that buffer to the display
+                ssd1306_show_buffer(&dev);
+            
+                // Display for 1 second with single delay
+                ESP_LOGI(INIT_TAG, "Displaying Electrium logo");
+                vTaskDelay(pdMS_TO_TICKS(1000));
+
                 ssd1306_clear_screen(&dev, false);
+                ssd1306_show_buffer(&dev);
                 triggerDeepSleep = false;
                 esp_deep_sleep_start();
             }

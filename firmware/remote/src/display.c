@@ -23,6 +23,7 @@ int remoteBatteryLevel = 0;
 int prevRemoteBatteryLevel = -1;
 int prevBoardBatteryLevel = -1;
 int prevBoardSpeed = -1;
+bool prevBoardOn = false;
 
 void display_to_screen()
 {
@@ -62,7 +63,8 @@ void display_to_screen()
             }
         }
         // Clear speed, board battery level, display warning
-        else if (!inLightSleep)
+        // Don't rerender unless necessary
+        else if (!inLightSleep && prevBoardOn)
         {
             ssd1306_display_text(&dev, 0, 75, boardOffBuffer, strlen(boardOffBuffer), false);
             ssd1306_clear_line(&dev, 3, false);
@@ -71,6 +73,7 @@ void display_to_screen()
             ssd1306_display_text(&dev, 3, 15, warningBuffer, strlen(warningBuffer), false);
             ssd1306_display_text(&dev, 4, 8, instructionBuffer, strlen(instructionBuffer), false);
         }
+        prevBoardOn = boardOn;
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
