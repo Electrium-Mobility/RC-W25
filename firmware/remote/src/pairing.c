@@ -20,7 +20,7 @@ int boardSpeed;
 int boardBatteryLevel;
 bool boardOn = false;
 
-uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
+uint8_t peer_mac[] = {0x7C, 0x2C, 0x67, 0x61, 0xAE, 0x7C};
 
 void readMacAddress() {
     uint8_t baseMac[6];
