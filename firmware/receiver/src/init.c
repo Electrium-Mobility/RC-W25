@@ -60,12 +60,9 @@ void initEspNow() {
 }
 
 void initVescUart() {
-    //Map TWAIRX and TWAITX to UART1
-    gpio_reset_pin(GPIO_NUM_0);  //IO0
-    gpio_reset_pin(GPIO_NUM_1);  //IO1
-
-    //Map IO0, IO1 to TX, RX of UART1
-    uart_set_pin(UART_NUM, GPIO_NUM_0, GPIO_NUM_1, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+    //Map pins to UART1
+    gpio_reset_pin(RX_PIN);
+    gpio_reset_pin(TX_PIN);
 
     //Initialize UART
     uart_config_t uart_config = {
@@ -78,6 +75,6 @@ void initVescUart() {
 	};
 
 	ESP_ERROR_CHECK(uart_param_config(UART_NUM, &uart_config));
-	ESP_ERROR_CHECK(uart_set_pin(UART_NUM, 0, 1, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+	ESP_ERROR_CHECK(uart_set_pin(UART_NUM, TX_PIN, RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
 	ESP_ERROR_CHECK(uart_driver_install(UART_NUM, 256, 256, 0, NULL, 0));
 }

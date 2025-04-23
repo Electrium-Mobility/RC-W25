@@ -18,7 +18,7 @@ board_data boardData;
 double throttle;
 short direction;
 
-uint8_t peer_mac[] = {0xA0, 0xB7, 0x65, 0x04, 0x01, 0xA0};
+uint8_t peer_mac[] = {0xF8, 0xB3, 0xB7, 0x20, 0x81, 0x90};
 
 void readMacAddress() {
     uint8_t baseMac[6];
@@ -50,7 +50,7 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
 
     ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
     ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (remoteData.throttle * 100.0));
-    ESP_LOGI(PAIRING_TAG, "Direction: %s", remoteData.direction);
+    ESP_LOGI(PAIRING_TAG, "Direction: %d", remoteData.direction);
 }
 
 // callback for sending data
