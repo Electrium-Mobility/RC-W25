@@ -31,7 +31,7 @@ void readMacAddress() {
     }
     else
     {
-        ESP_LOGI(PAIRING_TAG, "Failed to read MAC address");
+        //ESP_LOGI(PAIRING_TAG, "Failed to read MAC address");
     }
     vTaskDelete(NULL);
 }
@@ -44,26 +44,26 @@ void on_data_recv(const esp_now_recv_info_t *recv_info, const uint8_t *incoming_
     throttle = remoteData.throttle;
     direction = remoteData.direction;
     
-    ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
-             mac_addr[0], mac_addr[1], mac_addr[2],
-             mac_addr[3], mac_addr[4], mac_addr[5]);
+    //ESP_LOGI(PAIRING_TAG, "Data received from %02X:%02X:%02X:%02X:%02X:%02X",
+            //  mac_addr[0], mac_addr[1], mac_addr[2],
+            //  mac_addr[3], mac_addr[4], mac_addr[5]);
 
-    ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
-    ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (remoteData.throttle * 100.0));
-    ESP_LOGI(PAIRING_TAG, "Direction: %d", remoteData.direction);
+    //ESP_LOGI(PAIRING_TAG, "Bytes received: %d", len);
+    //ESP_LOGI(PAIRING_TAG, "Throttle: %.2f%%", (remoteData.throttle * 100.0));
+    //ESP_LOGI(PAIRING_TAG, "Direction: %d", remoteData.direction);
 }
 
 // callback for sending data
 void on_data_sent(const uint8_t *mac_addr, esp_now_send_status_t status) {
-    ESP_LOGI(PAIRING_TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
-             mac_addr[0], mac_addr[1], mac_addr[2],
-             mac_addr[3], mac_addr[4], mac_addr[5],
-             (status == ESP_NOW_SEND_SUCCESS) ? "Success" : "Fail");
+    //ESP_LOGI(PAIRING_TAG, "Send status to %02X:%02X:%02X:%02X:%02X:%02X -> %s",
+            //  mac_addr[0], mac_addr[1], mac_addr[2],
+            //  mac_addr[3], mac_addr[4], mac_addr[5],
+            //  (status == ESP_NOW_SEND_SUCCESS) ? "Success" : "Fail");
 }
 
 void pair() {
     if (pairingMutex == NULL || xSemaphoreTake(pairingMutex, 1000) != pdTRUE) {
-        ESP_LOGE(PAIRING_TAG, "Pairing failed to take mutex");
+        //ESP_LOGI(PAIRING_TAG, "Pairing failed to take mutex");
         return;
     }
 
@@ -78,7 +78,7 @@ void pair() {
     peer_info.encrypt = false;
 
     if (esp_now_add_peer(&peer_info) != ESP_OK) {
-        ESP_LOGE(PAIRING_TAG, "Failed to add peer");
+        //ESP_LOGI(PAIRING_TAG, "Failed to add peer");
         xSemaphoreGive(pairingMutex);
         return;
     }
@@ -90,12 +90,14 @@ void pair() {
         // prepare and transmit data
         boardData.boardBatteryLevel = boardBatteryLevel;
         boardData.boardSpeed = boardSpeed;
+
+        ESP_LOGI(PAIRING_TAG, "Board battery: %d, Board speed: %d", boardBatteryLevel, boardSpeed);
         
         esp_err_t result = esp_now_send(peer_mac, (uint8_t *)&boardData, sizeof(boardData));
         if (result == ESP_OK) {
-            ESP_LOGI(PAIRING_TAG, "Data sent successfully");
+            //ESP_LOGI(PAIRING_TAG, "Data sent successfully");
         } else {
-            ESP_LOGE(PAIRING_TAG, "Error sending data");
+            //ESP_LOGI(PAIRING_TAG, "Error sending data");
         }
         vTaskDelay(pdMS_TO_TICKS(100));
     }

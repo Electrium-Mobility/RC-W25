@@ -8,7 +8,7 @@
 
 #define VESC_UART_TAG "VescUart"
 
-#define UART_NUM UART_NUM_1
+#define UART_NUM UART_NUM_0
 
 /** Struct to store the telemetry data returned by the VESC */
 typedef struct {

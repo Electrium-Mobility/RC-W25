@@ -14,8 +14,11 @@ TaskHandle_t fetchBatteryPercentHandle;
 TaskHandle_t applyThrottleHandle;
 TaskHandle_t determineSpeedHandle;
 
+TaskHandle_t testHandle;
+
 void app_main() {
-    xTaskCreate(init, "Initialize Receiver", 4096, NULL, 1, &initializeHandle);
+    // xTaskCreate(testPins, "Test Pins", 2048, NULL, 1, &testHandle);
+    init();
     xTaskCreate(pair, "ESP-NOW functionality", 4096, NULL, 1, &espNowHandle);
     xTaskCreate(fetch_vesc, "Update VESC values", 4096, NULL, 1, &fetchVescValuesHandle);
     xTaskCreate(read_battery_percent, "Read board battery percent", 4096, NULL, 1, &fetchBatteryPercentHandle);

@@ -10,6 +10,7 @@
 #include "esp_now.h"
 #include "esp_err.h"
 #include "nvs_flash.h"
+#include "driver/usb_serial_jtag.h"
 
 #include "VescUart.h"
 
@@ -19,8 +20,23 @@ SemaphoreHandle_t pairingMutex;
 dataPackage vescData;
 
 void init() {
+    initLogs();
     initEspNow();
     initVescUart();
+}
+
+void initLogs() {
+    // Initialize USB Serial/JTAG driver
+    usb_serial_jtag_driver_config_t config = {
+        .tx_buffer_size = 1024,
+        .rx_buffer_size = 1024,
+    };
+    ESP_ERROR_CHECK(usb_serial_jtag_driver_install(&config));
+        
+    // Add small delay for USB to initialize
+    vTaskDelay(pdMS_TO_TICKS(500));
+        
+    ESP_LOGI(INIT_TAG, "USB CDC logging initialized");
 }
 
 void initEspNow() {
@@ -56,13 +72,35 @@ void initEspNow() {
     }
 
     xSemaphoreGive(pairingMutex);
-    vTaskDelete(NULL);
+}
+
+void testPins() {
+    gpio_set_direction(GPIO_NUM_18, GPIO_MODE_INPUT_OUTPUT);
+    gpio_set_direction(GPIO_NUM_2, GPIO_MODE_INPUT_OUTPUT);
+    gpio_set_direction(GPIO_NUM_3, GPIO_MODE_INPUT_OUTPUT);
+
+
+    while (1) {
+    gpio_set_level(GPIO_NUM_2, 1);
+    gpio_set_level(GPIO_NUM_3, 1);
+    gpio_set_level(GPIO_NUM_18, 1);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    ESP_LOGI(INIT_TAG, "GPIO2: %d, GPIO3: %d, GPIO18: %d", gpio_get_level(GPIO_NUM_2), gpio_get_level(GPIO_NUM_3), gpio_get_level(GPIO_NUM_18));
+
+    gpio_set_level(GPIO_NUM_2, 0);
+    gpio_set_level(GPIO_NUM_3, 0);
+    gpio_set_level(GPIO_NUM_18, 0);
+    vTaskDelay(pdMS_TO_TICKS(500));
+    ESP_LOGI(INIT_TAG, "GPIO2: %d, GPIO3: %d, GPIO18: %d", gpio_get_level(GPIO_NUM_2), gpio_get_level(GPIO_NUM_3), gpio_get_level(GPIO_NUM_18));
+    }
 }
 
 void initVescUart() {
-    //Map pins to UART1
+    ESP_LOGI(INIT_TAG, "Initializing VESC UART");
+    //Map pins to UART0
     gpio_reset_pin(RX_PIN);
     gpio_reset_pin(TX_PIN);
+    ESP_LOGI(INIT_TAG, "Reset pins");
 
     //Initialize UART
     uart_config_t uart_config = {
@@ -74,7 +112,12 @@ void initVescUart() {
 		.rx_flow_ctrl_thresh = 122,
 	};
 
+    ESP_LOGI(INIT_TAG, "UART configs");
 	ESP_ERROR_CHECK(uart_param_config(UART_NUM, &uart_config));
+    ESP_LOGI(INIT_TAG, "Applied UART config");
+
 	ESP_ERROR_CHECK(uart_set_pin(UART_NUM, TX_PIN, RX_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE));
+    ESP_LOGI(INIT_TAG, "Set pins");
 	ESP_ERROR_CHECK(uart_driver_install(UART_NUM, 256, 256, 0, NULL, 0));
+    ESP_LOGI(INIT_TAG, "Installed UART driver");
 }
